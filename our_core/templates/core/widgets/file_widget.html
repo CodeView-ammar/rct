@@ -1,0 +1,15 @@
+
+<div class="custom-file form-control-sm">
+    {% include 'core/widgets/input.html' %}
+    <label class="custom-file-label" for="{{ widget.attrs.id }}">Choose file</label>
+    {{ widgetattrs.id }}
+    <script type="text/javascript" id="script-{{ widget.attrs.id }}">
+        document.getElementById("script-{{ widget.attrs.id }}").parentNode.querySelector('.custom-file-input').onchange = function (e) {
+            var filenames = "";
+            for (let i = 0; i < e.target.files.length; i++) {
+                filenames += (i > 0 ? ", " : "") + e.target.files[i].name;
+            }
+            e.target.parentNode.querySelector('.custom-file-label').textContent = filenames;
+        }
+    </script>
+</div>

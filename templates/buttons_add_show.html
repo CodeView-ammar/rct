@@ -1,0 +1,40 @@
+{% load static form_status crispy_forms_tags i18n permission_tag %} 
+
+{% has_screen request  model_name "add" as add %}
+{% has_screen request  model_name "view" as view %}
+<div class="pages-head fixed-div" style="position: fixed !important;">
+  <div class="row">
+    <div class="col-sm-6 col-xs-6">
+      {% block breadcrumbs %}
+      {% include "breadcrumbs.html" %}
+      {% endblock %}
+      
+
+    </div>
+    <div class="col-sm-6 col-xs-6">
+          <div class="top-actions">
+            
+            {% if  add  %}
+            <a href="#"
+            class="add-new-btn  btn btn-success btn-addon width-auto btn-lg  button right"  data-toggle="modal" data-target="{{data_target}}"> 
+            <span>
+                {% if  type_button == 'add'  %}
+                  <i class="fa fa-plus"></i>
+                  {% else %}
+                  <i class="fa fa-list"></i>
+                  
+                  {% endif %}
+                  {% trans name_text %}
+                  
+                </span>
+              </a>
+                
+            {% endif %}
+              </div>
+          <div class="clear"></div>
+      </div>
+    
+  </div>
+</div>
+
+        

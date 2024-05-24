@@ -1,0 +1,172 @@
+/*Tabs*/
+.tabs-buttons {
+    position: relative;
+    z-index: 5;
+    /*overflow:hidden;*/
+}
+
+.no-tabs {
+    background: none;
+}
+
+.tabs-buttons ul {
+    display: block;
+    list-style: none;
+}
+
+.tabs-buttons ul li {
+    display: inline;
+    float: left;
+    padding-right: 3px;
+    position: relative;
+}
+
+.tabs .tabs-buttons ul li > a {
+    background: none repeat scroll 0 0 #f6f8f8;
+    border: 1px solid #dee5e7;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-size: 15px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.tabs .tabs-buttons ul li a span.tooltip {
+    display: inline-block;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 3px;
+    width: 24px;
+}
+
+.tabs .tabs-buttons ul li a .tooltip a {
+    background: none;
+    border: medium none;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: -4px
+}
+
+.tabs .tabs-buttons ul li a:hover, .tabs .tabs-buttons ul li.current a {
+    background: #fff
+}
+
+.tabs-box {
+    background: none repeat scroll 0 0 #fff;
+    margin-left: 1px;
+    margin-top: -1px;
+    padding: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+.tabs-box .listing-table td {
+    vertical-align: middle
+}
+
+.tabs-box .listing-table td .text {
+    padding-bottom: 5px;
+}
+
+.sub-item {
+    background: url(images/bulk_actions.gif) no-repeat left 12px;
+    padding: 0 0 0 22px;
+    float: left;
+    margin: -5px 0 0 10px;
+    overflow: hidden;
+}
+
+.sub-item-sub {
+    background: none;
+    padding: 0 0 0 0;
+    float: left;
+    margin: -5px 0 0 10px;
+    overflow: hidden;
+}
+
+.move-table {
+    text-align: center
+}
+
+.view-table td {
+    padding: 5px 3px
+}
+
+a.Tooltip {
+    cursor: help;
+}
+
+.nav {
+    padding-right: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.tabs-box {
+    margin-right: 1px;
+    margin-left: auto;
+}
+.tabs-box {
+    background: none repeat scroll 0 0 #fff;
+    margin-top: -1px;
+    padding: 15px;
+    position: relative;
+    z-index: 10;
+}
+.nav-tabs {
+    border-color: #dfe3e6;
+}
+.nav-tabs {
+    border-bottom: 1px solid #d8e1e3;
+}
+.nav-tabs>li {
+    float: right;
+    margin-bottom: -1px;
+    padding: 20px;
+}
+.nav>li {
+    position: relative;
+    display: block;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li:hover>a {
+    border-color: #0f1214;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #0c0d0e;
+    border-bottom-color: transparent;
+}
+.nav-tabs>li>a {
+    font-weight: 400;
+    color: #3a3e63;
+    font-size: 14px;
+}
+.nav-tabs > li > a {
+    font-size: 15px;
+    font-weight: 600;
+}
+.nav-tabs>li>a {
+    border-bottom-color: #ddd;
+    border-radius: 2px 2px 0 0;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #d8e1e3;
+    border-bottom-color: transparent;
+}
+
+.nav-tabs>li.active>a {
+    border-bottom-color: #fff !important;
+}
+
+.panel-group {
+    margin-bottom: 20px;
+}

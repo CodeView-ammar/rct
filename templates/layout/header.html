@@ -1,0 +1,204 @@
+{% load static i18n  %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE|default:'en-us' }}">    
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="Content-Language" content="en">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+   <meta name="description" content="نظام برونكس المحاسبي المتكامل النظام الشامل لجميع معاملاتك المؤسسية والحسابية">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="turbolinks-cache-control" content="no-cache">
+   {% block favicon %}
+   <link href="{% static 'imgs/favicon.png' %}" rel="shortcut icon">
+   <!-- <link rel="icon" href="{%static 'logo/logo.png'%}" type="image/icon type"> -->
+   
+   {% endblock %}
+   <title>ERP Pro-Net</title>
+   
+   
+   
+   <link rel="stylesheet" href="{% static 'main.css' %}">
+   
+   <link href="{% static 'css/messages/notify.css'%}" rel="stylesheet"> 
+   <!-- Disable tap highlight on IE -->
+   
+   {% get_current_language_bidi as LANGUAGE_BIDI %} 
+   {% if LANGUAGE_BIDI %}
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+   <link rel="stylesheet" href="{% static 'css/bootstrap-rtl.min.css' %}"> 
+
+   <link rel="stylesheet" href="{% static '/css/css-rtl.css' %}" />
+   <link rel="stylesheet" href="{% static 'css/main_rtl.css' %}">
+    {% else %}
+
+   <link rel="stylesheet" href="{% static '/css/main_tree.css' %}" /> 
+   {% endif %}
+   <link rel="stylesheet" href="{% static '/css/scrollwebsite.css' %}">
+   
+
+   <link href="{% static 'vendor/select2/dist/css/select2.css'%}" type="text/css" media="screen" rel="stylesheet" />
+<link href="{% static 'admin/css/autocomplete.css'%}" type="text/css" media="screen" rel="stylesheet" /> 
+<link href="{% static 'autocomplete_light/select2.css'%}" type="text/css" media="screen" rel="stylesheet" />
+<link href="{% static 'vendor/autocomplete_light/select2.css'%}" type="text/css" media="screen" rel="stylesheet" />
+<link href="{% static 'css/iconmteral.css' %}" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/custom_Our.css' %}">
+<link rel="stylesheet" href="{% static 'css/custom_tab.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
+   
+   <!--for sreaching -->
+   <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'confirm/css/jquery-confirm.min.css' %}"> 
+   
+   <link rel="stylesheet" href="{% static 'css/print_template.css' %}">
+   
+ 
+   {% block style %}
+   {% endblock style %}
+   <meta name="msapplication-tap-highlight" content="no">
+<style>
+   /* @font-face {
+       font-family: 'Cairo-Black';
+       src: url('{% static "font/Cairo-Black.ttf" %}');
+       font-weight: 500;
+       font-style: normal;
+   } */
+
+   @font-face {
+       font-family: 'Cairo-Regular';
+       src: url('{% static "font/Cairo-Regular.ttf"%}');
+       font-weight: 100;
+       font-style: normal;
+   }
+   @font-face {
+     font-family: 'Material Icons';
+     font-style: normal;
+     font-weight: 400;
+     src: url('{% static "material-design-icons/MaterialIcons-Regular.eot"%}'); /* For IE6-8 */
+     src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('{% static "material-design-icons/MaterialIcons-Regular.woff2"%}') format('woff2'),
+       url('{% static "material-design-icons/MaterialIcons-Regular.woff"%}') format('woff'),
+       url('{% static "material-design-icons/MaterialIcons-Regular.ttf"%}') format('truetype');
+   
+   }
+   @font-face {
+   font-family: 'HONOR Sans Arabic UI DB';
+   src: url('{% static "assets/fonts/HONORSansArabicUI-B.ttf"%}');
+   font-weight: 500;
+   font-style: bold;
+}
+  
+
+   /*	-------------------------------------------------------------
+   File Name Common.css
+   -------------------------------------------------------------	 */
+   
+   </style>
+   {% if LANGUAGE_BIDI %}
+   <link rel="stylesheet" href="{% static 'css/custom_sidbar.css' %}">
+   
+   <style>
+
+
+        
+
+
+       /* {
+           font-family:"Open Sans",Tahoma,"Segoe UI","Roboto",'HONOR Sans Arabic UI DB',Verdana,serif,arial,  sans-serif;
+       
+       }*/
+   body{
+       direction:rtl;
+       text-align:right;
+   }
+   .select2-dropdown .select2-dropdown--above{
+       text-align:end;
+   }
+
+   html{
+   font-family:"Cairo-Regular",sans-serif;
+   -webkit-text-size-adjust:100%;
+   -ms-text-size-adjust:100%
+   }
+ 
+body{
+   background: #ffffff;
+   font-size:12px; 
+   font-family:"Cairo-Regular",tahoma,sans-serif;
+   /* font-family:"tahoma,sans-serif"; */
+   /* font-family:"Roboto","Segoe UI",Tahoma,Helvetica,"Open Sans",arial,"serif"; */
+   color: #000000;
+   margin:0;
+   font-style: normal;
+   font-weight: bold;
+}
+.asteriskField{
+    color:red;
+}
+   .select2-results__option[aria-selected] {
+   cursor: pointer;
+   text-align: right;
+}
+.control-group{
+   text-align: right;
+}
+/* .form-control:disabled,
+.form-control[readonly] {
+    background-color: #f5faff;
+    opacity: 1;
+} */
+   </style>     
+   
+{% else %}
+<link rel="stylesheet" href="{% static 'css/custom_sidbar_en.css' %}">
+
+<style>
+   body{
+       direction:ltr;
+       text-align:left;
+   }
+   .select2-dropdown .select2-dropdown--above{
+       text-align:end;
+   }
+   .select2-results__option[aria-selected] {
+   cursor: pointer;
+   text-align: left;
+}
+.control-group{
+   text-align: left;
+}
+
+</style>     
+
+{% endif %}
+
+<script>
+    
+       isLocalStorageSupported = function () {
+           var testKey = 'test', storage = window.sessionStorage;
+           try {
+               storage.setItem(testKey, '1');
+               storage.removeItem(testKey);
+               return true;
+           } catch (error) {
+               return false;
+           }
+       };
+
+       if (isLocalStorageSupported() && localStorage.getItem('dark')) {
+           document.documentElement.classList.add('dark-active');
+       } else {
+           document.documentElement.classList.remove('dark-active');
+       }
+
+       var IS_APP = false;
+       var IS_SAFARI = false;
+       
+       </script>
+</head>

@@ -1,0 +1,18 @@
+       {% load i18n static %}
+{% load crispy_forms_tags %}
+<div class="login_form">
+    <setion class="login-wrapper">
+
+
+
+      <h1>Create Period</h1>
+      <form method="post" id="period" action="{% url 'create_period'%}">
+        {% csrf_token %}
+
+        <input type="text" id="db_name" class="form-control" name="db_name" required>>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">{% trans "Next" %}</button>
+      </form>
+
+      </section>
+  </div>

@@ -1,0 +1,139 @@
+{% load static form_status crispy_forms_tags i18n permission_tag %} 
+
+
+{% has_screen request name_model  "delete" as delete %}
+{% has_screen request  name_model "add" as add %}
+{% has_screen request name_model  "edit" as edit %}
+{% has_screen request  name_model "print" as print %}
+{% has_screen request  name_model "view" as view %}
+<div class="pages-head fixed-div" style="position: fixed !important;">
+  <div class="row">
+    <div class="col-sm-6 col-xs-8">
+          <div class="top-actions">
+    {% if btn_new == 'true'  and add  %}
+        <button id="btn_new"  type="reset"  form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans 'New' %}</button >
+      {% endif %}
+      {% if btn_save == 'true' and add %}
+        <button id="btn_save"   type="submit" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "Save" %}</button>
+        {% endif %}
+        {% if btn_update == 'true' and edit %}
+          <button id="btn_update" type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans 'Update' %}</button >
+        {% endif %}
+        
+      {% if btn_delete == 'true' and delete %}
+        <button id="btn_delete"  type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "delete" %} </button>
+      {% endif %}
+      {% if btn_print == 'true' and print %}
+        <button id="btn_print"  type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "print" %} </button>
+      {% endif %}
+      {% if btn_print_chasher and btn_print_chasher == 'true' and print %}
+      <button id="btn_print_chasher"  type="button" form="{{ form_id }}"  class="create_report_casher btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "طباعة كاشير" %} </button>
+    {% endif %}
+      
+    </div>
+    <div class="clear"></div>
+    </div>
+
+</div>
+</div>
+
+
+{% block stylejs %}
+<script src="{% static 'jQuery/jquery-3.6.0.js' %} "></script> 
+<script>
+ 
+    
+// ى تفعيل الحفظ ويعمل على عرض الحفظ وإخفاء الباقية الازرار
+// 2-عند النقر على حفظ وتم الحفظ يتم عرض الجديد ويتم إخفاء البقية
+ 
+
+function func_btn_new(enable_b=''){
+// function clear new  button default
+    if(enable_b=="1")
+      $('#btn_new').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+      else
+      $('#btn_new').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+function func_btn_save(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+      $('#btn_save').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+    else
+      $('#btn_save').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+function func_btn_print(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+  {    $('#btn_print_chasher').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+      $('#btn_print').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+ }else{
+      $('#btn_print').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+      $('#btn_print_chasher').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}}
+
+function func_btn_delete(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+      $('#btn_delete').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-danger').css('cursor','pointer');
+    else
+      $('#btn_delete').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+function func_btn_update(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+      $('#btn_update').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+    else
+      $('#btn_update').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+    setTimeout(function () {
+      func_btn_new("1");
+      $('#btn_save').addClass('btn-info');
+      $('#btn_update').addClass('btn-info');
+      $('#btn_delete').addClass('btn-info');
+      $('#btn_print').addClass('btn-info');
+      $('#btn_new').addClass('btn-info');
+
+    }, 2000);
+
+
+    
+    let number_check_='';
+  $('#btn_new').click(function(e) {
+    
+      func_btn_new("1");
+      func_btn_save("1");
+        
+
+       
+   });
+   
+   
+  $(document).on('click', '#btn_update', function(){
+    
+       func_btn_update("0");
+      func_btn_print("0");
+      func_btn_new("1");
+     
+      func_btn_save("1");
+
+  });
+  
+  $(document).on('click', '#btn_save', function(){
+          func_btn_new("1");
+          func_btn_save("0");
+     });
+  $(document).on('click', '#btn_delete', function(){
+     
+    setTimeout(function () {
+              func_btn_update("0");
+              func_btn_print("0");
+              func_btn_delete("0");
+              func_btn_new("1");
+            }, 1000);
+      });
+</script>
+{% endblock %}

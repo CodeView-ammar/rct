@@ -1,0 +1,248 @@
+    /*reports page*/
+
+    @media print {
+        a[href]:after {
+          content: none !important;
+        }
+      }
+      table.report {
+        width: 100%;
+      }
+      @media not print {
+        table.report td a {
+          text-decoration: underline;
+        }
+        table.report td a:hover {
+          background: #3a3e63;
+          color: #fff;
+        }
+      }
+      .report table,
+      .report table td {
+        border-collapse: collapse;
+        border: 1px solid #d8e1e3;
+        background: #fff;
+      }
+      
+      table.thickreport td,
+      table.thickreport th {
+        border: 1px solid #d8e1e3;
+      }
+      table.thickreport {
+        border-right: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+      }
+      table.thickreport td.empty-row,
+      table.thickreport td.sub-head {
+        border: 0px solid #000000;
+      }
+      table.thickreport td.empty-row {
+        border-top: 1px solid #333;
+      }
+      
+      .actions-bar {
+        padding: 2px 0;
+        margin: 5px 0;
+      }
+      .reports-header {
+        position: relative;
+        padding: 5px 0;
+        font-size: 12px;
+        line-height: 12px;
+        background: #ffffff;
+        border: 1px solid #0a0a0a;
+        margin-bottom: 15px;
+      }
+      #remove_chart {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 99999;
+      }
+      #FilterDiv {
+        display: block !important;
+      }
+      .report-title-name {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .report table td,
+      .report table th {
+        padding: 8px;
+        vertical-align: top;
+      }
+      .report table td {
+        padding: 3px 8px;
+      }
+      .report-title-name,
+      .report-title-company,
+      .report-title-daterange,
+      .report-title-description,
+      .report-title-address {
+        margin-top: 8px;
+        text-align: center;
+      }
+      .report-title-name.s2020,
+      .report-title-company.s2020,
+      .report-title-daterange.s2020,
+      .report-title-description.s2020,
+      .report-title-address.s2020 {
+        text-align: inherit;
+      }
+      .report-title-company,
+      .report-title-daterange {
+        font-size: 12px;
+      }
+      .report-title-daterange {
+        font-size: 12px;
+        line-height: 20px;
+        width: 90%;
+        margin: 7px auto;
+      }
+      .report-results-head th {
+        background: #ffffff;
+        padding: 10px;
+        color: #000;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+      }
+      .report .section-title td {
+        font-weight: bold;
+        padding-top: 18px;
+      }
+      .report .section-net td {
+        font-weight: bold;
+        text-transform: uppercase;
+        background: #fff;
+        border: 1px solid #272727;
+        border-top: 3px double #ddd;
+      }
+      tr.even-row td,
+      tr.even td {
+        background: #f1f1f1;
+      }
+      .subreport {
+        margin: 15px 0;
+      }
+      .report .even td {
+        background: #ffffff;
+      }
+      #PaymentChart {
+        text-align: center;
+      }
+      
+      tr.green td {
+        color: #008040;
+      }
+      tr.red td {
+        color: #c80000;
+      }
+      
+      td.green {
+        color: #008040;
+      }
+      td.red {
+        color: #c80000;
+      }
+      .default-options-search {
+        clear: both;
+      }
+      .no-column-borders.report,
+      .no-collapse {
+        border-collapse: inherit !important;
+      }
+      .no-column-borders .report-results-head th {
+        border: none;
+      }
+      .no-column-borders.report,
+      .no-column-borders.report td {
+        border-right: none;
+        border-left: none;
+        border-bottom: none;
+      }
+      .report .section-net td {
+        border-top: 1px solid #aaa;
+        border-bottom: 3px double #aaa !important;
+        color: #000;
+        background: #f5f5f5;
+        border-left-color: #aaa;
+      }
+      .report .section-net td:first-child {
+        border-left: none;
+      }
+      .sub-head td {
+        border-top: none;
+        font-size: 15px;
+        font-weight: bold;
+        color: #333;
+      }
+      .reports-small-font {
+        font-size: 11px;
+      }
+      .secondary-head td {
+        font-weight: bold;
+      }
+      .report table .indent-td td:first-child {
+        padding-left: 19px !important;
+      }
+      
+      .report.no-collapse td,
+      .report.no-collapse th {
+        border-right: none;
+        border-bottom: none;
+        background: #fff;
+        padding: 5px;
+      }
+      .report.no-collapse tr:hover td {
+        background: #eee;
+      }
+      .report .subtotal td {
+        border-top: 1px solid #000000;
+        color: #333;
+        font-weight: bold;
+      }
+      
+      td.subtotal {
+        border-top: 1px solid #000000;
+        color: #333;
+        font-weight: bold;
+      }
+      .sundry td {
+        font-weight: bold;
+      }
+      .fixed-table-header {
+        display: none;
+        position: fixed;
+        top: 0;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+          0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
+      @media print {
+        .fixed-table-header {
+          display: none !important;
+          visibility: hidden !important;
+        }
+        #FilterDiv {
+          display: none !important;
+        }
+      }
+      .alert-warning {
+        font-size: 18px;
+      }
+      .total_tr_style {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .list-table .report-results-head.total_tr_style th,
+      .list-table .report-results-head.total_tr_style td {
+        font-weight: 800;
+        color: #000;
+      }
+      .sub_total_tr_style {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .resize-container {
+        width: 98%;
+      }
+      

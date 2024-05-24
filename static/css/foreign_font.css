@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: local('Ubuntu'),
+    url('../../static/fonts/ubuntu/Ubuntu-Bold.ttf') format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+
+body,
+input {
+    font-family: 'Ubuntu';
+}
+
+@font-face {
+    font-family: 'lobster_two';
+    src: local('lobster_two'),
+    url('../../static/fonts/lobster_two/LobsterTwo-Bold.ttf') format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+
+.tamamtech-logo>span {
+    font-family: 'lobster_two';
+}

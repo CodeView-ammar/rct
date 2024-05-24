@@ -1,0 +1,41 @@
+{% extends "layout/base.html" %}
+{% load static crispy_forms_tags  i18n static %}
+{% block title%}
+{{notification_form_data.title_form}}
+{% endblock title%}
+{% block content %}
+
+{% comment %} Start GUI {% endcomment %}
+    <div id="content_append">
+<div class="row">
+   <div class="col-md-12">
+      <form action="{{notification_form_data.url}}" id="form-id-notify" method="post" class="needs-validation"
+         accept-charset="utf-8">
+         {% csrf_token %}
+         <div class="panel panel-primary">
+         <div class="panel-heading">
+               <h5 class="box-title titlefix"></h5>
+            </div>
+            <div class="panel-body">
+               <div class="form-group row">
+                   {% for fields in notification_form_data.form %}
+                       <div class="col-sm-4 mb-3 mb-sm-0">
+                        {{fields|as_crispy_field}}
+                     </div>
+                   {% endfor %}
+               </div>
+            </div>
+         </div>
+      <div class="box-footer">
+               <button id="notification-submit-button" type="submit" data-toggle="tooltip" title="{% trans "Submit Form" %}" class="btn btn-primary">{% trans "Update" %}</button>
+               <button id="notification-cancle-button" type="button" data-toggle="tooltip" title="{% trans "Cancle Operation" %}" class="btn btn-outline-danger pull-left">{% trans "CANCLE" %}</button>
+            </div>
+      </form>
+   </div>
+</div>
+    </div>
+{% comment %} End GUI {% endcomment %}
+{% endblock %}
+{% block stylejs %}
+<script src="{% static 'js/our_notifications/notification_variables.js'%}"></script>
+{% endblock stylejs %}

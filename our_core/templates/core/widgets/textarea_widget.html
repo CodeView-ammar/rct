@@ -1,0 +1,22 @@
+
+
+
+{#<div class="dropdown">#}
+{#    <div class="col col-md-12">#}
+{#    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>#}
+{#    </div>#}
+{#    <div class="dropdown-menu">#}
+{#       <textarea class="summernote-editor dropdown-item" name="{{ widget.name }}"{% if widget.value != None %}#}
+{#       value="{{ widget.value|stringformat:'s' }}"{% endif %} {% include "core/widgets/attrs.html" %}></textarea>#}
+{#    </div>#}
+{#</div>#}
+<div class="dropdown">
+    <input type="text" id="parent-id_{{ widget.name }}" class="form-control dropdown-toggle" data-toggle="dropdown">
+    </input>
+    <div class="dropdown-menu summernote-menu">
+             <textarea class="summernote-editor" name="{{ widget.name }}"{% if widget.value != None %}
+       value="{{ widget.value|stringformat:'s' }}"{% endif %} {% include "core/widgets/attrs.html" %}></textarea>
+
+
+    </div>
+  </div>

@@ -1,0 +1,18 @@
+<style>
+        .breadcrumb-item.active {
+            color: #040506;
+        }
+  </style>
+  <nav class="" aria-label="breadcrumb ">
+      <ol class="breadcrumb ">
+          {% for crumb in breadcrumbs %}
+      {% if  not crumb.is_active %}   
+          <li class="breadcrumb-item"><a href="{{crumb.url}}">{{crumb.label}}</a></li>
+      {% else %}
+      <li class="breadcrumb-item active" aria-current="page">{{crumb.label}}</li>
+      
+          {% endif %}
+      
+          {% endfor %}
+      </ol>
+    </nav>

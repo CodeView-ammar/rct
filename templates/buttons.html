@@ -1,0 +1,242 @@
+{% load static form_status crispy_forms_tags i18n permission_tag %} 
+
+
+{% has_screen request name_model  "delete" as delete %}
+{% has_screen request  name_model "add" as add %}
+{% has_screen request name_model  "edit" as edit %}
+{% has_screen request  name_model "print" as print %}
+{% has_screen request  name_model "view" as view %}
+<div class="pages-head fixed-div" style="position: fixed !important;">
+  <div class="row">
+    <div class="col-sm-6 col-xs-8">
+          <div class="top-actions">
+    {% if btn_new == 'true'  and add  %}
+        <button id="btn_new"  type="reset"  form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans 'New' %}</button >
+      {% endif %}
+      {% if btn_save == 'true' and add %}
+        <button id="btn_save"   type="submit" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "Save" %}</button>
+        {% endif %}
+        {% if btn_update == 'true' and edit %}
+          <button id="btn_update" type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans 'Update' %}</button >
+        {% endif %}
+        
+      {% if btn_delete == 'true' and delete %}
+        <button id="btn_delete"  type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "delete" %} </button>
+      {% endif %}
+      {% if btn_print == 'true' and print %}
+        <button id="btn_print"  type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "print" %} </button>
+      {% endif %}
+      {% if btn_print_chasher and btn_print_chasher == 'true' and print %}
+      <button id="btn_print_chasher"  type="button" form="{{ form_id }}"  class="create_report_casher btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "طباعة كاشير" %} </button>
+    {% endif %}
+      
+    </div>
+    <div class="clear"></div>
+    </div>
+    {% if  view %}
+    {% if name_text %}
+<div class="col-sm-6 col-xs-4">
+  <div class="top-actions">
+    
+    <a href="#"
+    class="add-new-btn  btn btn-success btn-addon width-auto btn-lg  button right"  data-toggle="modal" data-target="{{data_target}}"> 
+    <span>
+      <i class="fa fa-list"></i>
+      {% trans name_text %}
+      
+    </span>
+  </a>
+  
+</div>
+<div class="clear"></div>
+</div>
+{% endif %}
+  {% endif %}
+</div>
+</div>
+
+
+{% block stylejs %}
+<script src="{% static 'jQuery/jquery-3.6.0.js' %} "></script> 
+<script>
+    let urlchange="{% url 'change_global_value' %}";
+    let form_id='{{ form_id }}';
+    let iddd='#' + form_id + '  :input';
+    let fields_pk='{{ fields_pk }}';
+    
+// ى تفعيل الحفظ ويعمل على عرض الحفظ وإخفاء الباقية الازرار
+// 2-عند النقر على حفظ وتم الحفظ يتم عرض الجديد ويتم إخفاء البقية
+function control_button(tvls=true) {
+  $('#btn_save').prop('disabled', tvls).css('cursor','default');
+  $('#btn_update').prop('disabled',tvls).css('cursor','default');
+  $('#btn_print').prop('disabled',tvls).css('cursor','default');
+  $('#btn_print_chasher').prop('disabled',tvls).css('cursor','default');
+  $('#btn_delete').prop('disabled',tvls).css('cursor','default');
+  $('#btn_new').prop('disabled',tvls).css('cursor','default');
+  
+  $('#btn_save').removeClass("btn-secondary").addClass('btn-info');
+  $('#btn_update').removeClass("btn-secondary").addClass('btn-info');
+  $('#btn_delete').removeClass("btn-danger").addClass('btn-info');
+  $('#btn_print').removeClass("btn-secondary").addClass('btn-info');
+  $('#btn_print_chasher').removeClass("btn-secondary").addClass('btn-info');
+  $('#btn_new').removeClass("btn-secondary").addClass('btn-info');
+}
+
+function func_btn_new(enable_b=''){
+// function clear new  button default
+    if(enable_b=="1")
+      $('#btn_new').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+      else
+      $('#btn_new').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+function func_btn_save(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+      $('#btn_save').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+    else
+      $('#btn_save').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+function func_btn_print(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+  {    $('#btn_print_chasher').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+      $('#btn_print').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+ }else{
+      $('#btn_print').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+      $('#btn_print_chasher').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}}
+
+function func_btn_delete(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+      $('#btn_delete').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-danger').css('cursor','pointer');
+    else
+      $('#btn_delete').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+function func_btn_update(enable_b=''){
+// function clear save  button default
+    if(enable_b=="1")
+      $('#btn_update').prop('disabled',false).removeClass("btn-secondary btn-info").addClass('btn-success').css('cursor','pointer');
+    else
+      $('#btn_update').prop('disabled',true).removeClass("btn-secondary btn-success").addClass('btn-info').css('cursor','default');
+}
+
+    setTimeout(function () {
+      $(iddd).prop("disabled", true);
+      // start function in any page
+      control_button(true);
+      func_btn_new("1");
+
+    }, 2000);
+
+
+    
+    let number_check_='';
+  $('#btn_new').click(function(e) {
+    
+      $(iddd).prop("disabled", false);
+      control_button(true);
+      func_btn_new("1");
+      func_btn_save("1");
+      $(iddd).find('input, select').not(':button, :submit, :reset, :hidden').val('').removeAttr('checked').removeAttr('selected');    
+      number_check_="";
+      number_check_=$(fields_pk).val();
+        
+
+       
+   });
+   
+   
+  $(document).on('click', '.show_Operation>tr', function() {
+   
+      setTimeout(function () {
+          $(iddd).prop("disabled", true);
+          control_button(true);
+          func_btn_update("1");
+          func_btn_print("1");
+          func_btn_delete("1");
+          func_btn_new("1");
+        }, 1000);
+    
+});
+  $(document).on('click', '#btn_update', function(){
+    
+    $(iddd).prop("disabled", false);
+      control_button(true);
+      func_btn_update("0");
+      func_btn_print("0");
+      func_btn_new("1");
+     
+      func_btn_save("1");
+
+  });
+  
+  $(document).on('click', '#btn_save', function(){
+    if (!$('#'+form_id)[0].checkValidity() ) {
+      return;
+      }
+      
+      if(form_id!="sales_bill_form")
+      {
+      setTimeout(function () {
+      let number_check_after=$(fields_pk).val();
+
+    if(number_check_)
+    {
+        if(number_check_after===number_check_){
+          return false;
+        }else 
+        if(number_check_after==''){
+          
+          control_button(true);
+          func_btn_new("1");
+          func_btn_save("0");
+          number_check_after=
+          number_check_='';
+        }
+      else{
+        control_button(true);
+        func_btn_new("1");
+        func_btn_save("0");
+        
+        number_check_after=
+        number_check_='';
+      }
+    }else{
+
+      
+
+      // let x = document.forms["form-id"]['name','phone'].value;
+      // if (x == "") {
+      //   alert("Name must be filled out");
+      //   return false;
+      // }
+
+      control_button(true);
+      func_btn_new("1");
+      func_btn_save("0");
+        number_check_after=
+        number_check_='';
+    
+    }
+  }, 2000);
+      }
+     
+     
+    });
+  $(document).on('click', '#btn_delete', function(){
+     
+    setTimeout(function () {
+              $(iddd).prop("disabled", false);
+              control_button(true);
+              func_btn_update("0");
+              func_btn_print("0");
+              func_btn_delete("0");
+              func_btn_new("1");
+            }, 1000);
+      });
+</script>
+{% endblock %}

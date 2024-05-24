@@ -1,0 +1,129 @@
+{% load i18n static %}
+{% include 'layout/header.html' %}
+
+<style>
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+        color: red;
+        font-size: small;
+        list-style: none;
+    }
+</style>
+
+<body style="background-color: #dcdcdc;">
+
+    <div id="append_form_d" class="container">
+        <div class="row">
+            <div class="col-md-4 ">
+
+            </div>
+                <div class="col-md-4 ">
+                <div class="login-form bg-light mt-4 p-4" style="height: 85%;margin-top: 4.5rem!important;border-radius:17px 0px 17px 0px">
+                    
+                    <form method="post" id="formlogin">
+                        
+                        {% csrf_token %}
+                        <h4></h4>
+                     
+                        <div id="append_form">
+                            {{form2}}
+                         </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <label for="remember_me" class="custom-radio" >
+                                    <!-- <span class="checkmark"></span> -->
+                                    {% trans 'تذكرني' %}
+                                    <input id="remember_me" type="checkbox" class='remember_me' name="remember_me">
+                                </label>
+                            </div>
+
+                            <button type="submit" style="width: 100%; " class="btn btn-dark float-end">{% trans "login" %}</button>
+                        </div>
+                    </form>
+                    
+                    <div class="col-12">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% block stylejs %}
+<script type="text/javascript" src="assets/scripts/main.js"></script>
+<script src="{% static 'js/jQuery-2.1.4.min.js' %} "></script> 
+
+<script>
+
+    // get the selected account ID from the HTML input
+     $.ajax({
+        method: "POST", // initialize an AJAX request
+            url: "{% url 'Showlogin' %}",
+            data: {
+                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            },
+            success: function (data, status) {
+                let x=false
+                 x=data.data;
+                if(x==='false')
+                $('.remember_me').prop('checked', false);
+                else
+                $('.remember_me').prop('checked', true);
+                
+               
+            },error:function(data,status){
+                
+            }
+            
+            });
+            
+
+    $("input[name=remember_me]").on("change", function() {
+        let e='false';
+        if ($(this).is(":checked"))
+            e='true';
+       else
+            e='false';
+
+        
+        // alert(e);
+      
+    $.ajax({
+            method: "post", // initialize an AJAX request
+            url: "{% url 'Savelogin' %}",
+            data: {
+                'remambe_my': e,
+            
+                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            },
+            success: function (data, status) {
+                e=JSON.parse(data.data);
+             
+                // $('.remember_me').bootstrapToggle('on')
+                // $('#myCheckbox').bootstrapToggle('off')
+                // $("input[name=remember_me]").prop("checked",e);
+            }
+
+            });
+});
+      
+       
+</script>
+{% endblock stylejs %}
+</body>
+
+</html>

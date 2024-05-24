@@ -1,0 +1,869 @@
+{% load compress i18n static %}
+<style>
+    /* .loading-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+} */
+
+/* .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #000;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
+</style>
+<div class="app-drawer-wrapper">
+    <div class="drawer-nav-btn">
+        <button type="button" class="hamburger hamburger--elastic is-active">
+<span class="hamburger-box"><span class="hamburger-inner"></span></span>
+</button>
+    </div>
+ </div>
+
+<div class="app-drawer-overlay d-none animated fadeIn"></div>
+
+
+
+
+
+{% block stylejs%}
+
+<script src="{% static 'jQuery/jquery-3.6.0.js' %} "></script> 
+
+<!-- Bootstrap 3.3.4 -->
+<script src="{% static 'js/app.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js'%}"></script>  
+<script src="{% static 'js/datatable/datatable.js' %}"></script>
+<script src="{% static 'js/messages/notify.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/scripts/main.js' %}"></script>
+
+<script src="{% static 'js/dailg_new_screen.js' %}"></script>
+
+<script src="{% static 'js/datatable/jquery.dataTables13.min.js' %}"></script>
+
+
+<!--for sreaching -->
+<script type="text/javascript" src="{% static 'vendor/select2/dist/js/select2.full.js'%}"></script>
+<script type="text/javascript" src="{% static 'vendor/select2/dist/js/i18n/en.min.js'%}"></script>
+
+
+<script type="text/javascript" src="{% static 'autocomplete_light/jquery.init.js'%}"></script>
+<script type="text/javascript" src="{% static 'autocomplete_light/autocomplete.init.js'%}"></script>
+<script type="text/javascript" src="{% static 'autocomplete_light/forward.js'%}"></script>
+<script type="text/javascript" src="{% static 'autocomplete_light/select2.js'%}"></script>
+<script type="text/javascript" src="{% static 'autocomplete_light/jquery.post-setup.js'%}"></script> 
+
+<script src="{% static 'plugins/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+
+<script src="{% static 'js/bootstrap.min.js.map' %}"></script>
+<script src="{% static 'bootbox.all.min.js' %}"></script>
+<script src="{% static 'js/datatable/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/datatable/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'js/custom_print.js' %}"></script>
+
+{% csrf_token %}
+<!-- after -->
+
+<script>
+    
+//     $(document).ready(function() {
+//   $(document).ajaxStart(function() {
+//     // إظهار دائرة الانتظار
+//     $(".loading-indicator").show();
+//   });
+
+//   $(document).ajaxStop(function() {
+//     // إخفاء دائرة الانتظار
+//     $(".loading-indicator").hide();
+//   });
+
+//   $(document).on('DOMContentLoaded', function() {
+//     // إظهار دائرة الانتظار عند تحميل الصفحة
+//     $(".loading-indicator").show();
+
+//     // إخفاء دائرة الانتظار بعد تحميل الصفحة كاملة
+// });
+// });
+    $(document).ready((function() {
+       
+
+        $("#saveclosesidebar").click(function(){
+            if($("#sidbar_custom").hasClass("closed-sidebar"))
+            {           
+            $("#logo_id").removeClass("hidden");
+            $("#sidbar_custom").addClass("fixed-sidebar");
+            
+            $("#close_side_svg").addClass("hidden");
+            $("#open_side_svg").removeClass("hidden");
+        }
+        else
+        {
+            $("#logo_id").addClass("hidden");
+            $("#sidbar_custom").removeClass("fixed-sidebar");
+            
+            $("#close_side_svg").removeClass("hidden");
+            $("#open_side_svg").addClass("hidden");
+            
+            
+            }
+          
+        });
+        
+        $("#saveclosesidebar").on("click", (function() {
+            // get the selected account ID from the HTML input
+            var e="";
+            if($("#sidbar_custom").hasClass("closed-sidebar"))
+            e = "";
+            else
+            e = "closed-sidebar";
+                
+            $.ajax({
+                method: "post", // initialize an AJAX request
+                url: "{% url 'saveresponsev_sidebar' %}",
+                data: {
+                    'close_sidbar_custom': e,
+
+                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+                },
+                success: function(data, status) {
+                    e = JSON.parse(data.data);
+                    }
+
+            });
+
+        }))
+
+
+
+        $.ajax({
+            method: "POST", // initialize an AJAX request
+            url: "{% url 'showresponsev_sidebar' %}",
+            data: {
+                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            },
+            success: function(data, status) {
+                
+                let x = data.data;
+                $("#sidbar_custom").addClass(x);
+                
+                if($("#sidbar_custom").hasClass("closed-sidebar"))
+                {
+                    $("#saveclosesidebar").addClass("is-active");
+                    $("#sidbar_custom").removeClass("fixed-sidebar");
+        
+                
+                    $("#open_side_svg").addClass("hidden");
+                    $("#close_side_svg").removeClass("hidden");
+                    
+                }
+                else
+                {$("#saveclosesidebar").removeClass("is-active");
+                $("#sidbar_custom").addClass("fixed-sidebar");
+                
+                $("#open_side_svg").removeClass("hidden");
+                $("#close_side_svg").addClass("hidden");    
+            }},
+            error: function(data, status) {
+
+            }
+
+        });
+
+        $.ajax({
+            method: "POST", // initialize an AJAX request
+            url: "{% url 'ShowColor_sidebar' %}",
+            data: {
+                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            },
+            success: function(data, status) {
+
+                let x = data.data;
+                $(".switch-sidebar-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-sidebar").attr("class", "app-sidebar"), $(".app-sidebar").addClass("sidebar-shadow " + x)
+            },
+            error: function(data, status) {
+
+            }
+
+        });
+    
+        $(document).ready(function() {
+            $("title").text($("title").text()+"-"+$("#blocktitle").text());
+        });
+        $(".switch-sidebar-cs-class").on("click", (function() {
+            // get the selected account ID from the HTML input
+            var e = $(this).attr("data-class");
+            $.ajax({
+                method: "post", // initialize an AJAX request
+                url: "{% url 'SaveColor_sidebar' %}",
+                data: {
+                    'color_sidebar': e,
+
+                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+                },
+                success: function(data, status) {
+                    e = JSON.parse(data.data);
+                    $(".switch-sidebar-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-sidebar").attr("class", "app-sidebar"), $(".app-sidebar").addClass("sidebar-shadow " + e)
+                }
+
+            });
+
+        }))
+
+
+        $.ajax({
+            method: "POST", // initialize an AJAX request
+            url: "{% url 'ShowColor_header' %}",
+            data: {
+                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            },
+            success: function(data, status) {
+
+                let x = data.data;
+                $(".switch-header-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-header").attr("class", "app-header"), $(".app-header").addClass("header-shadow " + x)
+            },
+            error: function(data, status) {
+
+            }
+
+        });
+
+
+        $(".switch-header-cs-class").on("click", (function() {
+            // get the selected account ID from the HTML input
+            var e = $(this).attr("data-class");
+            $.ajax({
+                method: "post", // initialize an AJAX request
+                url: "{% url 'SaveColor_header' %}",
+                data: {
+                    'color_header': e,
+
+                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+                },
+                success: function(data, status) {
+                    e = JSON.parse(data.data);
+                    $(".switch-header-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-header").attr("class", "app-header"), $(".app-header").addClass("header-shadow " + e)
+                }
+
+            });
+
+        }))
+
+    }))
+//     var $mmActive = $('.mm-active');
+// if ($mmActive) {
+    //     $(".app-sidebar__inner").animate({
+        //         scrollTop: $mmActive.offset().top / 3
+        //     }, 'fast');
+        // }
+        // var $mmActive = $('.mm-active');
+        // if ($mmActive) {
+            
+    //         $(document).ready(function () {
+    //             // Handler for .ready() called.
+    //             $('.app-sidebar .app-sidebar__inner .vertical-nav-menu .sidebar').animate({
+    //                 scrolldown: $('.activeli').offset().top/3
+    //             }, 'slow');
+    //             alert( $('.activeli').offset().top);
+    //  });
+    //    }
+          /*
+        * this function is called after each ajax request, to save the output html to a file that will be used when printing a pdf
+        * after the file is saved the tmp_file_name will be used to store the tmp file name obvisouly
+        */
+        var temp_file_name = ""
+        var orginal_print_url = "";
+        function save_output_html(filename="")
+        {
+            let csrf = '{{ csrf_token }}';
+            request_url = "";
+            table_html = $("div.report").html();
+
+            
+
+            $.ajax({
+                url: request_url,
+                method: "POST",
+                dataType: "TEXT",
+                data: {html: table_html, filename: filename},
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", csrf);
+                },
+                success: function (data)
+                {
+                    // window.location.href = url;
+                    let resp=JSON.parse(data);
+
+                    temp_file_name = resp["data"];
+                    //give the print buttons the path to the tmp_file_name
+                    var baseUrl = window.location.origin;
+                    // console.log(baseUrl);
+                    
+                    $(".Pdf").each(function ()
+                    {
+                        // if (orginal_print_url == "") {
+                            orginal_print_url = $(this).attr("href");
+                            print_url = orginal_print_url;
+                            print_url = decodeURI(print_url);
+                            print_url =baseUrl+"/"+temp_file_name;
+                            print_url = encodeURI(print_url);
+                            $(this).attr("href",print_url);
+                        // }
+
+                    });
+                    // $(".CSV").each(function ()
+                    // {
+                    //     if (orginal_csv_url == "") {
+                    //         orginal_csv_url = $(this).attr("href");
+					// 		}
+                    //         print_url = orginal_csv_url;
+                    //         print_url = decodeURI(print_url);
+                    //         print_url += "&temp_file_name=" + temp_file_name;
+                    //         print_url = encodeURI(print_url);
+                    //         $(this).attr("href", print_url);
+                        
+                    // });
+
+                    // $(".EXCEL").each(function ()
+                    // {
+                    //         orginal_csv_url = $(this).attr("href");
+                    //         print_url = orginal_csv_url;
+                    //         print_url = decodeURI(print_url);
+                    //         print_url += "&temp_file_name=" + temp_file_name;
+                    //         print_url = encodeURI(print_url);
+                    //         $(this).attr("href", print_url);
+                        
+                    // });
+                }
+            });
+        }
+        function printpdf(name){
+            $("#report_header_html").removeClass("hidden").html();
+            save_output_html(name);
+            $("#report_header_html").addClass("hidden");
+        }
+</script>
+
+<script>
+    let url = "";
+    let table = "";
+    let mix_url_id = '';
+    let lang = {
+        "decimal": "",
+        search: "_INPUT_",
+        searchPlaceholder: "{% trans 'Search...' %}",
+        "emptyTable": "{% trans 'No data available in table' %}",
+        "info": "{% trans 'Showing _START_ to _END_ of _TOTAL_ entries' %}",
+        "infoEmpty": "{% trans 'Showing 0 to 0 of 0 entries' %}",
+        "infoFiltered": "{% trans '(filtered from _MAX_ total entries)' %}",
+        "infoPostFix": "{% trans ',' %}",
+        "thousands": "{% trans ',' %}",
+        "lengthMenu": "{% trans 'Show _MENU_' %}",
+        "loadingRecords": "{% trans 'Loading...' %}",
+        "processing": "{% trans 'Processing...' %}",
+        "zeroRecords": "{% trans 'No matching records found' %}",
+        paginate: {
+            first: '«',
+            previous: '‹',
+            next: '›',
+            last: '»'
+        },
+        aria: {
+            paginate: {
+                first: "{% trans 'First' %}",
+                previous: "{% trans 'Previous'%}",
+                next: "{% trans 'Last' %}",
+                last: "{% trans 'Previous'%}"
+            }
+        }
+    };
+    var Informations = "{% trans 'Info' %}";
+    var BoxEmpty = "{% trans 'this box is empty input the number search' %}";
+    var DeleteNode = "{% trans 'Are you sure to permanently delete this node!'%}";
+    var NotHaveChild = "{% trans 'You can not delete node have children'%}";
+    var HeadMessages = "{% trans 'Messagess'%}";
+    var DownloadDate = "{% trans 'Dawnload Data'%}";
+    var UpdatePeriod = "{% trans 'Update Period'%}";
+    var Update = "{% trans 'Update'%}";
+
+    var ConfirmOperation = "{%trans 'Confirm Operation!'%}";
+    var MsgConfirmSave = "{%trans 'Are You Sure to Save'%}";
+    var MsgConfirmUpd = "{%trans 'Are You Sure to Update'%}";
+    var MsgConfirmDel = "{% trans 'Are you sure to delete?'%}";
+    var MsgConfirmPrint = "{%trans 'Do You Want to Print'%}";
+    var UpdatePeriodDetails = "{%trans 'This Operation Will Update Period Details are You Sure To Continue ?'%}";
+    var Save = "{%trans 'SAVE'%}"
+    var loading = "{%trans 'loading'%}"
+    var Cannot = "{%trans 'can not modified this has operation'%}"
+    var NotPrice = "{% trans 'Item Don Not Has Price !'%}"
+
+
+    $('input[name="search"]').on('change', function(e) {
+        // e.preventDefault();
+        $.ajax({
+            url: $('#search').val(),
+            data: 'search=' + $('input[name=search]').val(),
+            method: 'GET',
+            success: function(data) {
+                window.open(data)
+            },
+            error: function(data) {
+                alert
+                    ('error');
+            }
+        });
+    })
+
+    function param(name) {
+        return (location.search.split(name + '=')[1] || '').split('&')[0];
+    }
+
+    $(document).ready(function() {
+
+
+
+        $("input[type='checkbox']").on("change", function() {
+            if ($(this).is(":checked"))
+                $(this).val("1");
+            else
+                $(this).val("0");
+        });
+        let my_param = param('key_id');
+        // $('tr').trigger('click');
+        //
+        if (my_param != '') {
+            if (my_param == 'open')
+                setTimeout(function(e) {
+                    $(".modal").first().modal("show");
+                    $('tr').trigger('click');
+
+                }, 2000)
+            else
+                $('#id_parent').val("" + param('id'))
+            setTimeout(function(e) {
+                $('#id_parent').trigger('change')
+            }, 1500)
+        }
+
+    });
+    function confirm_delete(msg = 0) {
+        if (msg == 0) {
+            return confirm(MsgConfirmDel);
+        } else {
+            return confirm(UpdatePeriodDetails);
+        }
+    }
+    
+    
+    function mymodal(message1, type, myfunction = function() {}, myfunction1 = function() {}) {
+
+        //$(".modal_cancel").trigger('click');
+        //$("#model_message").modal('hide');
+        //$('body #model_message').removeClass('modal-open');
+        //$('#model_message .modal-backdrop').remove();
+        $('#model_message').replaceWith('');
+        var my_div = `
+  <div class="modal" id="model_message"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top: 0%;" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" >
+    <div class="row">
+    <div class="col col-sm-4 col-md-4 col-lg-4"></div>
+    <div class="modal-content col-sm-6 col-md-6 col-lg-6">
+  
+        <div class="modal-header" style="background:#ffffff; color:White;">
+  
+        </div>
+        <div class="modal-body alert_message ">
+  
+        </div>
+  
+    <div class="modal-footer">
+    <button id="message_close" class="btn btn-primary modal_cancel" Width="100px" >{%trans "Close"%} </button>
+    </div>
+        </div>
+        <div class="col col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+    </div>
+  </div></div>`;
+        if (type === "message") {
+            my_div = my_div.replace('backdrop', '').replace('keyboard', '');
+        }
+        $('body').append(my_div);
+        if (type == "save") {
+            message = ConfirmOperation;
+            if (message1 == "")
+                message1 = MsgConfirmDel;
+            $('#model_message .modal-footer').prepend('<button class="btn btn-primary modal_confirm" width="100px" >{%trans "Save"%}</button>');
+            $('#model_message .modal-header').attr('class', 'modal-header bg-primary');
+        } else if (type == "update") {
+            message = ConfirmOperation;
+            if (message1 == "")
+                message1 = MsgConfirmUpd;
+            $('#model_message .modal-footer').prepend('<button class="btn btn-primary modal_confirm" width="100px" >{%trans "Update"%}</button>');
+            $('#model_message .modal-header').attr('class', 'modal-header bg-warning');
+            $('.modal_confirm').attr('class', 'modal_confirm btn btn-warning');
+            $('.modal_cancel').attr('class', 'modal_cancel btn btn-info');
+            $('#model_message .modal-body').attr('class', 'modal-body text-warning');
+
+
+        } else if (type == "delete") {
+            message = ConfirmOperation;
+            if (message1 == "")
+                message1 = MsgConfirmDel;
+            $('#model_message .modal-footer').prepend('<button class="btn btn-primary modal_confirm" width="100px" >{%trans "Delete"%}</button>');
+            $('#model_message .modal-header').attr('class', 'modal-header bg-danger');
+            $('.modal_confirm').attr('class', 'modal_confirm btn btn-danger');
+            $('.modal_cancel').attr('class', 'modal_cancel btn btn-info');
+            $('#model_message .modal-body').attr('class', 'modal-body text-danger');
+        } else if (type == "message") {
+            if (!String(myfunction).includes("function"))
+                cls = myfunction;
+            else
+                cls = 'info';
+            message = "Messages.";
+            $('#model_message .modal-header').attr('class', 'modal-header bg-' + cls);
+            $('.modal_cancel').attr('class', 'modal_cancel btn btn-info');
+            $('#model_message .modal-body').attr('class', 'modal-body text-' + cls);
+
+
+        } else if (type == "print") {
+            message = ConfirmOperation;
+            if (message1 == "")
+                message1 = MsgConfirmPrint;
+            $('#model_message .modal-footer').prepend('<button class="btn btn-primary modal_confirm" width="100px" >{%trans "Print"%} </button>');
+            $('#model_message .modal-header').attr('class', 'modal-header bg-info');
+            $('.modal_confirm').attr('class', 'modal_confirm btn btn-info');
+            $('.modal_cancel').attr('class', 'modal_cancel btn btn-primary');
+            $('#model_message .modal-body').attr('class', 'modal-body text-info');
+        }
+
+        $('#model_message .modal-header').html(`<h4> ${message} </h4>`);
+        $('#model_message .modal-body').html(`<h5> ${message1} </h5>`);
+        // $('#model_message').modal('show');
+        $(".modal_confirm").click(function(e) {
+            myfunction();
+            $("#model_message").modal('hide');
+            //$('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            $('body').addClass('modal-open');
+        });
+        $(".modal_cancel").click(function(e) {
+            myfunction1();
+            $("#model_message").modal('hide');
+            //$('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            $('body').addClass('modal-open');
+        });
+
+
+    }
+    
+    $('#change_branch').on('change', function(event) {
+        event.preventDefault();
+        let target = $(event.target);
+        let url2 = target.data('url');
+        let branch_val = $('#change_branch').val();
+        $.ajax({
+            type: 'POST',
+            url: url2,
+            data: {
+                branch: branch_val
+            },
+            headers: {
+                "X-CSRFToken": getCookie('csrftoken')
+            }
+        }).done(function(data, textStatus, jqXHR) {
+            window.location.reload(true);
+        });
+    });
+    $('#language-list a').on('click', function(event) {
+        event.preventDefault();
+
+
+        let target = $(event.target);
+        let url2 = target.attr('href');
+        let language_code = target.data('language-code');
+        $.ajax({
+            type: 'POST',
+            url: url2,
+            data: {
+                language: language_code
+            },
+            headers: {
+                "X-CSRFToken": getCookie('csrftoken')
+            }
+        }).done(function(data, textStatus, jqXHR) {
+            reload_page();
+        });
+    });
+
+    function getCookie(name) {
+        let value = '; ' + document.cookie,
+            parts = value.split('; ' + name + '=');
+        if (parts.length == 2) return parts.pop().split(';').shift();
+    }
+
+    function reload_page() {
+        $.ajax({
+            type: 'GET',
+
+            data: {},
+            // headers: { "X-CSRFToken": getCookie('csrftoken') }
+        }).done(function(data, textStatus, jqXHR) {
+            window.location.reload(true);
+        });
+    }
+
+
+    $(document).ready(function() {
+        (function($) {
+            var originalVal = $.fn.val;
+            $.fn.val = function() {
+                var result = originalVal.apply(this, arguments);
+                if (arguments.length > 0)
+                    if ($(this).hasClass('_currency_input')) {
+                        $(this).removeClass('_currency_input');
+                        if ($(this).attr('type') == 'number') {
+                            $(this).attr('type', 'text');
+                            $(this).val($(this).val().toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+                        } else {
+                            temp = $(this).val().replace(/[^0-9.]/g, "")
+                            $(this).val(temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))
+                        }
+                        $(this).addClass('_currency_input');
+                    }
+                    // OR with custom event $(this).trigger('value-changed');
+                return result;
+            };
+        })(jQuery);
+
+        $(document).on('input', '._currency_input', function() {
+
+            if ($(this).attr('type') == 'number') {
+                $(this).attr('type', 'text');
+                $(this).val($(this).val().toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+            } else {
+                temp = $(this).val().replace(/[^0-9.]/g, "")
+                $(this).val(temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))
+            }
+        });
+
+    });
+
+    function reset_number_format() {
+        $.each($('._currency_input'), function(key) {
+            $(this).removeClass('_currency_input');
+            temp = $(this).val().replace(/[^0-9.]/g, "")
+            $(this).attr('type', 'number');
+            $(this).val(temp);
+            $(this).addClass('_currency_input');
+
+        });
+    };
+</script>
+
+<!-- show scroll in datatable -->
+<script>
+    // $('.datatable_list').dataTable({
+    //     paging: false,
+    //     searching: false
+    // });
+    
+    // function request() {
+    //     return $.ajax({
+    //         type: "Get",
+    //         url: "{% url 'closeui' %}",
+    //     });
+    //     alert("A");
+    // }
+    // window.onbeforeunload = function(e) {
+    //     console.log(e);
+    //     e = e || window.event;
+    //     if (e) {
+    //         e.returnValue = "Do you really want to close?";
+    //     }
+    //     return '?';
+    // }     
+        
+$.ajax({
+    method: "get", // initialize an AJAX request
+    dataType: "JSON",
+    url:"/get_footer/",
+    data:{"id":1},
+    
+    success: function(data) {
+            let res = JSON.parse(data.data);
+          
+            
+            //CreateElementLogo()
+            
+            let fdata=document.getElementById("id_logo_campany");
+            let data1=document.getElementById("id_logo_campany_a");
+            
+            if (res.length > 0 && res[0].fields.image) {
+                fdata.src = data.host + res[0].fields.image;
+                fdata.alt = data.company__name_ar;
+                fdata.title = data.company__name_ar;
+                data1.href = data.host + res[0].fields.image;
+                data1.title = data.company__name_ar;
+            } else {
+                // إذا لم يتم العثور على صورة أو كانت فارغة، استخدم النص بدلاً منها
+                fdata.innerText = data.company__name_ar;
+                data1.innerText = data.company__name_ar;
+            }
+},
+    error: function (data) {
+            alert(data.status);
+    
+        }
+    })
+    
+    function startBackup() {
+  var progressBar = document.querySelector('.progress');
+  $("#pleaseWaitDialog").modal("show");
+  var width = 0;
+  var interval = setInterval(function() {
+    if (width >= 100) {
+      clearInterval(interval);
+    } else {
+      width++;
+      progressBar.style.width = width + '%';
+      if (width == 100) {
+  $("#pleaseWaitDialog").modal("hide");
+    alert_message("تم إنشاء نسخة إحتياطية");
+
+      }
+    }
+  }, 100);
+
+}
+
+    var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
+    let url_backup="";
+    function backup_out_window(){
+        startBackup();
+        $.ajax({
+
+        url: url_backup,
+        data: {
+            'id': "id_row",
+        },
+        method: 'post',
+        beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                        },
+        success: function(data) {
+            if (data.status == 1) {
+                // alert_message(data.message.message, data.message.class);
+                
+            
+            }
+        },
+        });
+
+//   $("#pleaseWaitDialog").modal("hide");
+
+}
+
+
+// $(".app-sidebar").hover(function (e) {
+//     e.preventDefault();
+// })
+
+function CreateElementLogo(){
+    var elementDiv = document.createElement("div");
+    var elementA = document.createElement("a");
+    var elementimg = document.createElement("img");
+    var elementparent = $(".vertical-nav-menu");
+    elementDiv.class="logo";
+    elementA.class="logo-img";
+    elementA.id="id_logo_campany_a";
+    elementimg.id="id_logo_campany";
+    elementA.append(elementimg);
+    elementDiv.append(elementA);
+    elementparent.html(elementDiv);
+}
+
+</script>
+
+<script>
+    $(".modal-backdrop").addClass('hidden');
+    let formChanged = false;
+    $("form").on('change', () => formChanged = true);
+    if (formChanged) {
+ 
+        window.addEventListener('beforeunload', function(event) {
+        
+      });
+
+
+    }
+
+// var date = {{year}} + '-' + ('0' + ({{month}})).slice(-2) + '-01';
+// if($('#from-date'))
+// {
+// $('#from-date').val(date);
+// }
+// var today = new Date();
+// var current_date = (today.getFullYear() + '-' + ('0' + (today.getMonth()+1)).slice(-2) + '-' + ('0' + (today.getDay())).slice(-2));
+// date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+// if($('#to-date'))
+//     $('#to-date').val(date);
+var date_from ;
+var date_to ;
+var today = new Date();
+var math=(today.getMonth() + 1)+"";
+var day_=today.getDate()+"";
+if(math.length==1)
+    math="0"+math;
+if(day_.length==1)
+    day_="0"+day_;
+date_from = today.getFullYear() + '-' + math + '-' + '01';
+
+date_to = today.getFullYear() + '-' + math + '-' + day_;
+
+$('#from-date').val(date_from);
+$('#to-date').val(date_to);
+function addRowOnTabInTable(tableSelector, fieldSelector,add_form) {
+    var table = $(tableSelector);
+  
+    table.on('keydown', fieldSelector, function(e) {
+        if (e.which === 9 && $(this).is(':focus')) { 
+        $(add_form).trigger('click');  
+
+        var currentIndex = $(".formset-field").index(this); 
+      var nextIndex = currentIndex + 1; 
+
+      if (nextIndex >= $(".formset-field").length) { 
+        nextIndex = 0;
+      
+    }
+
+      var nextField = $(".formset-field").eq(nextIndex); 
+      nextField.focus(); 
+      e.preventDefault(); 
+      
+    }
+    });
+  }
+//   $(window).load(function() {
+//       $(".loading-indicator").hide();
+//     });
+
+</script>
+
+ {% endblock stylejs %}
+ 

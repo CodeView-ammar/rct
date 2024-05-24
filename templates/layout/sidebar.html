@@ -1,0 +1,132 @@
+
+{% load static i18n %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% load permission_tag %}    
+<style>
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #000000;
+}
+
+ul.subsidebar {
+  margin-left: 20px;
+  padding-left: 20px;
+  list-style: none;
+}
+
+ul.subsidebar li {
+  margin-bottom: 5px;
+}
+
+ul.subsidebar a {
+  padding: 5px;
+  /* background-color: #eee; */
+  /* border: 1px solid #ddd; */
+}
+
+    </style>
+    
+    <div class="app-sidebar__inner " style="">
+        <ul class="vertical-nav-menu sidebar">
+            {% for item in sidebar_items %}
+              {% if item %}
+              {% has_system request item.name_code as active_perm %}
+                {% if active_perm %}
+              <li class="treeview {% if item.name_code in request.session.select_menu %}active mm-active{% endif %}">
+          
+                  {% if not item.parent %}
+                    {% if item.url != '#' %}
+                      {% if item.url_value %}
+                        <a href="{% url item.url item.url_value %}">
+                      {% else %}
+                        <a href="{% url item.url %}">
+                      {% endif %}
+                      <span class="material-icons metismenu-icon metismenu-icon_custom">
+                        {{ item.icon_left }}
+                        </span>
+
+                        {% trans item.title_ar %}
+                      </a>
+                    {% else %}
+                      <a href="#">
+                        <span class="material-icons metismenu-icon metismenu-icon_custom">
+                          {{ item.icon_left }}
+                          </span>
+
+                          {# <i class=" metismenu-icon"></i> #}
+                        {% trans item.title_ar %}
+                        {% if item.icon_right %}
+                          <i class="{{ item.icon_right }}">&#xea09;</i>
+                        {% endif %}
+                      </a>
+                    {% endif %}
+                  {% endif %}
+          
+                  {% if item.subitems.all %}
+                    <ul class="subsidebar">
+                      {% for subitem in item.subitems.all %}
+                        {% active_has_screen request subitem.name_code as has_permission_srceen %}
+                        
+                        {% if has_permission_srceen %}
+                          <li class="{{ subitem.name_code }} {% if subitem.name_code in request.session.select_menu %}activeli{% endif %}">
+                            {% if subitem.url != '#' %}
+                              {% if subitem.url_value %}
+                                <a href="{% url subitem.url subitem.url_value %}">
+                              {% else %}
+                                <a href="{% url subitem.url %}">
+                              {% endif %}
+                                <i class="fa "></i><span>{% trans subitem.title_ar %}</span>
+                              </a>
+                            {% else %}
+                              <a href="#">
+                                <span class="material-icons metismenu-icon metismenu-icon_custom">
+                                  {{ subitem.icon_left }}
+                                  </span>
+                                {% trans subitem.title_ar %}
+                                {% if subitem.icon_right %}
+                                  <i class="{{ subitem.icon_right }}">&#xea09;</i>
+                                {% endif %}
+                              </a>
+                              {% if subitem.subitems.all %}
+                                <ul class="sub-subsidebar">
+                                  {% for subsubitem in subitem.subitems.all %}
+                                    <li class="{{ subsubitem.name_code }} {% if subsubitem.name_code in request.session.select_menu %}activeli{% endif %}">
+                                      {% if subsubitem.url != '#' %}
+                                          {% if subsubitem.url_value %}
+                                            <a href="{% url subsubitem.url subsubitem.url_value %}">
+                                          {% else %}
+                                            <a href="{% url subsubitem.url %}">
+                                          {% endif %}
+                                            <i class="fa "></i><span>{% trans subsubitem.title_ar %}</span>
+                                          </a>
+                                      {% else %}
+                                        <a href="#">
+                                          <i class="fa "></i><span>{% trans subsubitem.title_ar %}</span>
+                                        </a>
+                                      {% endif %}
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              {% endif %}
+                            {% endif %}
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+          
+                </li>
+                {% endif %}
+
+              {% endif %}
+            {% endfor %}
+          </ul>
+          
+        </div>

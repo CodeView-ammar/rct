@@ -1,0 +1,54 @@
+{% load i18n static %} {% csrf_token %} 
+{{ formset.management_form }}
+
+<div class="table-responsive mailbox-messages">
+    <table class="table table-bordered table-hover  table-responsive table-store">
+        <thead class="text-center">
+            <tr>
+                <th>{% trans "#" %}</th>
+        
+                {% for form in formset %}
+                    {% for field in form.visible_fields %}
+                        <th style="width: 150px;">
+                          
+                                {{ field.label }}
+                        </th>
+                    {% endfor %}
+                {% endfor %}
+        
+                <th style="width: 20px;">{% trans "#" %}</th>
+            </tr>
+        </thead>
+        <tbody class="tbody_tb text-center">
+            {% for f_set in formset %}
+            <tr class="form-row-fromset">
+                <td class="td_id">{{ forloop.counter }}</td>
+
+                    {% for field in f_set %}
+                        <td>{{ field }}</td>
+                    {% endfor %}
+                <td>
+                    <button type="button" onclick="getAlltotal()" class="remove btn btn-danger btn-sm" id="{{ formset.prefix }}" style="font-size: 10px; color: white;">
+                        <span class="fa fa-trash fa-lg"></span>
+                    </button>
+                </td>
+                <td class="hidden">{{ f_set.id }}</td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td
+                style="border-left: none!important; border-right: none !important; border-bottom: none!important;">
+                <button type="button" data-toggle="tooltip" title="Add Row"
+                    class="btn btn-sm btn-green add_row add_form" id="{{ formset.prefix }}">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </td>
+                <td colspan='9'></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

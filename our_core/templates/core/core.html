@@ -1,0 +1,129 @@
+{% extends "layout/base.html" %}
+
+{% load permission_tag i18n static crispy_forms_tags %}
+{% block title %}
+    {{title_list}}
+{% endblock title %}
+
+{% block style %}
+<style>
+    .panel {
+        border: 1px black solid;
+    }
+</style>
+
+{% for file in css_files %}
+<link rel="stylesheet" href="{% static file %}">
+{% endfor %}
+
+{% endblock %}
+{% block content %}
+{% has_screen request permission_code "add" as add %}
+{% has_screen request permission_code "view" as view %}
+{% has_screen request permission_code "delete" as delete %}
+{% has_screen request permission_code "edit" as edit %}
+{% include 'buttons_add_show.html' with model_name=permission_code data_target="#modalLRForm" name_text=title_form type_button="add"   %}               
+
+
+{% if view %}
+<div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header ptbnull">
+           
+                {% if has_datatable is True %}
+             <div class="box-body">
+                <div class="table-responsive mailbox-messages" style="margin-top: 30px;">
+                    <table 
+                        style="width:100%" class="datatable_list display nowrap table AutoFill table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">
+                        <thead>
+                            <tr>
+                                <th>{% trans "#" %}</th>
+                                {% for feilds in list_fields %}
+                                <th>{{ feilds}}</th>
+                                {% endfor %}
+                                
+                                {% if delete and edit %}
+                                
+                                <th>{% trans " Action" %}</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody class="show_Operation">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <!--Modal: Login / Register Form-->
+ 
+    
+</div>
+
+{% else %}
+    {% include 'permission_denied.html' %}
+<br>    
+    {% endif %}
+
+
+{% endblock content %}
+{% block stylejs %}
+
+
+<script>
+    url = '{{ url }}?dataTable';
+    let csrf = '{{ csrf_token }}';
+</script>
+
+<script src="{% static 'js/datatable_js.js'%}"></script>
+<script src="{% static 'js/core/core_formset.js' %}"></script>
+<script>
+
+    let key_f2_ctrl_a_shortcut = "#btn_new_2";
+    let key_f3_ctrl_s_shortcut = "#submit-button";
+    let key_f4_ctrl_f_shortcut = "input[type='search']";
+
+</script>
+{% for file in js_files %}
+
+<script src="{% static file %}"></script>
+{% endfor %}
+{% endblock stylejs %}
+
+{% block modelform %} 
+    <!-- Modal -->
+    
+    <div class="modal " id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="modalLRFormTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-{{modal_size}}" role="document">
+        <div class="modal-content modal-{{modal_size}}">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLRFormTitle"> {{ title_form }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url}}" id='form-id' method="post" class="needs-validation" accept-charset="utf-8">
+                                    
+                    <input type="text" name="id" class="hidden">
+                    <div class="box-body">
+                        {% crispy form  %}
+                        <div id="load_div">
+                            {% if formset %}
+                            {% include "core/core_fromset.html" %}
+                            {% endif %}
+                    
+                        </div>    
+                    </div>
+                    <div class="modal-footer">
+                        <button id="submit-button" type="submit" class="btn btn-primary">{% trans "Save" %} </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    {% endblock modelform %} 

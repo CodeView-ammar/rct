@@ -1,0 +1,683 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block title%}
+{{name_label_repr}}
+{% endblock title%}
+{% block content %}
+
+<div class="col-md-12">
+<style>
+    .appoint-bg-panel .panel-heading, .expense-item p, .expense-item span, .table .table-striped .b-light td a:hover, .master-widget .widget-head h3, .paging ul li.current, .paging ul li a:hover, .login-box-container h1, .action a:hover, .mob-nav-trigger, .mob-nav-trigger:hover, .mob-nav-trigger:focus, .head-bar, .head-bar a, .navbar-nav > li > a > i, .navbar-nav > li > a, .current-date, #shrink-sidebar i, .header .breadcrumb a, .header .breadcrumb > .active, .header-breadcrumb .breadcrumb-item + .breadcrumb-item:before, .header .mdi-account-circle, .header .drop-cont, .navbar-nav > li > a p, .res-right .text-white {
+    color: #ffffff!important;
+}
+.master-widget .widget-head h3 {
+    font-size: 18px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0;
+}
+.master-widget .widget-head {
+    background: #272b35;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    padding: 0 15px;
+}
+    .appoint-bg-panel, .master-widget .widget-head, .paging ul li.current, .paging ul li a:hover, .header, .login-box-container h1, .footer, .action a:hover, .mob-nav-trigger, .mob-nav-trigger:hover, .mob-nav-trigger:focus, .head-bar, .primary-bg {
+    background: #247dbd;
+}
+</style>
+<form id="InvoiceForm" name="InvoiceForm" enctype="multipart/form-data" method="post" action="">
+    <fieldset style="display:none;"><input type="hidden" name="_method" value="PUT"></fieldset>
+    <div class="master-widget">
+        <div class="widget-head">
+            <div class="widget-corner">
+                <h3>cccccمنشئ تصاميم الفواتير</h3>
+            </div>
+        </div>
+        <div class="widget-actions action-links">
+            <ul class="btn-group btn-group btn-group-justified">
+                <li class="btn-group text-center">
+                    <a href="#invoice_title" class="btn" rel="#input-text"> البيئة </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a href="" class="btn" data-toggle="modal" data-target="#workspeces">
+                        <span> بيانات العمل</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default " href="#logo" rel="#input-text">
+                        <span>الشعار</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#client_info" rel="#input-text">
+                        <span>بيانات العميل</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#ship_info" rel="#input-text">
+                        <span>معلومات الشحن</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#custom_fields" rel="#input-text">
+                        <span>حقول إضافية</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#change_labels" rel="#input-text">
+                        <span>Labels</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#footer" rel="#input-text">
+                        <span>ملاحظة</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#sticky_header" rel="#input-text">
+                        <span>المقدمة</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#sticky_footer" rel="#input-text">
+                        <span>التذييل</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#itemcolumns" rel="#input-text">
+                        <span>أعمدة البنود</span>
+                    </a>
+                </li>
+                <li class="btn-group text-center">
+                    <a class="btn btn-default" href="#moresettings" rel="#input-text">
+                        <span>التنسيق</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="widget-content box-contents">
+            <!-- Invoice Bulider -->
+            <div class="invoice-builder">
+                <div class="invoice-scroll-content ">
+                    <div class="TemplateMesage">
+                        <div style="position: absolute; height: 250px;width:1120px; background: #fff;text-align:center;display: none;"
+                            id="Loading">Please wait a moment... !<br><img src="/css/images/report-loader.gif"></div>
+                        <div id="iframeDiv">
+                            
+                            <iframe class="print-format-container" id="HtmlContent" width="100%" height="0" frameborder="0" scrolling="yes" style=" height: 1122.23px;">
+                            </iframe>
+                            <div class="clients-bar rounded-item  template-name">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group input text inside-field"><label
+                                                for="InvoiceLayoutName">القالب<span class="required">*</span>
+                                            </label><input name="data[InvoiceLayout][name]" type="text"
+                                                class="form-control" maxlength="255" value="قالب 1 عربي"
+                                                id="InvoiceLayoutName"></div>
+                                        <div style="" id="select_all_div" class="clip-check check-info">
+                                            <input class="select_all_chk" type="checkbox" id="select_all_chk" value="">
+                                            <label style="margin: 0px;" for="select_all_chk">اجعل هذا التصميم هو التصميم
+                                                الأساسي</label>
+                                            <span class="more_options"
+                                                style="text-decoration: underline;cursor: pointer;">خيارات أقل:</span>
+                                        </div>
+                                        <div style="" class="all_sets well">
+                                            <div class="clip-check check-info"><input type="hidden"
+                                                    name="data[InvoiceLayout][default]" id="InvoiceLayoutDefault_"
+                                                    value="0"><input type="checkbox" name="data[InvoiceLayout][default]"
+                                                    value="1" id="InvoiceLayoutDefault" checked="checked"><label
+                                                    for="InvoiceLayoutDefault">اجعل هذا التصميم هو التصميم الأساسي
+                                                    للفواتير</label></div>
+                                            <div class="clear"></div>
+                                            <div class="clip-check check-info"><input type="hidden"
+                                                    name="data[InvoiceLayout][default_estimate]"
+                                                    id="InvoiceLayoutDefaultEstimate_" value="0"><input type="checkbox"
+                                                    name="data[InvoiceLayout][default_estimate]" value="1"
+                                                    id="InvoiceLayoutDefaultEstimate" checked="checked"><label
+                                                    for="InvoiceLayoutDefaultEstimate">اجعل هذا التصميم هو التصميم
+                                                    الأساسي لعروض الأسعار</label></div>
+                                            <div class="clear"></div>
+                                            <div class="clear"></div>
+                                            <div class="clip-check check-info"><input type="hidden"
+                                                    name="data[InvoiceLayout][default_creditnote]"
+                                                    id="InvoiceLayoutDefaultCreditnote_" value="0"><input
+                                                    type="checkbox" name="data[InvoiceLayout][default_creditnote]"
+                                                    value="1" id="InvoiceLayoutDefaultCreditnote"
+                                                    checked="checked"><label for="InvoiceLayoutDefaultCreditnote">اجعل
+                                                    هذا التصميم هو التصميم الاساسي إشعارات دائن</label></div>
+                                            <div class="clear"></div>
+                                            <div class="clip-check check-info"><input type="hidden"
+                                                    name="data[InvoiceLayout][default_refundreceipt]"
+                                                    id="InvoiceLayoutDefaultRefundreceipt_" value="0"><input
+                                                    type="checkbox" name="data[InvoiceLayout][default_refundreceipt]"
+                                                    value="1" id="InvoiceLayoutDefaultRefundreceipt"
+                                                    checked="checked"><label
+                                                    for="InvoiceLayoutDefaultRefundreceipt">اجعل هذا التصميم هو التصميم
+                                                    الاساسي للفواتير المرتجعة</label></div>
+                                        </div>
+                                    </div>
+                                    <style>
+                                        .template-name {
+                                            padding: 15px;
+                                            margin: 25px 0;
+                                        }
+
+                                        .clients-bar {
+                                            padding: 15px;
+                                            background: #fff;
+                                        }
+
+                                        .clip-check label {
+                                            cursor: pointer;
+                                            display: inline-block;
+                                            font-size: 13px;
+                                            margin-right: 15px;
+                                            margin-bottom: 0;
+                                            padding-left: 30px !important;
+                                            position: relative;
+                                            line-height: 23px;
+                                            transition: border 0.2s linear 0s, color 0.2s linear 0;
+                                        }
+
+                                        label {
+                                            padding-bottom: 2px;
+                                            display: block;
+                                            font-weight: 600;
+                                        }
+
+                                        .clients-bar .input {
+                                            position: relative;
+                                            padding-bottom: 5px;
+                                        }
+
+                                        .clients-bar .input-group {
+                                            padding-right: 0;
+                                        }
+
+                                        .clients-bar .input {
+                                            margin-right: 10px;
+                                        }
+
+                                        .clients-bar .input-group {
+                                            padding-left: 0;
+                                        }
+
+                                        .clients-bar .input {
+                                            margin-left: 10px;
+                                            margin-right: 0;
+                                        }
+
+                                        .inside-field label {
+                                            right: 0;
+                                            left: auto;
+                                            width: 160px;
+                                        }
+
+                                        .inside-field label {
+                                            position: absolute;
+                                            left: 0;
+                                            top: 4px;
+                                            width: 110px;
+                                        }
+
+                                        .clip-check {
+                                            margin-bottom: 15px;
+                                        }
+
+                                        label {
+                                            padding-bottom: 2px;
+                                            display: block;
+                                            font-weight: 600;
+                                        }
+
+                                        .clip-check {
+                                            padding-right: 0;
+                                            padding-left: 0;
+                                            margin-top: 5px;
+                                        }
+
+                                        .well {
+                                            border: 0px;
+                                        }
+
+                                        .well,
+                                        pre {
+                                            background-color: #edf1f2;
+                                            border-color: #ddd;
+                                        }
+
+                                        .well {
+                                            min-height: 20px;
+                                            padding: 19px;
+                                            margin-bottom: 20px;
+                                            border: 1px solid #e3e3e3;
+                                        }
+
+                                        .clear {
+                                            font-size: 1%;
+                                            clear: both;
+                                            height: 1%;
+                                        }
+
+                                        .clear {
+                                            display: block;
+                                            overflow: hidden;
+                                        }
+
+                                        .clip-check input[type=checkbox]:checked+label:after {
+                                            color: #fff;
+                                            content: "\f00c";
+                                            font-family: "FontAwesome";
+                                        }
+
+                                        .clip-check label:after {
+                                            right: 4px;
+                                            left: auto;
+                                        }
+
+                                        .clip-check label:after {
+                                            display: inline-block;
+                                            font-size: 11px;
+                                            height: 19px;
+                                            left: 4px;
+                                            position: absolute;
+                                            top: -1px;
+                                            transition: border 0.2s linear 0s, color 0.2s linear 0;
+                                            width: 19px;
+                                        }
+
+                                        select,
+                                        textarea,
+                                        input {
+                                            margin-left: 5px;
+                                            margin-right: auto;
+                                        }
+                                    </style>
+                                    <div class="col-md-6">
+                                        <div class="clip-check check-info"><input type="hidden"
+                                                name="data[InvoiceLayout][simple_item_currency]"
+                                                id="InvoiceLayoutSimpleItemCurrency_" value="0"><input type="checkbox"
+                                                name="data[InvoiceLayout][simple_item_currency]" value="1"
+                                                id="InvoiceLayoutSimpleItemCurrency" checked="checked"><label
+                                                for="InvoiceLayoutSimpleItemCurrency">لا تظهر علامة العملة في سعر
+                                                البنود</label>
+                                        </div>
+                                        <div class="clip-check check-info"><input type="hidden"
+                                                name="data[InvoiceLayout][show_balance_due]"
+                                                id="InvoiceLayoutShowBalanceDue_" value="0"><input type="checkbox"
+                                                name="data[InvoiceLayout][show_balance_due]" value="1"
+                                                id="InvoiceLayoutShowBalanceDue" checked="checked"><label
+                                                for="InvoiceLayoutShowBalanceDue">أظهر دائما المبلغ المدفوع والمبلغ
+                                                المستحق</label>
+                                        </div>
+                                        <div class="clip-check check-info "><input type="hidden"
+                                                name="data[InvoiceLayout][show_ship]" id="InvoiceLayoutShowShip_"
+                                                value="0"><input type="checkbox" name="data[InvoiceLayout][show_ship]"
+                                                value="1" id="InvoiceLayoutShowShip"><label
+                                                for="InvoiceLayoutShowShip">إضافة بيانات الشحن (عنوان ثانوي)
+                                                للفاتورة</label></div><label for="InvoiceLayoutQuantityPrice">خيارات
+                                            الكمية وسعر الوحدة</label><select name="data[InvoiceLayout][quantity_price]"
+                                            id="InvoiceLayoutQuantityPrice">
+                                            <option value="">إظهار سعر الوحدة قبل الكمية</option>
+                                            <option value="show_quantity_before_price">إظهار الكمية قبل سعر الوحدة
+                                            </option>
+                                            <option value="hide_price_and_quantity">إخفاء سعر الوحدة والكمية</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / invoice-preview-container -->
+                </div>
+            </div>
+            <!-- / Invoice Bulider -->
+        </div>
+    </div>
+    <div class="pages-head-s2020 fixed-div" style="position: fixed !important;  ">
+        <div class="container">
+            <div class="row-flex align-items-center">
+                <div class="col-flex-sm-6">
+                </div>
+                <div class="col-flex-sm-6   justify-content-end">
+                    <button type="submit" class="btn s2020 btn-icn btn-success font-weight-medium ml-2 submit_button">
+                        <i class="mdi mdi-content-save-outline fs-20"></i>
+                        <span>حفظ</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<style>
+ 
+#cluetip ,#workspeces{
+    z-index: 500;
+}
+
+.modal-window {
+    background: url("{% static 'imgs/modal-bg.png'%}");
+    padding: 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.window-container {
+    background: #FFF;
+    border: 1px solid #ddd;
+}
+.modal-window .window-head {
+    background: url("{% static 'imgs/modal-head.gif'%}") repeat-x;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 0;
+    height: 37px;
+    position: relative;
+    cursor: move;
+    top: 0;
+    width: 100%;
+    zoom: 1;
+    display: block;
+    left: 0;
+}
+.window-head h3 {
+    color: #414141;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 40px 0 10px;
+    text-shadow: 1px 2px 1px #fff;
+    
+}
+.window-head a.close {
+    background: url("{% static 'imgs/close.gif'%}") repeat-x scroll 0 0 transparent;
+    height: 21px;
+    position: absolute;
+    right: 12px;
+    text-indent: -999999px;
+    top: 9px;
+    width: 20px;
+}
+.close {
+    float: left;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 -1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+.window-content {
+    padding: 20px 10px;
+}
+.modal-window  .window-foot {
+    background: #f7f7f7 url("{% static 'imgs/modal-footer.gif'%}") repeat-x;
+    margin-top: 0;
+    padding: 15px 10px 7px 10px;
+    text-align: right;
+}
+</style>
+
+</div>
+<div class="hidden">
+     
+    <div id="booking">
+       </div>
+</div>
+    {% endblock content %}
+
+    
+    
+    {% block modelform %}
+    <!-- Modal -->
+      <!-- Large modal -->
+<div class="modal fade " id="workspeces"   tabindex="-1" role="dialog"  aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-window modal-lg">
+            <div class="modal-content window-container">
+                <div class="window-head" >
+                      
+                        <h3 class="modal-title" id="exampleModalLongTitle">     تعديل بيانات العمل</h5>
+                        <a class="close" data-dismiss="modal" aria-label="Close">إغلاق</a>
+                        
+                </div>
+        <form action="" id='form-id' method="post" class="needs-validation" accept-charset="utf-8">
+                <div class="modal-body ">
+                <input type="text" name="id" class="hidden">
+                <div class="box-body window-content">
+                   
+                <style>
+                .popup-placeholders {
+                    padding: 8px;
+                    margin-top: 0;
+                }
+                .placeholders {
+                    padding: 5px;
+                    background: #FBFBFB;
+                    border: 1px solid #ccc;
+                    margin-top: 18px;
+                    display: block;
+                }
+                .placeholders h4 {
+                    font-size: 14px;
+                    color: #333;
+                    background: url("{% static 'imgs/sub-actions.gif' %}") repeat-x #F9FCFF;
+                    border: 1px solid #ccc;
+                    font-weight: 700;
+                    padding: 7px 10px;
+                    margin: 0;
+                }
+                .placeholders ul {
+                    margin-right: 15px;
+                    margin-left: auto;
+                }.placeholders ul li {
+                    padding: 3px 0;
+                    font-size: 11px;
+                }
+                .placeholders ul li a {
+                    font-size: 11px;
+                }
+                </style>
+        <div class="row">
+        <div class="col-md-8">
+            <textarea cols="80" id="editor1" name="editor1" rows="10"></textarea>
+ 
+        </div>
+        <div class="col-md-4">
+            
+            
+            <div class="popup-placeholders placeholders">
+                <h4>الكلمات المستبدلة</h4>
+                <ul style="overflow-y: scroll;height:270px">
+                            {% for files in files %}
+                            
+                                
+                            <li>
+                                <strong>
+                                    <a href="javascript:void(0);" class="insertPlaceHolder" rel="">
+                                        {{files}}
+                                    </a>
+                                </strong>
+                            </li>
+                            {% endfor %}   
+                        </ul>
+                        <a href="/owner/email_templates/placeholder/invoice" target="_blank"><h4>دليل المتغيرات الكامل</h4></a><a>
+                        </a>
+                    </div>
+                        <a>
+
+                        </a>
+                </div>               
+                        </div>
+                    </div>
+                        <div class="modal-footer">
+                            <button id="submit-button" type="submit" class="btn btn-primary">SAVE </button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+        </form>
+    </div>
+</div>
+</div>
+{{fieldData}}  
+<button id="btn_tep">get</button>
+{% endblock modelform %}
+{% block stylejs %}
+ <script>
+    $("#HtmlContent").hide();
+    $.ajax({ 
+        type:'GET',
+        url: "{% url 'get_data_sales' %}?template=" + "report/template1.html",
+        data: {"id":657},
+        
+        success:function(data){ 
+               
+                $("#booking").html(data);
+                var iframe = document.getElementById('HtmlContent');
+                iframe.src ="/";
+                iframe.onload = function() {
+                    var iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+                    var targetElement = $("#booking").html();
+                    iframe.style.height = '1000px';
+                    let innerHTML_style_body = `<style>body {background:#ddd;padding: 20px 20px;}</style>`;
+                    iframeContent.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&amp;display=swap"> `;
+                    iframeContent.body.innerHTML = innerHTML_style_body + targetElement;
+                    $("#HtmlContent").show();
+                }
+                
+            },
+            error:function(data){
+            }
+        });
+    $("#btn_tep").onclick(function(){
+    $.ajax({
+        url: $(this).data('url'),
+        data: {'id':"{{id}}"},
+        method: 'get',
+        success: function (data) {
+            
+            if(data.status==1){
+            
+               let resp=JSON.parse(data.data);
+                $(`input[name="id"]`).val(resp[0].pk);
+                $.each(resp[0].fields,function(i,value){
+                    $(`input[name="${i}"]`).val(value);
+                    $(`input[name=${i}]`).prop('checked',value);
+                    $(`textarea[name=${i}]`).text(value);
+                   
+                    $(`select[name="${i}"] option`).each(function() {
+                       if($(this).val() == value) {
+                           $(this).prop("selected", true);
+                       }
+                   });
+                  
+                    $('#modalLRForm').modal('show');
+                });
+            }
+        
+        },
+        error:function(data){
+        }
+        });
+    });
+    </script>
+ <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    CKEDITOR.config.devtools_styles =
+      '#cke_tooltip { line-height: 20px; font-size: 12px; padding: 5px; border: 2px solid #333; background: #ffffff }' +
+      '#cke_tooltip h2 { font-size: 14px; border-bottom: 1px solid; margin: 0; padding: 1px; }' +
+      '#cke_tooltip ul { padding: 0pt; list-style-type: none; }';
+    CKEDITOR.tools.callFunction(94,this);
+    
+    CKEDITOR.replace('editor1', {
+      height: 250,
+      language: 'ar',
+      extraPlugins: 'devtools',
+      removeButtons: 'PasteFromWord'
+    
+    });
+    $(document).ready(function(){
+
+        // $("cke_button__about_icon").remove();
+    });  
+    $( function() {
+    $( "#workspeces" ).draggable();
+  } );
+</script>
+
+  <script>
+    function move(event) {
+        var k = event.keyCode,
+    chrId = document.getElementById('cluetip-title'),
+    cluetip = document.getElementById('cluetip'),
+    chr = {
+        updown: function () {
+            var y = parseInt(getComputedStyle(chrId).top);
+            if (k == 38) {
+                --y;
+            } else if (k == 40) {
+                ++y;
+            }
+
+            return y;
+        },
+
+        leftright: function () {
+            var x = parseInt(getComputedStyle(chrId).left);
+            if (k == 37) {
+                --x;
+            } else if (k == 39) {
+                ++x;
+            }
+
+            return x;
+        }
+    };
+
+    cluetip.style.top = (chr.updown()) + "px";
+    cluetip.style.left = (chr.leftright()) + "px";
+}
+
+// document.addEventListener('keydown', move);
+var html = '';
+var flist = [];
+var default_item_columns = {"field1":{"name":"name","label":"\u0627\u0644\u0628\u0646\u062f"},"field2":{"name":"description","label":"\u0627\u0644\u0648\u0635\u0641"}};
+/*start set layout default*/
+$(".all_sets input").each(function() {
+    if ($(this).is(':checked')) {
+        $('.all_sets').show();
+        $('.more_options').html('خيارات أقل:');
+        $('.select_all_chk').prop('checked', true);
+    }
+});
+$(".select_all_chk").change(function() {
+    //$( '.all_sets' ).show();
+    //$( '.more_options' ).html('خيارات أقل:');
+    if (this.checked) {
+        $(".all_sets input").each(function() {
+            $(this).prop('checked', true);
+        });
+        $('.all_sets').show();
+    } else {
+        $(".all_sets input").each(function() {
+            $(this).prop('checked', false);
+        });
+        $('.all_sets').hide();
+    }
+});
+$(".more_options").click(function() {
+    if ($('.all_sets').css('display') == 'none') {
+        $('.more_options').html('خيارات أقل:');
+        $('.all_sets').show();
+    } else {
+        $('.more_options').html('خيارات أكثر:');
+        $('.all_sets').hide();
+    }
+});
+/*end set layout default*/
+
+    
+</script>
+{% endblock stylejs %}

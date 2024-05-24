@@ -1,0 +1,217 @@
+fieldset {
+    text-align: right;
+   }
+   .fieldset_label{
+       text-align: right !important;
+       padding-left: 10px !important;  
+       padding-right: 10px !important;  
+   }
+   /* .row {
+       text-align: right !important;
+   } */
+   .sidebar-menu li a .fa-angle-left,
+   .sidebar-menu li, .sidebar-menu li .badge {
+       text-align: right !important;
+   }
+   
+   .sidebar-menu li a {
+       padding-right: 30px !important;
+   }
+   
+   .content-header > h1 {
+       float: right !important;
+       direction: rtl !important;
+   }
+   
+   #comp-info {
+       text-align: left !important;
+   }
+   
+   .margin-right-row {
+       margin-right: 20px !important;
+   }
+   
+   .margin-5 {
+       margin: -5px !important;
+   }
+   
+   .breadcrumb {
+       text-align: right !important;
+       direction: rtl !important;
+   }
+   
+   .model-add-new-in-model {
+       float: left !important;
+   }
+   
+   .content-header > ol {
+       direction: ltr !important;
+   }
+   
+   .content-header {
+       margin-bottom: 15px !important;
+   }
+   
+   .tree1 {
+       direction: rtl;
+   }
+   
+   table {
+       text-align: right !important;
+   }
+   
+   .form-group > label {
+       float: right;
+   }
+   
+   .form-group > .custom-checkbox {
+       float: right;
+   }
+   
+   .box-header > a {
+       float: left !important;
+   }
+   
+   .datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-bottom {
+       z-index: 999;
+   }
+   
+   .dropdown-menu {
+       z-index: 1000 !important;
+       right: auto;
+   }
+   
+   #notify_message {
+       left: 20px;
+       right: auto !important;
+       direction: ltr;
+   }
+   
+   #notify_message > span {
+       padding-left: 10px;
+   }
+   
+   ul.jqtree-tree .jqtree-element {
+       display: inline-table;
+       display: block;
+       /* margin-right: 15px !important; */
+       text-align: right !important;
+   }
+   
+   .rtl ul.jqtree-tree {
+       margin-left: auto;
+       margin-right: 12px;
+   }
+   
+   .rtl ul.jqtree-tree ul.jqtree_common {
+       margin-left: auto;
+       margin-right: 12px;
+   }
+   
+   .rtl ul.jqtree-tree .jqtree-toggler {
+       left: auto;
+       right: -1.5em;
+   }
+   
+   .rtl ul.jqtree-tree li.jqtree-folder .jqtree-title {
+       margin-right: 5px;
+       margin-left: 0;
+   }
+   
+   .rtl ul.jqtree-tree li.jqtree-ghost {
+       margin-right: auto;
+       margin-left: 10px;
+       text-align: right
+   }
+   
+   .rtl ul.jqtree-tree li.jqtree-ghost span.jqtree-circle {
+       left: auto;
+       right: 2px;
+   }
+   
+   .rtl ul.jqtree-tree li.jqtree-ghost span.jqtree-line {
+       right: 10px;
+       left: auto;
+   }
+   
+   .box-header>.box-title{
+       float: right !important;
+   }
+   .box-body > div.form-group {
+       float: right;
+   }
+   
+   .box-body > .form-row > div.col-sm-4 {
+       float: right;
+   }
+   
+   .model-add-new-in-modal {
+       float: left !important;
+   }
+   div.form-group>div>label{
+       float: right;
+   }
+   
+   .box-body > div:nth-child(4) > .form-group, .box-body > div:nth-child(5) > .form-group {
+       float: right;
+   }
+   
+   .rtl ul.jqtree-tree li.jqtree-ghost.jqtree-inside {
+       margin-left: auto;
+       margin-right: 48px;
+   }
+   
+   .rtl ul.jqtree-tree span.jqtree-border {
+       right: -2px;
+       left: auto;
+   }
+   .box-header>h4{
+       float: right !important;
+   }
+   .btn_new_screen{
+       float: left !important;
+   }
+   .bootstrap-duallistbox-container>.col-md-6{
+       float: left !important;
+   }
+   .box1{
+       margin-top: 20px;
+   }
+   .custom-checkbox>label{
+       padding-right: 5px !important;
+       float: left !important;
+   }
+   ul li.jqtree_common {
+       padding:0 20px 0 0 ;
+       margin: 0 5px 0 0 ;
+       min-height: 19px;
+       text-overflow: ellipsis;
+       list-style-type: none;
+       background-image: url(../logo/afeef-logo.png);
+       background-repeat: no-repeat;
+       background-position: 0 0;
+       background-position-x: right;
+       position: relative;
+   }
+   
+   /* span.jqtree_common {
+       display: block;
+   } */
+   ul.jqtree_common li ul.jqtree_common li:last-child {
+       background-position: 0 -1766px;
+       background-position-x: right;
+   }
+   ul.jqtree_common>li:last-child,  ul.jqtree-tree>li:last-child {
+       background-position: 0 -1766px;
+       background-position-x: right ;
+   }
+   
+   
+   .panel-heading {
+       text-align: right;
+   }
+
+[dir="rtl"] aside.main-sidebar {
+    left: auto;
+    right: 0;
+}

@@ -1,0 +1,17 @@
+{% load static%} 
+{% load crispy_forms_tags %}
+{% load i18n static %} 
+{% load permission_tag %}
+  {% has_screen request "role" "add" as add %}
+  {% has_screen request "role" "edit" as edit%}
+
+
+  {% if  edit %}
+    <input type="hidden" name="id"  value="{{id}}">
+  {% endif %}
+
+  {% if   edit and   add %}
+  {% if form %}
+  {% crispy form  %}
+  {% endif %}
+  {% endif %}

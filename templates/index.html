@@ -1,0 +1,19 @@
+{% extends "layout/base.html" %}
+{% load  permission_tag  i18n  %}
+
+{% if not view %}
+  {% block title%}
+  {% trans "home" %} 
+  {% endblock title%}
+  {% endif%}
+  
+
+{% block content1 %}
+{% has_screen request "show_numerical_statistics" "view" as view_numerical_statistics %}
+{% has_screen request "display_graphical_statistics" "view" as view_chart_statistics %}
+ 
+<div class="tab-content tabs-content side-content p-0 border-0">
+</div>
+
+
+{% endblock content1 %}

@@ -1,0 +1,238 @@
+{% extends "layout/base.html" %} 
+{% load static crispy_forms_tags i18n permission_tag %}
+{%block title%}
+{% trans ' User List' %}
+{%endblock title%}
+{% block content %} 
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header ptbnull">
+                <div class="alert_message"></div>
+            </div>
+            <div class="box-body">
+
+                <div class="card-header">
+                    <ul class="nav nav-justified">
+                        <li class="nav-item"><a data-toggle="tab" href="#tab-eg7-0" class="active nav-link">
+                            {% trans "Add user" %}
+                        </a>
+                        </li>
+                        <li class="nav-item"><a data-toggle="tab" href="#show_data" class=" nav-link">
+                            {% trans "show user" %}
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-body">
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="tab-eg7-0" role="tabpanel">
+
+                            {% if error %}
+
+                            {% include 'buttons.html' with name_model="usersdetiles" form_id="form-id"  fields_pk="#id" btn_new="true" btn_save="true" btn_update="true" btn_delete="true" btn_print="false" btn_print_chasher="" %}
+
+                            <form action="{{url}}" id='form-id' method="post" class="needs-validation" accept-charset="utf-8">
+                                {% csrf_token %}
+                                <input type="text" name="id" id="id" class="hidden">
+                                <input type="text" name="reset_passowrd" class="hidden">
+                                <div class="box-body">
+                                    <div class="row">
+                                     
+                                        <div class="col col-md-6">
+                                            {{ form.username|as_crispy_field }}
+                                        </div>
+                                        <div class="col col-md-6">
+                                            {{ form.emplayee|as_crispy_field}}
+                                        </div>
+                                        <div class="col col-md-6">
+                                            {{ form.password|as_crispy_field }}
+                                            {{ form.confirm_password|as_crispy_field }}
+                                            {{ form.active|as_crispy_field }}
+                                        </div>
+                                        <div class="col col-md-6">
+                                        </div>
+                                        <div class="col col-md-6">
+                                            {{ form.user_permission_group|as_crispy_field }}
+                                        </div>
+                                        <div class="col col-md-6">
+                                            
+                                            {{ form.user_branch|as_crispy_field }}
+                                            
+                                        </div>
+                                        <div class="col col-md-6">
+                                        </div>
+                                        <div class="col col-md-6">
+                                            {{ form.type_device }}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                            {% endif %}
+
+
+
+                        </div>
+
+                        <div class="tab-pane " id="show_data" role="tabpanel">
+
+
+
+                            <div class="table-responsive mailbox-messages" style="width: 909px;">
+                                <table style="width:100%" class="datatable_list display nowrap table AutoFill table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">
+                                    <thead>
+                                        <tr>
+
+                                            <th>{% trans "#" %}</th>
+                                            <th>{% trans "الموظف" %}</th>
+                                            <th>{% trans "User Name" %}</th>
+
+                                            <th>{% trans "status" %}</th>
+                                            <th>{% trans "action" %}</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6" style="border-left: 3px solid #ccc; border-bottom: 3px solid #ccc;">
+                    <div class="row" id="detils_purch" style="margin: inherit;cursor: pointer;">
+                     <div class="">
+                        الوصول إلى API
+                    
+                      <i class="material-icons expand_less hidden" id="expand_less"></i>
+                      <i class="material-icons expand_more " id="expand_more"></i>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="section-body" id="api-access" style="display: none;">
+                        <br>
+                        <p id="api_key"></p>
+                        <br>
+                    <button id="create_auth_tokenurl">توليد مفتاح</button>
+      
+              
+      
+              </div>
+                      </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal: Login / Register Form-->
+
+
+{% endblock %} {% block stylejs %}
+
+
+<script>
+    url = '{% url "UsersDetilesListJson" %}';
+    let load_branch_device = '{% url "load_branch_device" %}';
+    let UsersDetilesViewPassword = '{% url "UsersDetilesViewPassword" %}';
+    let create_auth_tokenurl = '{% url "create_auth_token" %}';
+    
+    let csrf = '{{ csrf_token }}';
+    controll_model("#detils_purch","#api-access");
+    function controll_model(id_row,id_body){
+      $(id_row).click(function() {
+        $(id_body).toggle(300);
+      var expand_less = $(this).find(".expand_less");
+      var expand_more = $(this).find(".expand_more");
+      
+      if (expand_more.hasClass("hidden")) {
+        expand_more.removeClass("hidden");
+      } else {
+        expand_more.addClass("hidden");
+      }  
+      
+      if (expand_less.hasClass("hidden")) {
+        expand_less.removeClass("hidden");
+      } else {
+        expand_less.addClass("hidden");
+      }
+  
+    });}
+</script>
+
+<script src="{% static 'js/public_administration/usersgroup.js'%}"></script>
+<script src="{% static 'js/datatable_js.js'%}"></script>
+<script>
+    
+    $(document).on('click', '#create_auth_tokenurl', function(e) {
+        e.preventDefault();         
+    
+        if($('#id').val()==''){
+            alert("يجب إختيار المستخم")
+            return;
+        }
+
+
+        let id_row = $('#id').val();
+        $.ajax({
+            url: create_auth_tokenurl,
+            method: 'POST',
+            data: { 'id': id_row, },
+            beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", csrf);
+                },
+            success: function(data) {
+
+
+                console.log(data.data)
+                if (data.status == 1) {
+                    $("#api_key").text(data.data);              
+            }
+            },
+        });
+        });
+
+</script>
+{% endblock stylejs %}
+
+
+
+{% block modelform %}
+<style>
+    div.dataTables_wrapper {
+        width: 100%
+    }
+</style>
+<div id="info"></div>
+<div class="modal  " id="Previous_Operations" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-body" id="modal-body">
+
+                <div class="header">
+                    <h4 id="tital_report">تغيير كلمة المرور </h4>
+                    <p style="font-size:bold;font-size:large; font-weight:bold;"id="tital_name">
+                    </p>
+                </div>
+                
+                
+                    <input type="hidden" name="id"  value="{{id}}">
+                 
+                  {% if   edit and   add %}
+                  {% if form %}
+                  {% crispy form  %}
+                  {% endif %}
+                  {% endif %}
+             
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock modelform %}
+
+
+<!--Modal: Login / Register Form-->

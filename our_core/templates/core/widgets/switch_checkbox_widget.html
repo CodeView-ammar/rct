@@ -1,0 +1,7 @@
+
+  
+  <div class="form-check form-switch">
+  {% include 'core/widgets/input.html' %}
+  <label class="form-check-label" {% if widget.attrs.id %}
+           for="{{ widget.attrs.id }}"{% endif %}>{{ widget.name }}</label>
+</div>

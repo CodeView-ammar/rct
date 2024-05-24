@@ -1,0 +1,119 @@
+          {% load i18n static %}
+<link rel="stylesheet" href="{% static 'css/jqtree.css' %}">
+<script src="{% static 'dist/js/tree.jquery.js' %}"></script>
+<script src="{% static 'dist/js/jqTreeContextMenu.js' %}"></script>
+<script>
+    var DeleteNode = "{% trans 'Are you sure to permanently delete this node!'%}";
+    var public = '{% trans "Public" %}'
+    var disabled = '{% trans "Disabled" %}'
+    var Update = "{% trans 'Update'%}";
+    var message_delete = "{% trans 'Are you sure to permanently delete this node!'%}";
+    var message_delete_cannot = '{% trans "You can not delete node have children" %}'
+    var message_add_cannot = '{% trans "You can not add children to sub account" %}'
+
+let htmlTreeMenu = `
+<div>
+    <ul id="customMenu" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li><a href="#edit"><i class="icon-edit mitem"></i>{% trans "Edit" %}</a></li>
+        <li><a href="#delete"><i class="icon-remove mitem"></i>{% trans "Delete" %}</a></li>
+        <li class="divider"></li>
+        <li><a href="#add"><i class="icon-plus mitem"></i> {% trans "Add Child" %}</a></li>
+        <li><a href="#refresh"><i class="icon-plus mitem"></i> {% trans "Refresh" %}</a></li>
+    </ul>
+</div>`
+let htmlMenuPosition = ` 
+<div id="scroll-container" class="col-sm-4 tree1 rtl">
+    <div id="custom_tree" class="context-menu-one right_click tree1">
+
+    </div>
+
+</div>`
+
+function loadCustomAction(data) {
+$('#custom_tree').jqTreeContextMenu($('#customMenu'), {
+    // edit node
+    "edit": function (node) {
+        UpdateData(node);
+
+    },
+
+    // delete node
+    "delete": function (node) {
+        if (node.children.length == 0) {
+
+
+        }
+        else {
+            alert(message_delete_cannot);
+
+        }
+    },
+    // add node
+    "add": function (node) {
+
+        // if (node.accounts_type == 1) {
+
+            
+    },
+    "refresh": function (node) {
+        var originalState = $("#custom_tree").clone();
+        $("#custom_tree").replaceWith(originalState);
+        LoadData("{% url 'CustomTree' %}",data);
+        load_action();
+        var urf = '';
+        $('#form_account').attr('action', `${urf}`);
+    }
+});
+
+
+// event.node is the clicked node
+$('#custom_tree').on(
+    'tree.dblclick',
+    function (event) {
+        var node = event.node
+        UpdateData(node);
+
+    }
+);
+
+
+}
+function LoadData(url,data) {
+    $.ajax({
+        method: "GET",
+        url: url,
+        data:'sending='+JSON.stringify(data),
+        dataType: 'json',
+        success: function (data) {
+            let NewData;
+
+            NewData = data;
+            $('#custom_tree').tree({
+                data: NewData,
+                saveState: true,
+                autoOpen: false,
+                saveState:'accounts',
+                autoEscape: false,
+                selectable: true,
+                usecontextmenu: true,
+                onCreateLi: function (node, $li) {
+                },
+
+                tabIndex: 5,
+                closedIcon: $(' <i class="fa fa-folder text-info" style="font-size: 16px!important;" aria-hidden="true"></i> '),
+                openedIcon: $(' <i class="fa fa-folder-open text-info" style="font-size: 16px!important;" aria-hidden="true"></i> '),
+            }
+            )
+
+        }
+
+    });
+}
+
+function createTree(parent_element,models,fields,filtering=null){
+    parent_element.html(htmlMenuPosition+htmlTreeMenu)
+    var data = {'models':models,'fields':fields,'filtering':filtering};
+    LoadData("{% url 'CustomTree' %}",data)
+    loadCustomAction(data)
+}
+</script>

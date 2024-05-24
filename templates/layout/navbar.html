@@ -1,0 +1,109 @@
+ {% load i18n %} {% load static %} {% block navbar %}
+<header class="main-header" style="position: fixed;">
+    <a href="#" class="logo tamamtech-logo">
+
+        <span class="logo-mini"><img src="{% static 'logo.png' %}" alt="Oaxe Accounting"></span>
+        <span class="logo-lg "><img src="{% static 'logo.png' %}" style="height: -webkit-fill-available; " alt="Oaxe Accounting"></span>
+    </a>
+
+    <nav class="navbar navbar-fixed-top mb-lg-n5" role="navigation">
+
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown dropdown_select user user-menu keep-open">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="hidden-xs">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                     </span>
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: black;">
+                        <!-- User image -->
+                        <li class="user-header" style="background-color: #33b7ab;color: #ffff;">
+                            <i class="fas fa-user-circle text-white mb-0" style="font-size: 50px !important;"></i>
+                            <p class="mt-0">{{ request.user.username }}
+                                <small> {% trans 'Last login since ' %}{{request.user.last_login}}</small>
+                            </p>
+                        </li>
+                        <li class="user-body">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group ">
+                                        <select class="form-control" data-url="{% url 'change_branch' %}" id="change_branch">
+                                    {% for x in request.session.user_branch %}
+                                    <option value="{{x.id}}" {% if x.id == request.session.branch_id|add:"0" %} selected {% endif %} >{{x.name_ar}}</option>
+                                    {% endfor %}
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="dropdown ">
+                                        <button class="btn btn-white dropdown-toggle" style="width: 100%" type="button" id="menu1" data-toggle="dropdown">
+                                    <i class="fas fa-language"></i>
+                                    <span class="caret"></span></button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                            {% get_current_language as LANGUAGE_CODE %} {% get_available_languages as LANGUAGES %} {% get_language_info_list for LANGUAGES as languages %} {% for language in languages %} {% if language.code != LANGUAGE_CODE %}
+                                            <li id="language-list" role="presentation">
+                                                <a role="menuitem" tabindex="-1" href="{% url 'set_language' %}" data-language-code="{{ language.code }}">{{ language.name_local }}</a>
+                                            </li>
+                                            {% endif %} {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="user-footer" style="background-color: peachpuff;">
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-primary btn-flat">{%trans 'Profile' %}</a>
+                            </div>
+                            <div class="pull-left">
+                                <a href="{% url 'logout' %}" class="btn btn-info btn-flat">{%trans 'Sign out' %}</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                {#
+                <li>#} {# <a href="#" data-toggle="control-sidebar"><i class="fa fa-cogs"></i></a>#} {# </li>#}
+                <li id="help_url_checker" class="hide">
+                    <a href="#" onclick="getHelpData()" data-toggle="modal" data-target="#helpModal"><i class="fa fa-info-circle"></i></a>
+                </li>
+                <li id="help_redirect">
+                    <!--don't remove this-->
+                </li>
+                <li>
+                    <div class="col-xs-6">
+                        <div class="dropdown ">
+                            <button class="btn btn-white dropdown-toggle" style="width: 100%" type="button" id="menu1" data-toggle="dropdown">
+                                    <i class="fas fa-language"></i>
+                                    <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                {% get_current_language as LANGUAGE_CODE %} {% get_available_languages as LANGUAGES %} {% get_language_info_list for LANGUAGES as languages %} {% for language in languages %} {% if language.code != LANGUAGE_CODE %}
+                                <li id="language-list" role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{% url 'set_language' %}" data-language-code="{{ language.code }}">{{ language.name_local }}</a>
+                                </li>
+                                {% endif %} {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="search-container input-group sidebar-form" style="width: 30%;margin-top: 0px;border: none">
+            {% comment %} <input type="hidden" id="search" value="{% url 'search' %}"> {% endcomment %}
+            <input type="search" name="search" id="main_search_id" class="form-control ml-1" style="margin-top: 4px;" placeholder="{% trans 'Search... ' %}">
+            <!-- <span class="input-group-btn">
+                            {% comment %} <a class="btn btn-flat" href="{% url 'results' %}" ><i class="fa fa-history text-white" style="font-size: 15px"></i></a> {% endcomment %}
+                             </span> -->
+        </div>
+
+    </nav>
+</header>
+{% endblock %}

@@ -1,0 +1,116 @@
+
+{% extends "layout/base.html" %}
+ 
+ {% load crispy_forms_tags i18n static permission_tag  %} 
+ 
+ {% block title %}
+ شاشة الاجهزة
+ {% endblock title %}
+ 
+{% block display %}
+{% has_screen request "typedevice" "add" as add %}
+
+{% if add %}
+<a href="" class="btn btn-primary btn-rounded my-3 pull-right" data-toggle="modal"
+data-target="#exampleModalLong"> <i class="fa fa-plus"></i> {% trans 'إضافة جهاز جديد' %}</a>
+
+
+{% endif %}
+{% endblock display %}
+
+ {% block content %}
+ {% has_screen request "typedevice" "edit" as edit %}
+ {% has_screen request "typedevice" "add" as add %}
+ {% has_screen request "typedevice" "view" as view %}
+ 
+  {% if view %}
+  
+  <div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header ptbnull">
+                <h3 class="box-title titlefix"></h3>
+               <div class="alert_message"></div>
+            </div>
+            <div class="box-body">
+                <div class="table-responsive mailbox-messages">
+                    <table  style="width:100%" class="datatable_list display nowrap table AutoFill table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">
+                        <thead> 
+                            <tr>
+                                <th>{% trans "#" %}</th>
+                                <th>{% trans "Device Name" %}</th>
+                                <th>{% trans "MAC Address" %}</th>
+                                <th>{% trans "Ip Address" %}</th>
+                                <th>{% trans "Serel CPU" %}</th>
+                                <th>{% trans " Action" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+</div>
+{% else %}
+{% include 'permission_denied.html' %}
+{% endif %}
+
+{% endblock %} 
+{% block stylejs %} 
+<script src="{% static 'js/datatable_js.js'%}"></script>
+<script>
+url ='{% url "TypeDeviceListJson" %}';
+let csrf= '{{ csrf_token }}';
+
+
+</script>
+<script src="{% static 'js/public_administration/typedevice.js'%}"></script>
+{% endblock stylejs %} 
+
+    <!--Modal: Login / Register Form-->
+   
+    {% block modelform %} 
+    <!-- Modal -->
+    
+    <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"> {{ title_form }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+           <style>
+       
+          </style>
+            <div class="modal-body">
+                <form action="{{url}}" id='form-id' method="post" class="needs-validation" accept-charset="utf-8">
+                    {% csrf_token %}
+                    <input type="text" name="id" class="hidden">
+                    <div class="box-body">
+                    <div class="form-row row">
+                            {% for fildes in form %}
+                            <div class="col col-md-6">
+                                {{ fildes|as_crispy_field }}
+                            </div>
+                            {% endfor %}
+    
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="submit-button" type="submit" class="btn btn-primary">{% trans "SAVE" %} </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    {% endblock modelform %} 
+
