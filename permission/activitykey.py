@@ -40,7 +40,7 @@ from permission.permission.permission import has_screen
 from permission.forms import ActivateKeyForm,ActivationForm,unit_actionForm
 import subprocess
 # import rsa
-from AccountingSystem import database
+from training import database
 # from cryptography.fernet import Fernet
 from datetime import datetime
  

@@ -17,7 +17,6 @@ from permission.models import TypeDevice,UsersDetilesUserBranch,UsersDetilesUser
 from permission.models import UsersGroup
 from permission.models import UsersDetiles,info_client,ActivityKey
 from our_core.models import Branch
-from our_core.models import Company
 
 
 
@@ -43,13 +42,13 @@ class UsersGroupForm(CustomModelForm):
     UsersGroupForm for represent Users Group  models in template
     """
 
-    company = forms.ModelChoiceField(required=False, queryset=Company.objects.all(),label=_("company") )
+    # company = forms.ModelChoiceField(required=False, queryset=Company.objects.all(),label=_("company") )
 
     def __init__(self, *args, **kwargs):
         super(UsersGroupForm, self).__init__(*args, **kwargs)
-        self.fields["company"].widget.attrs.update(
-            {"class": " form-control", "required": False}
-        )
+        # self.fields["company"].widget.attrs.update(
+        #     {"class": " form-control", "required": False}
+        # )
         self.fields["name_ar"].widget.attrs.update(
             {"class": " form-control", "required": False}
         )
@@ -60,7 +59,7 @@ class UsersGroupForm(CustomModelForm):
 
     class Meta:
         model = UsersGroup
-        fields = ["name_ar", "name_en", "company"]
+        fields = ["name_ar", "name_en"]
 
 
 class UsersDetilesForm(CustomModelForm):
@@ -308,23 +307,14 @@ import json
 
 class LoginForm(CustomForm):
     
-    # company = forms.ChoiceField(required= True)
     def __init__(self, *args,cost_center=None,db_name = None, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_tag = False
           
-        # self.fields["company"] = forms.ModelChoiceField(queryset= Company.objects.using(db_name).all() if db_name else Company.objects.all() ,label=_("company") )
-        # self.fields["branch"] = forms.ModelChoiceField(queryset= Branch.objects.using(db_name).all() if db_name else Branch.objects.all() ,label=_("Branch") )
         self.fields['username'] = forms.CharField(widget=forms.TextInput(),label=_("User Name"))
         self.fields['password'] = forms.CharField(widget=forms.PasswordInput(),label=_("Password"))
        
-        # self.fields["company"].widget.attrs.update(
-        #     {"class": " form-control"  ,"placeholder":"الشركة","onchange":"changecompany(this)" }
-        # )
-        # self.fields["branch"].widget.attrs.update(
-        #     {"class": " form-control"  ,"placeholder":"الفرع" }
-        # )
         self.fields["username"].widget.attrs.update(
             {"class": " form-control" ,"placeholder":"اسم المستخدم"  }
         )
@@ -345,7 +335,7 @@ class LoginForm(CustomForm):
             # print(db_name)
           
             # inst=list()
-            # inst=UsersDetiles.objects.using("accountingsystem").values_list("user_branch").filter(id=user.id)
+            # inst=UsersDetiles.objects.using("training").values_list("user_branch").filter(id=user.id)
            
             # print(inst[0])
             # instance=UsersDetiles.objects.using("2025").filter(id=user.id).update(active=True,user_branch=inst[0])

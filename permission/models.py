@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from our_core.models  import ModelUseBranch,CustomModel
-from our_core.models  import Company
 from our_core.models  import Branch
 
 from .managers import CustomUserManager
@@ -140,7 +139,7 @@ class UsersGroup(models.Model):
     """
     name_ar = models.CharField(_("name_ar"),max_length=50)
     name_en = models.CharField(_("name_en"),max_length=50)
-    company = models.ForeignKey(Company,models.CASCADE,blank=True,null=True)
+
     # objects =  UserDataBaseManger()
 
     def __str__(self):

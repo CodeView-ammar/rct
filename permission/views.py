@@ -35,7 +35,7 @@ from permission.models import TypeDevice, UsersGroup,ActivityKey, UsersDetiles
 from permission.forms import TypeDeviceForm,UsersGroupForm,UsersDetilesForm,UserPassword,UserDetailForm,LoginForm
 
 
-from AccountingSystem.save_db import SaveDB
+from training.save_db import SaveDB
 
 from permission.forms import PremissionGroup
 from permission.permission.permission import get_all, get_all_partion
@@ -44,12 +44,12 @@ from permission.permission.permission import decorator_has_perm,has_screen,has_t
 from permission.templatetags.permission_tag import (change_screen,active_screen,change_tab,change_system,change_partion)
 
 
-from our_core.models import Company, Branch
+from our_core.models import  Branch
 from .userbranch import get_user_branch_permission
 import setting 
 from permission.userbranch import set_session_variables
 
-from AccountingSystem import database
+from training import database
 from datetime import datetime
 
 
@@ -987,14 +987,12 @@ class UsersGroupListJson(BaseDatatableView):
         "id",
         'name_ar',
         'name_en',
-        'company',
         "action",
     ]
     order_columns = [
         "id",
         'name_ar',
         'name_en',
-        'company',
         "action",
     ]
     count = 0
@@ -1030,7 +1028,6 @@ class UsersGroupListJson(BaseDatatableView):
             qs = qs.filter(
                 Q(name_ar__icontains=sSearch)
                 | Q(name_en__icontains=sSearch)
-                | Q(company__icontains=sSearch)
 
             )
         return qs

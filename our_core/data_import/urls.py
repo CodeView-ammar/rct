@@ -1,7 +1,7 @@
 import os
 from django.conf.urls import url
 
-from AccountingSystem import settings
+from training import settings
 from django.urls import path
 from django.conf.urls.i18n import i18n_patterns
 from our_core.data_import import views

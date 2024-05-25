@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import (UsersDetilesUserPermissionGroup,Systems,TabScreens,PermissionGroup,TabPartionsPermission
 ,SystemTabs,BranchSystem,GroupScreens,GroupPartionPermission,UsersDetiles,GroupTabs,UsersGroup,TypeDevice,
 UsersDetilesUserBranch,UsersDetilesTypeDevice,GroupSystems)
-from our_core.models import   Company
 from translations.admin import TranslatableAdmin,TranslationInline
 
 
@@ -48,7 +47,7 @@ class GroupTabs(admin.ModelAdmin):
     list_display = ["system_tabs","group"]
 @admin.register(UsersGroup)
 class UsersGroup(admin.ModelAdmin):
-    list_display = ["name_en","company"]
+    list_display = ["name_en"]
 
 
 # @admin.register(BranchSystemBranchGroup)

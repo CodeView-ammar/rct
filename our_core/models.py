@@ -94,83 +94,7 @@ import urllib
 from PIL import Image
 
 
-class Company(BaseModel):
-    """Class Content    Fields For Initial Company
-    """
-
-    name_ar = models.CharField(verbose_name=_("Name"), max_length=100, unique=True)
-    name_en = models.CharField(verbose_name=_("Foreign Name"), max_length=100, null=True, blank=True)
-    abbrivation_name = models.CharField(
-        verbose_name=_("Short Name"), max_length=100, null=True, blank=True
-    )
-    abbrivation_name_en = models.CharField(
-        verbose_name=_("Short Foreign Name"), max_length=100, null=True, blank=True
-    )
-    note = models.CharField(
-        verbose_name=_("Notes"), max_length=100, null=True, blank=True
-    )
-    # image = models.ImageField(
-        # verbose_name=_("image"), upload_to=filepath,null=True, blank=True
-    #     verbose_name=_("image"),upload_to = "images",null=True, blank=True
-    # )
-    # image = models.ImageField(upload_to='images/',blank=True)
-    tax_number = models.CharField(
-        verbose_name=_("Tax Number"),max_length=100, null=False, blank=False
-    )
-    image = models.ImageField(upload_to="company/",default="no_img/no_image.png",blank=True)
-
-    def __str__(self):
-        return str(self.pk) + "-" + self.name_ar
-       
-    # def cache(self):
-    #     """Store image locally if we have a URL"""
-
-    #     if self.url and not self.photo:
-    #         result = urllib.urlretrieve(self.url)
-    #         self.photo.save(
-    #                 os.path.basename(self.url),
-    #                 File(open(result[0], 'rb'))
-    #                 )
-    #         self.save()
-
-    def is_deletable(self, excepted_related_obj="None"):
-        # get all the related object
-        for rel in self._meta.get_fields():
-            try:
-                # check if there is a relationship with at least one related object
-                related = rel.related_model.objects.filter(**{rel.field.name: self})
-                if (excepted_related_obj in str(rel.related_model)) and (
-                    excepted_related_obj != "None"
-                ):
-                    for obj in related:
-                        a, b = obj.is_deletable_local()
-                        if not (a):
-                            return False, b
-                elif related.exists():
-                    # if there is return a Tuple of flag = False the related_model object
-                    return False, related
-            except AttributeError:  # an attribute error for field occurs when checking for AutoField
-                pass  # just pass as we dont need to check for AutoField
-        return True, None
-
-
-    class Meta:
-        verbose_name = _("company")
-
-class BaseModelcompany(models.Model):
-    """Class Content   Four Fields Uing As base Class For Anther Model
-    """
-    created_at = models.DateTimeField(auto_now_add=False, auto_now=True)
-    modified_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.PROTECT,related_name="%(class)s_createdby",null=True,blank=True)
-    modified_by = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.PROTECT,related_name="%(class)s_modifiedby",null=True,blank=True,)
-    company = models.ForeignKey(Company,verbose_name=_("company"),null=True, blank=True, on_delete=models.CASCADE, default=1)
-    objects = CompanyFilter()
-    
-    class Meta:
-        abstract = True
-
-class City(BaseModelcompany):
+class City(BaseModel):
     """
     Create City Model  ...بيانات المدن
     """
@@ -190,7 +114,7 @@ class City(BaseModelcompany):
         verbose_name = _("City")
 
 
-class Area(BaseModelcompany):
+class Area(BaseModel):
     """
     Create Area Model  ...بيانات المناطق
     """
@@ -212,7 +136,7 @@ class Area(BaseModelcompany):
 
 
 
-class Branch(BaseModelcompany):
+class Branch(BaseModel):
     """Class Content    Fields For Initial Branch
     """
 
@@ -293,7 +217,7 @@ class Branch(BaseModelcompany):
     class Meta:
         verbose_name = _("Branch")
 
-class CustomBaseModel(BaseModelcompany):
+class CustomBaseModel(BaseModel):
     """Class Content Five Fields Using As base Class For Another Model
     """
 
@@ -320,7 +244,7 @@ class CustomBaseModel(BaseModelcompany):
         return True, None
 
 
-CustomModel = BaseModelcompany
+CustomModel = BaseModel
 ModelUseBranch = CustomBaseModel
 modewithoutbranch=BaseModel
 # CustomModel

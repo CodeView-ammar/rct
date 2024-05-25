@@ -14,9 +14,9 @@ pyarmor build
 تحويلها الى pyc
 python -m compileall -b
 حذف ملفات py 
-find /d/AccountingSystem/accounting-master/accounting_build/  -name '*.py' -delete
+find /d/training/accounting-master/accounting_build/  -name '*.py' -delete
 
-find /d/AccountingSystem/accounting-master/accounting_build/  -path "*/__pycache__/*.pyc"  -delete
+find /d/training/accounting-master/accounting_build/  -path "*/__pycache__/*.pyc"  -delete
 إزالة حميع الحركات في الجداول:
 
 DELETE FROM pos_possalesdetails;
