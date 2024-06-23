@@ -5,7 +5,7 @@ import sys
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
 
 class Helper():

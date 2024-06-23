@@ -1,6 +1,6 @@
 from configration.type_file.forms import TypeFileForm
 from configration.models import TypeFile
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from our_core.baseview import BaseView
 
 

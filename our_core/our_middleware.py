@@ -16,12 +16,16 @@ class RequestMiddleware:
     # Code to be executed for each request before
     # the view (and later middleware) are called.
     try:
+      self.thread_local.username_=request.session['username_']
       try:
+          self.thread_local.username_=request.session['username_']
           self.thread_local.db_name = request.POST['year_db']
       except Exception as e:
+        self.thread_local.username_=request.session['username_']
         self.thread_local.db_name = request.session['db_name']
     except Exception as e1:
       self.thread_local.db_name = 'default'
+
 
     try:
       self.thread_local.branch_id = request.session.get('branch_id')

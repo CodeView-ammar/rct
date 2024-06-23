@@ -72,9 +72,9 @@ ul.subsidebar a {
                   {% if item.subitems.all %}
                     <ul class="subsidebar">
                       {% for subitem in item.subitems.all %}
-                        {% active_has_screen request subitem.name_code as has_permission_srceen %}
+                        {% active_has_screen request subitem.name_code as view_sidbar %}
                         
-                        {% if has_permission_srceen %}
+                        {% if view_sidbar %}
                           <li class="{{ subitem.name_code }} {% if subitem.name_code in request.session.select_menu %}activeli{% endif %}">
                             {% if subitem.url != '#' %}
                               {% if subitem.url_value %}

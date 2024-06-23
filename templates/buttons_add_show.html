@@ -2,12 +2,9 @@
 
 {% has_screen request  model_name "add" as add %}
 {% has_screen request  model_name "view" as view %}
-<div class="pages-head fixed-div" style="position: fixed !important;">
+<div class="pages-head " style="">
   <div class="row">
     <div class="col-sm-6 col-xs-6">
-      {% block breadcrumbs %}
-      {% include "breadcrumbs.html" %}
-      {% endblock %}
       
 
     </div>
@@ -16,7 +13,7 @@
             
             {% if  add  %}
             <a href="#"
-            class="add-new-btn  btn btn-success btn-addon width-auto btn-lg  button right"  data-toggle="modal" data-target="{{data_target}}"> 
+            class="add-new-btn  btn btn-success btn-addon width-auto btn-lg  button left"  data-toggle="modal" data-target="{{data_target}}"> 
             <span>
                 {% if  type_button == 'add'  %}
                   <i class="fa fa-plus"></i>

@@ -9,8 +9,9 @@ from our_core.exceptions import ImproperlyConfigured
 from django.utils.html import format_html
 from django.db.models import Q
 from our_core.json_response import json_response
-
-
+from django.apps import apps
+from django.db import models
+from permission.permission.permission import has_screen
 def create_datatable(self1, ind=True, with_details=False):
     class MainDataTable(BaseDatatableView):
         model = self1.model_name
@@ -25,15 +26,31 @@ def create_datatable(self1, ind=True, with_details=False):
             return self1.get_initial_queryset(self)
         
         counter = 0
+        def has_permission(self, permission_type, obj=None):
+            """
+            Checks if the current user has the necessary permission for the specified action and object.
+
+            - permission_type: 'view', 'edit', or 'delete'
+            - obj (optional): The object to check permission on (defaults to None)
+            """
+            return has_screen(self1.request,self1.model_name.__name__.lower(),permission_type)
 
         def render_column(self, row, column):
+            
             if column == 'id':
                 self.counter += 1
                 return self.counter
             
-            elif column == 'action':
-                return self1.data_table_actions(id=row.id if ind else row['id'],
+            if column == 'action':
+                action_=''
+                if self.has_permission('edit'):
+                    action_= self1.data_table_edit_actions(id=row.id if ind else row['id'],
                                                 url=reverse(self1.__class__.__name__))
+                if self.has_permission('delete'):
+                    action_+= self1.data_table_delete_actions(id=row.id if ind else row['id'],
+                                             url=reverse(self1.__class__.__name__))
+                return action_
+            
             else:
                 if with_details:
                     if column == 'details':
@@ -178,14 +195,16 @@ class ListViewMixin:
         self.columns = temp_foreign_columns
         self.list_fields = temp_columns
 
-    def data_table_actions(self, id, url):
+    def data_table_edit_actions(self, id, url):
         return '<a class="edit_row" data-url="{3}" data-id="{0}" style="DISPLAY: -webkit-inline-box;"  ' \
-               'data-toggle="tooltip" title="{1}"><i class="fa fa-edit text-primary"></i></a><a ' \
-               'class="delete_row" ' 'data-url="{3}" data-id="{0}" style="DISPLAY: -webkit-inline-box;"  ' \
+               'data-toggle="tooltip" title="{1}"><i class="fa fa-edit text-primary"></i></a>'.format(id, _("Edit"),
+                                                                                                         _("Delete"),
+                                                                                                         url)
+    def data_table_delete_actions(self, id, url):
+        return '<a class="delete_row" ' 'data-url="{3}" data-id="{0}" style="DISPLAY: -webkit-inline-box;"  ' \
                'data-toggle="tooltip" ' 'title="{2}"><i class="fa fa-trash text-danger"></i></a>'.format(id, _("Edit"),
                                                                                                          _("Delete"),
                                                                                                          url)
-
     def get_context_data(self, self1, *args, **kwargs):
         return super(self1.__class__, self1).get_context_data(*args, **kwargs)
 

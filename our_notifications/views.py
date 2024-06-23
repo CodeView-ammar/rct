@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, QueryDict, JsonResponse
 from django.core import serializers
 from django.db import transaction, IntegrityError, connection
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView, CreateView, View, UpdateView, DeleteView
 from our_notifications.notification_helper import NotificationsHelper
 

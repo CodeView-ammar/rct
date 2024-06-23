@@ -22,7 +22,8 @@
 {% has_screen request permission_code "view" as view %}
 {% has_screen request permission_code "delete" as delete %}
 {% has_screen request permission_code "edit" as edit %}
-{% include 'buttons_add_show.html' with model_name=permission_code data_target="#modalLRForm" name_text=title_form type_button="add"   %}               
+{% has_screen request permission_code "print" as print %}
+
 
 
 {% if view %}
@@ -32,6 +33,8 @@
            
                 {% if has_datatable is True %}
              <div class="box-body">
+{% include 'buttons_add_show.html' with model_name=permission_code data_target="#modalLRForm" name_text=title_form type_button="add"   %}               
+
                 <div class="table-responsive mailbox-messages" style="margin-top: 30px;">
                     <table 
                         style="width:100%" class="datatable_list display nowrap table AutoFill table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">
@@ -42,10 +45,8 @@
                                 <th>{{ feilds}}</th>
                                 {% endfor %}
                                 
-                                {% if delete and edit %}
                                 
                                 <th>{% trans " Action" %}</th>
-                                {% endif %}
                             </tr>
                         </thead>
                         <tbody class="show_Operation">
@@ -57,39 +58,13 @@
         </div>
     </div>
     <!--Modal: Login / Register Form-->
- 
-    
 </div>
 
+
 {% else %}
-    {% include 'permission_denied.html' %}
+{% include 'permission_denied.html' %}
 <br>    
-    {% endif %}
-
-
-{% endblock content %}
-{% block stylejs %}
-
-
-<script>
-    url = '{{ url }}?dataTable';
-    let csrf = '{{ csrf_token }}';
-</script>
-
-<script src="{% static 'js/datatable_js.js'%}"></script>
-<script src="{% static 'js/core/core_formset.js' %}"></script>
-<script>
-
-    let key_f2_ctrl_a_shortcut = "#btn_new_2";
-    let key_f3_ctrl_s_shortcut = "#submit-button";
-    let key_f4_ctrl_f_shortcut = "input[type='search']";
-
-</script>
-{% for file in js_files %}
-
-<script src="{% static file %}"></script>
-{% endfor %}
-{% endblock stylejs %}
+{% endif %}
 
 {% block modelform %} 
     <!-- Modal -->
@@ -127,3 +102,28 @@
     </div>
     </div>
     {% endblock modelform %} 
+
+{% endblock content %}
+{% block stylejs %}
+
+
+<script>
+    url = '{{ url }}?dataTable';
+    let csrf = '{{ csrf_token }}';
+</script>
+
+<script src="{% static 'js/datatable_js.js'%}"></script>
+<script src="{% static 'js/core/core_formset.js' %}"></script>
+<script>
+
+    let key_f2_ctrl_a_shortcut = "#btn_new_2";
+    let key_f3_ctrl_s_shortcut = "#submit-button";
+    let key_f4_ctrl_f_shortcut = "input[type='search']";
+
+</script>
+{% for file in js_files %}
+
+<script src="{% static file %}"></script>
+{% endfor %}
+{% endblock stylejs %}
+

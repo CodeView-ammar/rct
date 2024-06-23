@@ -1,9 +1,39 @@
         
-from permission.models import Systems , TabPartionsPermission
+# from permission.models import Systems , TabPartionsPermission
 from django.http import HttpResponseForbidden
 from django.shortcuts import render,get_object_or_404,redirect,reverse
 from collections.abc import Iterable
 # from permission.models import Systems, SystemTabs, TabScreens, GroupScreens, GroupTabs, GroupSystems, PermissionGroup, BranchSystem, Branch, BranchSystemBranchGroup, UsersDetilesUserGroup
+from guardian.shortcuts import get_objects_for_user
+from django.db import models
+from django.apps import apps
+
+def get_all_models():
+        all_models = []
+        app_configs = apps.get_app_configs()
+        
+        for app_config in app_configs:
+            models = app_config.get_models()
+            all_models.extend(models)
+        
+        return all_models
+def get_app_name(model_name):
+    models = get_all_models()
+    app_label=[]
+    for model in models:
+        app_label.append(str(model._meta.app_label))
+    unique_list = [x for i, x in enumerate(app_label) if x not in app_label[:i]]
+    name_app=None
+    for unique_list_ in unique_list:
+        try:
+            model_instance = apps.get_model(str(unique_list_), model_name)
+            name_app=unique_list_
+            
+            break
+        except LookupError:
+            pass
+    return name_app
+
 class permission_class(object):
 
     def get_all_permission(request):
@@ -22,68 +52,68 @@ class permission_class(object):
         #     permission_usersdetiles_user_permission_group__usersdetiles_id=request.user.pk,
         #     is_active=True
         # ).order_by('system_code', 'permission_systemtabs__tab_code')
-        for system in Systems.objects.raw('''
+        # for system in Systems.objects.raw('''
 
-        select 
-        permission_systems.id as id ,
-        permission_systems.system_code as system_code ,
-        permission_systems.system_name as system_name ,
-        permission_groupsystems.is_active as system_active,
-        permission_systemtabs.tab_code as tab_code ,
-        permission_grouptabs.is_active as tab_active,
-        permission_tabscreens.screen_code as screen_code ,
-        permission_tabscreens.is_active as active_screen ,
-        permission_groupscreens.can_view  ,
-        permission_groupscreens.can_add ,
-        permission_groupscreens.can_edit ,
-        permission_groupscreens.can_delete ,
-        permission_groupscreens.can_print  
-            from permission_systems 
-        join permission_systemtabs
-		on permission_systems.id = permission_systemtabs.system_id 
-		join permission_tabscreens 
-		on permission_systemtabs.id = permission_tabscreens.system_tabs_id
-		left join permission_groupscreens 
-		on permission_groupscreens.tab_screens_id = permission_tabscreens.id
-		left join permission_grouptabs 
-		on permission_systemtabs.id = permission_grouptabs.system_tabs_id 
-		left join permission_groupsystems
-		on permission_systems.id = permission_groupsystems.systems_id 
-        join permission_permissiongroup
-		on permission_permissiongroup.id = permission_grouptabs.group_id 
-		and
-		permission_permissiongroup.id = permission_groupsystems.group_id
-		and permission_permissiongroup.id = permission_groupscreens.group_id 
-		join permission_branchsystem 
-		on permission_branchsystem.system_id = permission_systems.id 
-		join our_core_branch
-		on permission_branchsystem.branch_id = our_core_branch.id 
-		join permission_usersdetiles_user_permission_group
-		on 
-	    permission_usersdetiles_user_permission_group.permissiongroup_id = permission_permissiongroup.id
-		where 
-		permission_usersdetiles_user_permission_group.usersdetiles_id = %s
-		and our_core_branch.id = %s
-        and permission_systems.is_active = %s
-        order by  system_code ,tab_code 
-                                        ''',[request.user.pk,request.session.get('branch_id'),True]):
+        # select 
+        # permission_systems.id as id ,
+        # permission_systems.system_code as system_code ,
+        # permission_systems.system_name as system_name ,
+        # permission_groupsystems.is_active as system_active,
+        # permission_systemtabs.tab_code as tab_code ,
+        # permission_grouptabs.is_active as tab_active,
+        # permission_tabscreens.screen_code as screen_code ,
+        # permission_tabscreens.is_active as active_screen ,
+        # permission_groupscreens.can_view  ,
+        # permission_groupscreens.can_add ,
+        # permission_groupscreens.can_edit ,
+        # permission_groupscreens.can_delete ,
+        # permission_groupscreens.can_print  
+        #     from permission_systems 
+        # join permission_systemtabs
+		# on permission_systems.id = permission_systemtabs.system_id 
+		# join permission_tabscreens 
+		# on permission_systemtabs.id = permission_tabscreens.system_tabs_id
+		# left join permission_groupscreens 
+		# on permission_groupscreens.tab_screens_id = permission_tabscreens.id
+		# left join permission_grouptabs 
+		# on permission_systemtabs.id = permission_grouptabs.system_tabs_id 
+		# left join permission_groupsystems
+		# on permission_systems.id = permission_groupsystems.systems_id 
+        # join permission_permissiongroup
+		# on permission_permissiongroup.id = permission_grouptabs.group_id 
+		# and
+		# permission_permissiongroup.id = permission_groupsystems.group_id
+		# and permission_permissiongroup.id = permission_groupscreens.group_id 
+		# join permission_branchsystem 
+		# on permission_branchsystem.system_id = permission_systems.id 
+		# join our_core_branch
+		# on permission_branchsystem.branch_id = our_core_branch.id 
+		# join permission_usersdetiles_user_permission_group
+		# on 
+	    # permission_usersdetiles_user_permission_group.permissiongroup_id = permission_permissiongroup.id
+		# where 
+		# permission_usersdetiles_user_permission_group.usersdetiles_id = %s
+		# and our_core_branch.id = %s
+        # and permission_systems.is_active = %s
+        # order by  system_code ,tab_code 
+        #                                 ''',[request.user.pk,request.session.get('branch_id'),True]):
                                         
-            dic  = {}
-            
-            dic['id'] = system.id
-            dic['system_code'] = system.system_code
-            dic['system_name'] = system.system_name
-            dic['tab_code'] = system.tab_code
-            dic['screen_code'] = system.screen_code
-            dic['active_screen'] = system.active_screen
-            dic['tab_active'] = system.tab_active
-            dic['system_active'] = system.system_active
-            dic['view'] = system.can_view
-            dic['add'] = system.can_add
-            dic['edit'] = system.can_edit
-            dic['delete'] = system.can_delete
-            dic['print'] = system.can_print
-            permission_list.append(dic)
+        dic  = {}
+        
+        # dic['id'] = system.id
+        # dic['system_code'] = system.system_code
+        # dic['system_name'] = system.system_name
+        # dic['tab_code'] = system.tab_code
+        # dic['screen_code'] = system.screen_code
+        # dic['active_screen'] = system.active_screen
+        # dic['tab_active'] = system.tab_active
+        # dic['system_active'] = system.system_active
+        dic['view'] = "True"
+        dic['add'] = "True"
+        dic['edit'] = "True"
+        dic['delete'] = "True"
+        dic['print'] = "True"
+        permission_list.append(dic)
         return permission_list
 
 
@@ -93,84 +123,65 @@ class permission_class(object):
         take **arg request-> to get user permission group 
         """
         partion_list = [] 
-        for system in TabPartionsPermission.objects.raw('''
-       select permission_tabpartionspermission.id as id ,
-        permission_tabpartionspermission.permission_name as partion_code
-            ,permission_grouppartionpermission.is_active as has_permission 
-            , permission_systemtabs.tab_code as tab_code 
-
-            , permission_systems.system_code as system_code
-            ,permission_groupsystems.is_active as system_active
-            , permission_grouptabs.is_active as tab_active
-            from permission_tabpartionspermission left join permission_grouppartionpermission on 
-            permission_tabpartionspermission.id = permission_grouppartionpermission.tab_partions_id
-            join permission_usersdetiles_user_permission_group
-                on 
-                permission_usersdetiles_user_permission_group.permissiongroup_id
-                = permission_grouppartionpermission.group_id 
-            join permission_tabscreens on permission_tabscreens.id 
-            = permission_tabpartionspermission.tab_screens_id 
-            join  permission_systemtabs on permission_systemtabs.id
-            = permission_tabscreens.system_tabs_id
-            join  permission_systems on  permission_systems.id = 
-            permission_systemtabs.system_id
-            left join permission_groupsystems
-		    on permission_systems.id = permission_groupsystems.systems_id 
-            	left join permission_grouptabs 
-		on permission_systemtabs.id = permission_grouptabs.system_tabs_id 
-
-            join permission_branchsystem on permission_branchsystem.system_id
-            = permission_systems.id join our_core_branch on
-            our_core_branch.id = permission_branchsystem.branch_id
-            
-            join permission_branchsystem_branch_group 
-            on permission_branchsystem_branch_group.branchsystem_id
-            = permission_branchsystem.id
-            join 
-             permission_permissiongroup on permission_permissiongroup.id = permission_grouppartionpermission.group_id 
-            and permission_permissiongroup.id = permission_grouptabs.group_id 
-            and
-		    permission_permissiongroup.id = permission_groupsystems.group_id 
-            and permission_branchsystem_branch_group.permissiongroup_id
-            = permission_permissiongroup.id 
-            where 
-		    permission_usersdetiles_user_permission_group.usersdetiles_id = %s
-		    and our_core_branch.id = %s
-                                        ''',[request.user.pk,request.session.get('branch_id')]):
-            
-            dic  = {}
-            dic['id'] = system.id
-            dic['partion_code'] = system.partion_code
-            dic['has_permission'] = system.has_permission
-            dic['system_code'] = system.system_code
-            dic['system_active'] = system.system_active
-            dic['tab_code'] = system.tab_code
-            partion_list.append(dic)
+        dic  = {}
+        # dic['id'] = system.id
+        # dic['partion_code'] = system.partion_code
+        # dic['has_permission'] = system.has_permission
+        # dic['system_code'] = system.system_code
+        # dic['system_active'] = system.system_active
+        # dic['tab_code'] = system.tab_code
+        partion_list.append(dic)
         return partion_list
-    def has_screen_permission(self ,screen_code , perm):
+    
+
+    def has_screen_permission(self ,screen_code , permission_type):
         """
             return true if user has permission  
 
             Args:
                 screen_code ([screen_code]): [the code of screen]
-                perm ([view ,add , edit, delete , print]): [the permission that will check if user has it ]
+                permission_type ([view ,add , edit, delete , print]): [the permission that will check if user has it ]
             Returns:
                 [true]: [Flase will redirect user to Forbidden page 403] 
         """
-        if self.user.is_superuser:
-            return True 
-        permission_class.check_permission_session(self)
-        for perm_screen in list(self.session.get('permission')):
-            if screen_code == perm_screen['screen_code']:
-                if perm_screen[perm] and perm_screen['system_active'] and perm_screen['tab_active'] :
-                    return True
-                elif perm_screen[perm] and perm_screen['system_active']:
-                    return permission_class.check_to_redirct_to(self,1,perm_screen['tab_code']) 
-                elif perm_screen[perm] and perm_screen['tab_active']:
-                    return permission_class.check_to_redirct_to(self,2,perm_screen['system_code'])
-                elif perm_screen[perm] and not perm_screen['system_active'] and not perm_screen['tab_active']:
-                    return permission_class.check_to_redirct_to(self,3,perm_screen['tab_code'])
-        return False
+        from django.contrib.contenttypes.models import ContentType
+        from permission.models import UsersDetiles
+        from guardian.shortcuts import assign_perm,get_perms
+        from guardian.shortcuts import get_group_perms
+        # Ensure model_name is a valid model class
+        content_type =''
+        if screen_code:
+            screen_code=screen_code.split('View')[0]
+            if get_app_name(screen_code.lower()):
+                Model = apps.get_model(app_label=get_app_name(screen_code.lower()),model_name=screen_code.lower())
+                content_type = ContentType.objects.get_for_model(Model)
+
+
+        if content_type:
+            try:
+                dic  = {}
+                user = self.user     
+                if permission_type =="view":
+                    permission_type=content_type.app_label+".view_"+screen_code.lower()
+                if permission_type == "edit":
+                    permission_type=content_type.app_label+".change_"+screen_code.lower()
+                if permission_type == "delete":
+                    permission_type=content_type.app_label+".delete_"+screen_code.lower()
+                if permission_type == "add":
+                    permission_type=content_type.app_label+".add_"+screen_code.lower()
+                if permission_type == "print":
+                    permission_type=content_type.app_label+".print"
+                if permission_type == "view_sidbar":
+                    permission_type=content_type.app_label+".view_sidbar"
+                if permission_type == "app_view_permission":
+                    permission_type=content_type.app_label+".app_view_permission"
+                group = user.groups.first()
+                return bool(user.has_perm(str(permission_type)))
+            except ContentType.DoesNotExist:
+                # Handle the case where the content type is not registered
+                raise PermissionError("Content type for model '{}' not found. Ensure the app is registered with Django's content types.".format(self.model_name))
+        else:
+            return False
 
     def active_has_screen(self ,screen_code):
         """
@@ -210,6 +221,8 @@ class permission_class(object):
         elif type == 3:
             return permission_class.has_tab_permission(self,code,False)
         return False
+    
+    
     def has_tab_permission(self,tab_code,single = None):
         """
             check if user has permission in tab 
@@ -250,15 +263,10 @@ class permission_class(object):
             Returns:
                 [boolean]: [description]
         """
-        if self.user.is_superuser:
-            return True 
-       
-        permission_class.check_permission_session(self)
-        for perm in list(self.session.get('permission')):
-            if system_code == perm['system_code']:
-                if perm['system_active'] :
-                    return True
-        return False 
+        user_groups = self.user.groups.all()
+        
+
+        return any(self.user.has_perm(system_code.lower()+'.app_view_permission') for group in user_groups)
     def has_partion_permission(self,partion_code):
         """
             check if user has partion permission 

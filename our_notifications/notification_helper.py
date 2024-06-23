@@ -5,7 +5,7 @@ from django.urls import reverse
 from our_core.our_messages import message
 from our_notifications.forms import NotificationVariablesForm
 from our_notifications.models import NotificationVariables
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class NotificationsHelper:

@@ -42,7 +42,7 @@
                     
                         </div>    
                     </div>
-                        <button id="submit-button" type="submit" class="btn btn-primary">{% trans "Save" %} </button>
+                        <!-- <button id="submit-button" type="submit" class="btn btn-primary">{% trans "Save" %} </button> -->
 </div>
             </form>
         </div>
@@ -53,8 +53,49 @@
 
 {% else %}
     {% include 'permission_denied.html' %}
-<br>    
+    <br>    
     {% endif %}
+    
+    {% block modelform %} 
+        <!-- Modal -->
+        {% has_screen request permission_code "delete" as delete %}
+        {% has_screen request permission_code "edit" as edit %}
+        <div class="modal " id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="modalLRFormTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-{{modal_size}}" role="document">
+            <div class="modal-content modal-{{modal_size}}">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLRFormTitle"> {{ title_form }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% if has_datatable is True %}
+                    <div class="table-responsive mailbox-messages" style="margin-top: 30px;">
+                        <table 
+                            style="width:100%" class="datatable_list display nowrap table AutoFill table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "#" %}</th>
+                                    {% for feilds in list_fields %}
+                                    <th>{{ feilds}}</th>
+                                    {% endfor %}
+                                    
+                                    
+                                    <th>{% trans " Action" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="show_Operation">
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+    
+            </div>
+        </div>
+        </div>
+        {% endblock modelform %} 
 
 
 {% endblock content %}
@@ -79,44 +120,3 @@
 <script src="{% static file %}"></script>
 {% endfor %}
 {% endblock stylejs %}
-
-{% block modelform %} 
-    <!-- Modal -->
-    {% has_screen request permission_code "delete" as delete %}
-    {% has_screen request permission_code "edit" as edit %}
-    <div class="modal " id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="modalLRFormTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-{{modal_size}}" role="document">
-        <div class="modal-content modal-{{modal_size}}">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLRFormTitle"> {{ title_form }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                {% if has_datatable is True %}
-                <div class="table-responsive mailbox-messages" style="margin-top: 30px;">
-                    <table 
-                        style="width:100%" class="datatable_list display nowrap table AutoFill table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed">
-                        <thead>
-                            <tr>
-                                <th>{% trans "#" %}</th>
-                                {% for feilds in list_fields %}
-                                <th>{{ feilds}}</th>
-                                {% endfor %}
-                                
-                                
-                                <th>{% trans " Action" %}</th>
-                            </tr>
-                        </thead>
-                        <tbody class="show_Operation">
-                        </tbody>
-                    </table>
-                </div>
-                {% endif %}
-
-        </div>
-    </div>
-    </div>
-    {% endblock modelform %} 

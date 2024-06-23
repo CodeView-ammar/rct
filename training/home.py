@@ -4,13 +4,12 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from our_core.helper import display_view
 from django.http import HttpResponseRedirect,JsonResponse,HttpResponse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import ListView,CreateView,View,UpdateView,DeleteView
 from django.urls import reverse
 from django.db.models import Q ,Max
 from django.http import QueryDict
-
-from django_datatables_view.base_datatable_view import BaseDatatableView 
+ 
 
 from our_core.our_messages import message
 from django.contrib import messages
@@ -69,7 +68,12 @@ def index(request):
     }
 
     return render(request, 'index.html',context)
+def dashboard_callback(request, context):
+    context.update({
+         "sample": "unfold/components/navigation.html",
+    })
 
+    return context
 def handler404(request, exception):
     return render(request, "errors/404.html", status=404)
 

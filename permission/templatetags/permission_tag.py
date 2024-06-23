@@ -106,11 +106,19 @@ def contains_partion(value ):
 
 #################### tag
 
-    
+     
+
+
 @register.simple_tag
-def has_screen(requset ,screen_name , per):
-    
-    return _has_screen(requset ,screen_name , per)
+def has_screen(requset ,screen_name , permission_type):
+    """
+    Checks if the current user has the necessary permission for the specified action and object.
+
+    - permission_type: 'view', 'edit', or 'delete'
+    - obj (optional): The object to check permission on (defaults to None)
+    """
+    return _has_screen(requset ,screen_name , permission_type)
+
 
 from our_core.models import SidebarItem
 from django.shortcuts import render
@@ -127,15 +135,17 @@ def has_sidebar(requset):
     return html_template
 
 @register.simple_tag
-def active_has_screen(requset ,screen_name ):
-    return _active_has_screen(requset ,screen_name)
+def active_has_screen(request ,screen_name ):
+    
+    return has_screen(request,screen_name.split("View")[0],"view_sidbar")
+
 @register.simple_tag
 def has_tab(requset,per):
     return _has_tab(requset,per)
 
 @register.simple_tag
-def has_system(requset, per):
-    return _has_system(requset, per)  
+def has_system(request, per):
+    return _has_system(request,per)
 
 @register.simple_tag
 def has_partion(requset, per):

@@ -1,6 +1,6 @@
 from django.db import models
-from our_core.models import ModelUseBranch,CustomModel
-from django.utils.translation import ugettext_lazy as _
+from our_core.models import CustomModel
+from django.utils.translation import gettext_lazy as _
 
 
 class NotificationVariables(CustomModel):

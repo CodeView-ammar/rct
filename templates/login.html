@@ -68,28 +68,6 @@
 <script src="{% static 'js/jQuery-2.1.4.min.js' %} "></script> 
 
 <script>
-
-    // get the selected account ID from the HTML input
-     $.ajax({
-        method: "POST", // initialize an AJAX request
-            url: "{% url 'Showlogin' %}",
-            data: {
-                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-            },
-            success: function (data, status) {
-                let x=false
-                 x=data.data;
-                if(x==='false')
-                $('.remember_me').prop('checked', false);
-                else
-                $('.remember_me').prop('checked', true);
-                
-               
-            },error:function(data,status){
-                
-            }
-            
-            });
             
 
     $("input[name=remember_me]").on("change", function() {
@@ -99,26 +77,6 @@
        else
             e='false';
 
-        
-        // alert(e);
-      
-    $.ajax({
-            method: "post", // initialize an AJAX request
-            url: "{% url 'Savelogin' %}",
-            data: {
-                'remambe_my': e,
-            
-                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-            },
-            success: function (data, status) {
-                e=JSON.parse(data.data);
-             
-                // $('.remember_me').bootstrapToggle('on')
-                // $('#myCheckbox').bootstrapToggle('off')
-                // $("input[name=remember_me]").prop("checked",e);
-            }
-
-            });
 });
       
        

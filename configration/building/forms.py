@@ -2,7 +2,7 @@ from our_core.our_form import CustomModelForm
 from our_core.views import max_number
 from  configration.models import Building
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 class BuildingForm(CustomModelForm):
     def __init__(self, *args, **kwargs):
         super(BuildingForm, self).__init__(*args, **kwargs)

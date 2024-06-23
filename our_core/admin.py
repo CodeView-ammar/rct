@@ -1,12 +1,11 @@
 from django.contrib import admin
 
 from .models import SidebarItem
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
 
 from datetime import date
-
-
+from guardian.models import UserObjectPermission,GroupObjectPermission
 class DecadeBornListFilter(admin.SimpleListFilter):
     # Human-readable title which will be displayed in the
     # right admin sidebar just above the filter options.
@@ -73,4 +72,6 @@ class SidebarItemAdmin(admin.ModelAdmin):
 
 
 admin.site.register(SidebarItem, SidebarItemAdmin)# admin.site.register(Company)
+
+
 

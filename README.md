@@ -138,4 +138,4 @@ Now you can see “change password” link. please click that link.
 Set your phpMyAdmin password and retype again and press GO button.
 
 
-cd .. && source accovenv/Scripts/activate && cd accounting/ && python manage.py runserver
+source /d/AccountingSystem/accounting-master/accovenv/Scripts/activate  && python manage.py runserver

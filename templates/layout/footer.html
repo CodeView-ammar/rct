@@ -39,323 +39,68 @@
 
 
 
-{% block stylejs%}
 
-<script src="{% static 'jQuery/jquery-3.6.0.js' %} "></script> 
 
+<!-- jQuery 2.1.4 -->
+<script src="{% static 'plugins/jQuery/jQuery-2.1.4.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  // $.widget.bridge('uibutton', $.ui.button);
+</script>
 <!-- Bootstrap 3.3.4 -->
-<script src="{% static 'js/app.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js'%}"></script>  
-<script src="{% static 'js/datatable/datatable.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="{% static 'plugins/morris/morris.min.js' %}"></script>
 <script src="{% static 'js/messages/notify.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
-<script type="text/javascript" src="{% static 'assets/scripts/main.js' %}"></script>
-
-<script src="{% static 'js/dailg_new_screen.js' %}"></script>
-
-<script src="{% static 'js/datatable/jquery.dataTables13.min.js' %}"></script>
-
-
-<!--for sreaching -->
-<script type="text/javascript" src="{% static 'vendor/select2/dist/js/select2.full.js'%}"></script>
-<script type="text/javascript" src="{% static 'vendor/select2/dist/js/i18n/en.min.js'%}"></script>
-
-
-<script type="text/javascript" src="{% static 'autocomplete_light/jquery.init.js'%}"></script>
-<script type="text/javascript" src="{% static 'autocomplete_light/autocomplete.init.js'%}"></script>
-<script type="text/javascript" src="{% static 'autocomplete_light/forward.js'%}"></script>
-<script type="text/javascript" src="{% static 'autocomplete_light/select2.js'%}"></script>
-<script type="text/javascript" src="{% static 'autocomplete_light/jquery.post-setup.js'%}"></script> 
-
-<script src="{% static 'plugins/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js'%}"></script>
-
-<script src="{% static 'js/bootstrap.min.js.map' %}"></script>
-<script src="{% static 'bootbox.all.min.js' %}"></script>
+<!-- Sparkline -->
+<script src="{% static 'plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+<!-- jvectormap -->
+<script src="{% static 'plugins/jvectormap/jquery-jvectormap-1.2.2.min.js' %}"></script>
+<script src="{% static 'plugins/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+<!-- jQuery K{% static 'nob Chart -->
+<script src="{% static 'plugins/knob/jquery.knob.js' %}"></script>
 <script src="{% static 'js/datatable/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'js/datatable/dataTables.responsive.min.js' %}"></script>
-<script src="{% static 'js/custom_print.js' %}"></script>
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+<!-- datepicker -->
+<script src="{% static 'plugins/datepicker/bootstrap-datepicker.js' %}"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{% static 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js' %}"></script>
+<!-- Slimscroll -->
+<script src="{% static 'plugins/slimScroll/jquery.slimscroll.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'plugins/fastclick/fastclick.min.js' %}"></script>
+<!-- AdminLTE App -->
+
+<script src="{% static 'dist/js/app.min.js' %}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'dist/js/demo.js' %}"></script>
+<script src="{% static 'js/messages/notify.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 {% csrf_token %}
 <!-- after -->
 
 <script>
     
-//     $(document).ready(function() {
-//   $(document).ajaxStart(function() {
-//     // إظهار دائرة الانتظار
-//     $(".loading-indicator").show();
-//   });
-
-//   $(document).ajaxStop(function() {
-//     // إخفاء دائرة الانتظار
-//     $(".loading-indicator").hide();
-//   });
-
-//   $(document).on('DOMContentLoaded', function() {
-//     // إظهار دائرة الانتظار عند تحميل الصفحة
-//     $(".loading-indicator").show();
-
-//     // إخفاء دائرة الانتظار بعد تحميل الصفحة كاملة
-// });
-// });
     $(document).ready((function() {
-       
-
-        $("#saveclosesidebar").click(function(){
-            if($("#sidbar_custom").hasClass("closed-sidebar"))
-            {           
-            $("#logo_id").removeClass("hidden");
-            $("#sidbar_custom").addClass("fixed-sidebar");
-            
-            $("#close_side_svg").addClass("hidden");
-            $("#open_side_svg").removeClass("hidden");
-        }
-        else
-        {
-            $("#logo_id").addClass("hidden");
-            $("#sidbar_custom").removeClass("fixed-sidebar");
-            
-            $("#close_side_svg").removeClass("hidden");
-            $("#open_side_svg").addClass("hidden");
-            
-            
-            }
-          
-        });
-        
-        $("#saveclosesidebar").on("click", (function() {
-            // get the selected account ID from the HTML input
-            var e="";
-            if($("#sidbar_custom").hasClass("closed-sidebar"))
-            e = "";
-            else
-            e = "closed-sidebar";
-                
-            $.ajax({
-                method: "post", // initialize an AJAX request
-                url: "{% url 'saveresponsev_sidebar' %}",
-                data: {
-                    'close_sidbar_custom': e,
-
-                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-                },
-                success: function(data, status) {
-                    e = JSON.parse(data.data);
-                    }
-
-            });
-
-        }))
-
-
-
-        $.ajax({
-            method: "POST", // initialize an AJAX request
-            url: "{% url 'showresponsev_sidebar' %}",
-            data: {
-                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-            },
-            success: function(data, status) {
-                
-                let x = data.data;
-                $("#sidbar_custom").addClass(x);
-                
-                if($("#sidbar_custom").hasClass("closed-sidebar"))
-                {
-                    $("#saveclosesidebar").addClass("is-active");
-                    $("#sidbar_custom").removeClass("fixed-sidebar");
-        
-                
-                    $("#open_side_svg").addClass("hidden");
-                    $("#close_side_svg").removeClass("hidden");
-                    
-                }
-                else
-                {$("#saveclosesidebar").removeClass("is-active");
-                $("#sidbar_custom").addClass("fixed-sidebar");
-                
-                $("#open_side_svg").removeClass("hidden");
-                $("#close_side_svg").addClass("hidden");    
-            }},
-            error: function(data, status) {
-
-            }
-
-        });
-
-        $.ajax({
-            method: "POST", // initialize an AJAX request
-            url: "{% url 'ShowColor_sidebar' %}",
-            data: {
-                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-            },
-            success: function(data, status) {
-
-                let x = data.data;
-                $(".switch-sidebar-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-sidebar").attr("class", "app-sidebar"), $(".app-sidebar").addClass("sidebar-shadow " + x)
-            },
-            error: function(data, status) {
-
-            }
-
-        });
     
         $(document).ready(function() {
             $("title").text($("title").text()+"-"+$("#blocktitle").text());
         });
-        $(".switch-sidebar-cs-class").on("click", (function() {
-            // get the selected account ID from the HTML input
-            var e = $(this).attr("data-class");
-            $.ajax({
-                method: "post", // initialize an AJAX request
-                url: "{% url 'SaveColor_sidebar' %}",
-                data: {
-                    'color_sidebar': e,
-
-                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-                },
-                success: function(data, status) {
-                    e = JSON.parse(data.data);
-                    $(".switch-sidebar-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-sidebar").attr("class", "app-sidebar"), $(".app-sidebar").addClass("sidebar-shadow " + e)
-                }
-
-            });
-
+    
         }))
 
 
-        $.ajax({
-            method: "POST", // initialize an AJAX request
-            url: "{% url 'ShowColor_header' %}",
-            data: {
-                'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-            },
-            success: function(data, status) {
+    
 
-                let x = data.data;
-                $(".switch-header-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-header").attr("class", "app-header"), $(".app-header").addClass("header-shadow " + x)
-            },
-            error: function(data, status) {
-
-            }
-
-        });
-
-
-        $(".switch-header-cs-class").on("click", (function() {
-            // get the selected account ID from the HTML input
-            var e = $(this).attr("data-class");
-            $.ajax({
-                method: "post", // initialize an AJAX request
-                url: "{% url 'SaveColor_header' %}",
-                data: {
-                    'color_header': e,
-
-                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
-                },
-                success: function(data, status) {
-                    e = JSON.parse(data.data);
-                    $(".switch-header-cs-class").removeClass("active"), $(this).addClass("active"), $(".app-header").attr("class", "app-header"), $(".app-header").addClass("header-shadow " + e)
-                }
-
-            });
-
-        }))
-
-    }))
-//     var $mmActive = $('.mm-active');
-// if ($mmActive) {
-    //     $(".app-sidebar__inner").animate({
-        //         scrollTop: $mmActive.offset().top / 3
-        //     }, 'fast');
-        // }
-        // var $mmActive = $('.mm-active');
-        // if ($mmActive) {
-            
-    //         $(document).ready(function () {
-    //             // Handler for .ready() called.
-    //             $('.app-sidebar .app-sidebar__inner .vertical-nav-menu .sidebar').animate({
-    //                 scrolldown: $('.activeli').offset().top/3
-    //             }, 'slow');
-    //             alert( $('.activeli').offset().top);
-    //  });
-    //    }
-          /*
-        * this function is called after each ajax request, to save the output html to a file that will be used when printing a pdf
-        * after the file is saved the tmp_file_name will be used to store the tmp file name obvisouly
-        */
-        var temp_file_name = ""
-        var orginal_print_url = "";
-        function save_output_html(filename="")
-        {
-            let csrf = '{{ csrf_token }}';
-            request_url = "";
-            table_html = $("div.report").html();
-
-            
-
-            $.ajax({
-                url: request_url,
-                method: "POST",
-                dataType: "TEXT",
-                data: {html: table_html, filename: filename},
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("X-CSRFToken", csrf);
-                },
-                success: function (data)
-                {
-                    // window.location.href = url;
-                    let resp=JSON.parse(data);
-
-                    temp_file_name = resp["data"];
-                    //give the print buttons the path to the tmp_file_name
-                    var baseUrl = window.location.origin;
-                    // console.log(baseUrl);
-                    
-                    $(".Pdf").each(function ()
-                    {
-                        // if (orginal_print_url == "") {
-                            orginal_print_url = $(this).attr("href");
-                            print_url = orginal_print_url;
-                            print_url = decodeURI(print_url);
-                            print_url =baseUrl+"/"+temp_file_name;
-                            print_url = encodeURI(print_url);
-                            $(this).attr("href",print_url);
-                        // }
-
-                    });
-                    // $(".CSV").each(function ()
-                    // {
-                    //     if (orginal_csv_url == "") {
-                    //         orginal_csv_url = $(this).attr("href");
-					// 		}
-                    //         print_url = orginal_csv_url;
-                    //         print_url = decodeURI(print_url);
-                    //         print_url += "&temp_file_name=" + temp_file_name;
-                    //         print_url = encodeURI(print_url);
-                    //         $(this).attr("href", print_url);
-                        
-                    // });
-
-                    // $(".EXCEL").each(function ()
-                    // {
-                    //         orginal_csv_url = $(this).attr("href");
-                    //         print_url = orginal_csv_url;
-                    //         print_url = decodeURI(print_url);
-                    //         print_url += "&temp_file_name=" + temp_file_name;
-                    //         print_url = encodeURI(print_url);
-                    //         $(this).attr("href", print_url);
-                        
-                    // });
-                }
-            });
-        }
-        function printpdf(name){
-            $("#report_header_html").removeClass("hidden").html();
-            save_output_html(name);
-            $("#report_header_html").addClass("hidden");
-        }
 </script>
 
 <script>
@@ -571,24 +316,6 @@
 
     }
     
-    $('#change_branch').on('change', function(event) {
-        event.preventDefault();
-        let target = $(event.target);
-        let url2 = target.data('url');
-        let branch_val = $('#change_branch').val();
-        $.ajax({
-            type: 'POST',
-            url: url2,
-            data: {
-                branch: branch_val
-            },
-            headers: {
-                "X-CSRFToken": getCookie('csrftoken')
-            }
-        }).done(function(data, textStatus, jqXHR) {
-            window.location.reload(true);
-        });
-    });
     $('#language-list a').on('click', function(event) {
         event.preventDefault();
 
@@ -627,110 +354,9 @@
         });
     }
 
-
-    $(document).ready(function() {
-        (function($) {
-            var originalVal = $.fn.val;
-            $.fn.val = function() {
-                var result = originalVal.apply(this, arguments);
-                if (arguments.length > 0)
-                    if ($(this).hasClass('_currency_input')) {
-                        $(this).removeClass('_currency_input');
-                        if ($(this).attr('type') == 'number') {
-                            $(this).attr('type', 'text');
-                            $(this).val($(this).val().toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
-                        } else {
-                            temp = $(this).val().replace(/[^0-9.]/g, "")
-                            $(this).val(temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))
-                        }
-                        $(this).addClass('_currency_input');
-                    }
-                    // OR with custom event $(this).trigger('value-changed');
-                return result;
-            };
-        })(jQuery);
-
-        $(document).on('input', '._currency_input', function() {
-
-            if ($(this).attr('type') == 'number') {
-                $(this).attr('type', 'text');
-                $(this).val($(this).val().toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
-            } else {
-                temp = $(this).val().replace(/[^0-9.]/g, "")
-                $(this).val(temp.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))
-            }
-        });
-
-    });
-
-    function reset_number_format() {
-        $.each($('._currency_input'), function(key) {
-            $(this).removeClass('_currency_input');
-            temp = $(this).val().replace(/[^0-9.]/g, "")
-            $(this).attr('type', 'number');
-            $(this).val(temp);
-            $(this).addClass('_currency_input');
-
-        });
-    };
 </script>
 
-<!-- show scroll in datatable -->
 <script>
-    // $('.datatable_list').dataTable({
-    //     paging: false,
-    //     searching: false
-    // });
-    
-    // function request() {
-    //     return $.ajax({
-    //         type: "Get",
-    //         url: "{% url 'closeui' %}",
-    //     });
-    //     alert("A");
-    // }
-    // window.onbeforeunload = function(e) {
-    //     console.log(e);
-    //     e = e || window.event;
-    //     if (e) {
-    //         e.returnValue = "Do you really want to close?";
-    //     }
-    //     return '?';
-    // }     
-        
-$.ajax({
-    method: "get", // initialize an AJAX request
-    dataType: "JSON",
-    url:"/get_footer/",
-    data:{"id":1},
-    
-    success: function(data) {
-            let res = JSON.parse(data.data);
-          
-            
-            //CreateElementLogo()
-            
-            let fdata=document.getElementById("id_logo_campany");
-            let data1=document.getElementById("id_logo_campany_a");
-            
-            if (res.length > 0 && res[0].fields.image) {
-                fdata.src = data.host + res[0].fields.image;
-                fdata.alt = data.company__name_ar;
-                fdata.title = data.company__name_ar;
-                data1.href = data.host + res[0].fields.image;
-                data1.title = data.company__name_ar;
-            } else {
-                // إذا لم يتم العثور على صورة أو كانت فارغة، استخدم النص بدلاً منها
-                fdata.innerText = data.company__name_ar;
-                data1.innerText = data.company__name_ar;
-            }
-},
-    error: function (data) {
-            alert(data.status);
-    
-        }
-    })
-    
     function startBackup() {
   var progressBar = document.querySelector('.progress');
   $("#pleaseWaitDialog").modal("show");
@@ -783,19 +409,6 @@ $.ajax({
 //     e.preventDefault();
 // })
 
-function CreateElementLogo(){
-    var elementDiv = document.createElement("div");
-    var elementA = document.createElement("a");
-    var elementimg = document.createElement("img");
-    var elementparent = $(".vertical-nav-menu");
-    elementDiv.class="logo";
-    elementA.class="logo-img";
-    elementA.id="id_logo_campany_a";
-    elementimg.id="id_logo_campany";
-    elementA.append(elementimg);
-    elementDiv.append(elementA);
-    elementparent.html(elementDiv);
-}
 
 </script>
 
@@ -812,16 +425,6 @@ function CreateElementLogo(){
 
     }
 
-// var date = {{year}} + '-' + ('0' + ({{month}})).slice(-2) + '-01';
-// if($('#from-date'))
-// {
-// $('#from-date').val(date);
-// }
-// var today = new Date();
-// var current_date = (today.getFullYear() + '-' + ('0' + (today.getMonth()+1)).slice(-2) + '-' + ('0' + (today.getDay())).slice(-2));
-// date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-// if($('#to-date'))
-//     $('#to-date').val(date);
 var date_from ;
 var date_to ;
 var today = new Date();
@@ -837,33 +440,8 @@ date_to = today.getFullYear() + '-' + math + '-' + day_;
 
 $('#from-date').val(date_from);
 $('#to-date').val(date_to);
-function addRowOnTabInTable(tableSelector, fieldSelector,add_form) {
-    var table = $(tableSelector);
-  
-    table.on('keydown', fieldSelector, function(e) {
-        if (e.which === 9 && $(this).is(':focus')) { 
-        $(add_form).trigger('click');  
-
-        var currentIndex = $(".formset-field").index(this); 
-      var nextIndex = currentIndex + 1; 
-
-      if (nextIndex >= $(".formset-field").length) { 
-        nextIndex = 0;
-      
-    }
-
-      var nextField = $(".formset-field").eq(nextIndex); 
-      nextField.focus(); 
-      e.preventDefault(); 
-      
-    }
-    });
-  }
-//   $(window).load(function() {
-//       $(".loading-indicator").hide();
-//     });
 
 </script>
-
+{% block stylejs%}
  {% endblock stylejs %}
  
