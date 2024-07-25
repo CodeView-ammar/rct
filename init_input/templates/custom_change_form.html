@@ -1,0 +1,809 @@
+{% extends 'admin/change_form.html' %} 
+{% block after_field_sets %} 
+<div
+    class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"
+    style="background-color: #ddf7c1;">
+    <div class="lh-1">
+        <h1 class="h6 mb-0 text-white lh-1" style="color: #116bb9;text-align: center;font-size: x-large;">اولأ :التخطيط
+            Planning</h1>
+    </div>
+</div>
+
+    <div>
+         
+                <style>
+                    table tr td {
+                        border: 2px solid rgb(221, 198, 198);
+                    }
+                </style>
+                <table border="2" cellspacing="" style="border: 2px solid rgb(218, 198, 198);">
+                    <tr>
+                        <th>م</th>
+                        <th>الكفاية / عناصر الأداء Performance Elements / Competencies</th>
+                        <th>الأهداف الإجرائية</th>
+                        <th>توزيع الدرجات</th>
+                        <th>الحد الأعلى لدرجة التقييم</th>
+                        <th>الدرجة المكتسبة</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>توزيع الخطة التدريبية بشكل ملائم وتنفيذها</td>
+                        <td>يوجد خطة مكتوبة وموزعة على أسابيع الفصل التدريبي </td>
+                        <td>3.5</td>
+                        <td rowspan="2">7</td>
+                        <td>
+
+                                        <input type="number" name="planning_1" value="3.50"
+                                            class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                            step="0.01" max_value="3.5" min_value="0" required="" id="id_planning_1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>يوجد التزام بالجدول الزمني للخطة </td>
+                        <td>3.5</td>
+                        <td>
+                            <div class="flex group  mb-6 flex-col">
+                                <div class="flex-grow">
+                                    <input type="number" name="planning_2" value="3.50"
+                                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                        step="0.01" max_value="3.5" min_value="0" required="" id="id_planning_2">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Cognitive & Professional Competencies -->
+                    <tr>
+                        <td colspan="6">
+                            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"
+                                style="background-color: #ddf7c1;">
+                                <div class="lh-1">
+                                    <h1 class="h6 mb-0 text-white lh-1"
+                                        style="color: #116bb9;text-align: center;font-size: x-large;"> ثانياً: الكفاية
+                                        المعرفية والمهنية Cognitive & Professional Competencies</h1>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">2</td>
+                        <td rowspan="5">التمكن من المادة التدريبية وتحقيق أهدافها</td>
+                    </tr>
+                    <tr>
+                        <td>يعرض الأهداف التدريبية ( معرفيا، مهاريا) للمنهج في بداية كل فترة تدريبية.</td>
+                        <td>1.5</td>
+                        <td rowspan="4">7</td>
+                        <td><input type="number" name="competencies_1" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>التمكن من المقرر التدريبي ومحتوياته وما يرتبط به من حقائق علمية متجددة ومعارف ومهارات ومراجع
+                            أساسية.</td>
+                        <td>2</td>
+                        <td>
+                            <input type="number" name="competencies_2" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_competencies_2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يعرض المعلومات ويطبق المهارات المرتيطة بالمقرر التدريبي بشكل يمكن المتدرب من استيعابة
+                            واتقانه.</td>
+                        <td>2</td>
+                        <td>
+                            <input type="number" name="competencies_3" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_competencies_3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يساهم في اثراء المقرر التدريبي بما ينعكس إيجابا على خبرات المتدربين.</td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_4" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="7">3</td>
+                        <td rowspan="7">تطبيق أسس ومفاهيم التدريب</td>
+                    </tr>
+                    <tr>
+                        <td>يلم برؤية ورسالة واهداف وسياسات المؤسسة ويعمل على تحقيقها.</td>
+                        <td>1</td>
+                        <td rowspan="6">7</td>
+                        <td>
+                            <input type="number" name="competencies_5" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_competencies_5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>القدرة على إدارة المتدربين داخل مكان التدريب.</td>
+                        <td>1</td>
+                        <td>
+                            <input type="number" name="competencies_6" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_competencies_6">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>توزيع وقت فترة التدريب على مراحل المادة التدريبية بشكل مناسب.</td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_7" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_7">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يستخدم أساليب تدريبية متنوعة وحديثة.</td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_8" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_8">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يتحرك بشكل مناسب داخل مكان التدريب</td>
+                        <td>1</td>
+                        <td>
+                            <input type="number" name="competencies_9" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_competencies_9">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يستخدم الماوارد التدريبية بكفاءة وفاعلية.</td>
+                        <td>1</td>
+                        <td>
+                            <input type="number" name="competencies_10" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_competencies_10">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">4</td>
+                        <td rowspan="5">استخدام تقنيات وأساليب التدريب الحديثة</td>
+                    </tr>
+                    <tr>
+                        <td>يستخدم تقنيات التدرب الالكتروني ووسائل العرض التدريبية المناسبة.</td>
+                        <td>2</td>
+                        <td rowspan="4">7</td>
+                        <td> <input type="number" name="competencies_11" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_competencies_11">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يحرص على تحقيق الاستخدام الأمثل للوسائل التدريبية ولأنظمة التدرب الالكتروني</td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_12" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_12">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يحرص على تنمية مهاراته في استعمال الوسائل المناسبة والتقنيات الحديثة.</td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_13" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_13">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ابتكار أساليب تدريبية حديثة لعرض المقرر التدريبي.</td>
+                        <td>2</td>
+                        <td>
+                            <input type="number" name="competencies_14" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_competencies_14">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">6</td>
+                        <td rowspan="6">مراعاة الفروق الفردية بين المتدربين </td>
+                    </tr>
+                    <tr>
+                        <td>يتعرف على مستويات المتدربين في بداية الفصل التدريبي. </td>
+                        <td>1.5 </td>
+                        <td rowspan="5">7</td>
+                        <td>
+                            <input type="number" name="competencies_20" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يتابع أداء المتدربين من خلال السجلات.</td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_21" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_21">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يراعي الفروق الفردية بين المتدربين عند اجراء التقييم. </td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_22" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_22">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يحرص على تطوير المتدربين من خلال متابعتهم المستمرة خلال الفصل التدريبي وعلاج القصور. </td>
+                        <td>2</td>
+                        <td>
+                            <input type="number" name="competencies_23" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_competencies_23">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يتبع استراتيجيات متعددة في عرض المقرر تغطي المستويات المعرفية للمتدربين. </td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="competencies_24" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_competencies_24">
+                        </td>
+                    </tr>
+                    <!-- Cognitive & Professional Competencies -->
+                    <tr>
+                        <td colspan="6">
+                            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"
+                                style="background-color: #ddf7c1;">
+                                <div class="lh-1">
+                                    <h1 class="h6 mb-0 text-white lh-1"
+                                        style="color: #116bb9;text-align: center;font-size: x-large;"> ثالثاً: التنمية
+                                        المهنية Proffissional Development</h1>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">8</td>
+                        <td rowspan="3">الإهتمام بالنمو المهني والمعرفي وتطوير الذات </td>
+                    </tr>
+                    <tr>
+                        <td>يحرص على زيادة معلوماته وخبراته في مجال تخصصه حسب المصادر المتاحة</td>
+                        <td>1.5</td>
+                        <td rowspan="3">7</td>
+                        <td>
+                            <input type="number" name="development_1" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_development_1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يحرص على المشاركة في الدورات وورش العمل والمحاضرات والنورات في مجال تخصص.</td>
+                        <td>2</td>
+                        <td>
+                            <input type="number" name="development_2" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_development_2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يساهم في نقل خبراته وما تعلمه لزملائه.</td>
+                        <td>1.5</td>
+                        <td>
+                            <input type="number" name="development_3" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_development_3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">9</td>
+                        <td rowspan="4">تنظيم ملف المقرر التدريبي</td>
+                    </tr>
+                    <tr>
+                        <td>يلم بمفهوم وأهمية ملف المقرر وفوائده.</td>
+                        <td>1</td>
+                        <td rowspan="6">7</td>
+                        <td>
+                            <input type="number" name="development_4" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_development_4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يقوم بتعبئة النماذج المعتمدة فيما يتعلق بملف المقرر.</td>
+                        <td>2</td>
+                        <td>
+                            <input type="number" name="development_5" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_development_5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ينظم ملف المقرر بالطريقة المناسبه.</td>
+                        <td>2</td>
+                        <td>
+                            <input type="number" name="development_6" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_development_6">
+                        </td>
+                    </tr>
+                    <!-- Cognitive & Professional Competencies -->
+                    <tr>
+                        <td colspan="6">
+                            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"
+                                style="background-color: #ddf7c1;">
+                                <div class="lh-1">
+                                    <h1 class="h6 mb-0 text-white lh-1"
+                                        style="color: #116bb9;text-align: center;font-size: x-large;"> رابعاً: الكفاية
+                                        الإنتاجية Productivity</h1>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table border="2" cellspacing="" style="border: 2px solid rgb(218, 198, 198);">
+                    <tr>
+                        <td rowspan="6">10</td>
+                        <td rowspan="6">تقييم المتدربين المستمر حسب الخطة المعتمدة</td>
+                        <td>يتابع أعمال المتدربين ( الواجبات، التمارين) ويرصد الدرجات.</td>
+                        <td>1</td>
+                        <td rowspan="6">6</td>
+                        <td> <input type="number" name="productivity_1" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يجري الاختبارات الفصيرة لمحتويات المقرر.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_2" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يحلل نتائج الاختبارات لمعالجة القصور.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_3" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ينوع أساليب التقييم ( الشفهية،الكتابية،العملية) بما يتفق مع طبيعة المادة التدريبية، قدرات
+                            المتدربين،والإمكانات المتاحة.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_4" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يعد الاختبارات الشاملة للمنهج التدريبي وفق الأسس العلمية.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_5" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يوظف أساليب التقييم القبلي والتكويني والنهائي لقياس مدى تحقق الأهداف.</td>
+                        <td>1</td>
+                        <td><input type="number" name="productivity_6" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_6">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">11</td>
+                        <td rowspan="6">المساهمة في الإرشاد التدريبي والتوجيه المهني</td>
+                        <td>يلم بمفهوم التوجيه المهني والإرشاد التدريبي.</td>
+                        <td>0.5</td>
+                        <td rowspan="6">6</td>
+                        <td> <input type="number" name="productivity_7" value="0.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="0.5" min_value="0" required="" id="id_productivity_7">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يتواجد في مكتبه لارشاد المتدربين.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_8" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_8">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ينجز ما يوكل اليه من توجيه وارشاد تدريبي للمتدربين في القسم</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_9" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_9">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يتمتع بروح المبادرة في معرفة قدرات واتجاهات وظروف المتدربين الذين يشرف عليهم.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_10" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_10">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ينسق مع الرئيس المباشر والمرشد لمعالجة مشاكل المتدربين.</td>
+                        <td>1.5</td>
+                        <td> <input type="number" name="productivity_11" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_productivity_11">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يتابع متدربيه خلال الفصل التدريبي بشكل واضح ودقيق ويسعى دائما الى تقديم النصح والإرشاد لهم.
+                        </td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_12" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_12">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">12</td>
+                        <td rowspan="5">مستوى التحصيل المعرفي والمهاري لدى المتدربين</td>
+                        <td>يستخدم سجل متابعة أداء المتدرب بطريقة صحيحة.</td>
+                        <td>1.5</td>
+                        <td rowspan="5">6</td>
+                        <td> <input type="number" name="productivity_13" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_productivity_13">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>تقديم المساعدة الفعالة لكل متدرب لتحسين مستواه التدريبي.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_14" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_14">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>التعرف على أسباب الإخفاق التحصيلي لدى المتدربين.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_15" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_15">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>الحرص على امتلاك المتدريبين المقدرة على التطبيق.</td>
+                        <td>1</td>
+                        <td> <input type="number" name="productivity_16" value="1.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1" min_value="0" required="" id="id_productivity_16">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يحلل نتائج التطبيقات والاختبارات والملاحظات بأساليب إحصائية مناسبة.</td>
+                        <td>1.5</td>
+                        <td> <input type="number" name="productivity_17" value="1.50"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="1.5" min_value="0" required="" id="id_productivity_17">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">13</td>
+                        <td rowspan="3">إعداد ملف الإنجاز المهني</td>
+                        <td>يقوم بإعداد ملف خاص بالانجاز المهني له حسب المعايير المخصصة لذلك.</td>
+                        <td>2</td>
+                        <td rowspan="3">6</td>
+                        <td> <input type="number" name="productivity_18" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_productivity_18">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>يقوم بتعبئة النماذج المعتمدة فيما يتعلق بملف المقرر.</td>
+                        <td>2</td>
+                        <td> <input type="number" name="productivity_19" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_productivity_19">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ينظم ملف المقرر بالطريقة المناسبه.</td>
+                        <td>2</td>
+                        <td> <input type="number" name="productivity_20" value="2.00"
+                                class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                                step="0.01" max_value="2" min_value="0" required="" id="id_productivity_20">
+                        </td>
+                    </tr>
+                </table>
+                <table border="2" cellspacing="" width="100%" style="border: 2px solid rgb(218, 198, 198);">
+                        <!-- Cognitive & Professional Competencies -->
+                        <tr>
+                            <td colspan="6">
+                                <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"
+                                    style="background-color: #ddf7c1;">
+                                    <div class="lh-1">
+                                        <h1 class="h6 mb-0 text-white lh-1"
+                                            style="color: #116bb9;text-align: center;font-size: x-large;">خامساً:  الأنشطة والمشروعات  Activities & Projects						
+                                        </h1>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td rowspan="3">14</td>
+                        <td rowspan="3">المشاركات في الأنشطة اللامنهجية</td>
+                        <td>يساهم في مجالات الأنشطة المتعلقة بالمتدربين.</td>
+                        <td>1.5</td>
+                        <td rowspan="3">4</td>
+                        <td> <input type="number" name="activities_1" value="1.50"
+                            class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                            step="0.01" max_value="1.5" min_value="0" required="" id="id_activities_1">
+              </td>
+                    </tr>
+                    <tr>
+                        <td>يساهم في الأنشطة المتعلقة بالبيئة التدريبية.</td>
+                        <td>1.5</td>
+                        <td>    <input type="number" name="activities_2" value="1.50"
+                            class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                            step="0.01" max_value="1.5" min_value="0" required="" id="id_activities_2">
+                  </td>
+                    </tr>
+                    <tr>
+                        <td>يساهم في الأنشطة المتعلقة بالمقرر التدريبي.</td>
+                        <td>1</td>
+                        <td>           <input type="number" name="activities_3" value="1.00"
+                            class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                            step="0.01" max_value="1" min_value="0" required="" id="id_activities_3">
+             </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">9</td>
+                        <td rowspan="4">تنظيم ملف المقرر التدريبي</td>
+                        <td>يلم بمفهوم وأهمية ملف المقرر وفوائده.</td>
+                        <td>1</td>
+                        <td rowspan="4">7</td>
+                        <td>        <input type="number" name="personal_1" value="1.00"
+                            class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                            step="0.01" max_value="1" min_value="0" required="" id="id_personal_1">
+                </td>
+                    </tr>
+                    <tr>
+                        <td>يقوم بتعبئة النماذج المعتمدة فيما يتعلق بملف المقرر.</td>
+                        <td>2</td>
+                        <td> <input type="number" name="personal_2" value="1.00"
+                            class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                            step="0.01" max_value="1" min_value="0" required="" id="id_personal_2">
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>ينظم ملف المقرر بالطريقة المناسبه.</td>
+                        <td>2</td>
+                        <td> <input type="number" name="personal_3" value="1.00"
+                            class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                            step="0.01" max_value="1" min_value="0" required="" id="id_personal_3">
+                 </td>
+                    </tr>
+                  
+                </table>
+                <table border="2" cellspacing="" width="100%" style="border: 2px solid rgb(218, 198, 198);">
+                    <!-- Cognitive & Professional Competencies -->
+                    <tr>
+                        <td colspan="6">
+                            <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"
+                                style="background-color: #ddf7c1;">
+                                <div class="lh-1">
+                                    <h1 class="h6 mb-0 text-white lh-1"
+                                        style="color: #116bb9;text-align: center;font-size: x-large;">
+                                        سادساً:  الكفايات الشخصية  Personal Competencies												
+                                    </h1>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                
+                <tr>
+                    <td rowspan="4">15</td>
+                    <td rowspan="4">التعاون والتواصل مع الرؤساء</td>
+                    <td>يتقبل التوجيهات ويناقشها في حالة عدم وضوحها بشكل جيد</td>
+                    <td>1</td>
+                    <td rowspan="4">4</td>
+                    <td>  <input type="number" name="personal_4" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_4">
+             </td>
+                </tr>
+                <tr>
+                    <td>يبني علاقات جيدة مع الرؤساء لتحسين وتطوير العمل.</td>
+                    <td>1</td>
+                    <td> <input type="number" name="personal_5" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_5">
+            </td>
+                </tr>
+                <tr>
+                    <td>يستطيع أن يعبر عن نفسه وأن يشرح فكرته بشكل جيد</td>
+                    <td>1</td>
+                    <td>  <input type="number" name="personal_6" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_6">
+     </td>
+                </tr>
+                <tr>
+                    <td>يمكن الاعتماد عليه للقيام بمهام أخرى</td>
+                    <td>1</td>
+                    <td>  <input type="number" name="personal_7" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_7">
+</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">16</td>
+                    <td rowspan="4">التعاون والتواصل مع الزملاء</td>
+                    <td>يسعى لإيجاد علاقة جيدة مع الجميع</td>
+                    <td>1</td>
+                    <td rowspan="4">4</td>
+                    <td><input type="number" name="personal_8" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_8">
+         </td>
+                </tr>
+                <tr>
+                    <td>يبادل الخبرات التربوية مع الزملاء فيما يخدم المصلحة التدريبية.</td>
+                    <td>1</td>
+                    <td>     <input type="number" name="personal_9" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_9">
+          </td>
+                </tr>
+                <tr>
+                    <td>بيادر التقريب وتعزيز العلاقات الإيجابية بين الزملاء</td>
+                    <td>1</td>
+                    <td>  <input type="number" name="personal_10" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_10">
+                </td>
+                </tr>
+                <tr>
+                    <td>يشارك مع زملائه في القيام بأعمال أو بأنشطة مشتركة.</td>
+                    <td>1</td>
+                    <td>             <input type="number" name="personal_11" value="0.50"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="0.5" min_value="0" required="" id="id_personal_11">
+       </td>
+                </tr>
+                <tr>
+                    <td rowspan="5">17</td>
+                    <td rowspan="5">التعاون والتواصل مع المتدربين</td>
+                    <td>يكون قدوة حسنة للمتدربين.</td>
+                    <td>1</td>
+                    <td rowspan="5">4</td>
+                    <td> <input type="number" name="personal_12" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_12">
+             </td>
+                </tr>
+                <tr>
+                    <td>يعدل بين المتدربين.</td>
+                    <td>1</td>
+                    <td> <input type="number" name="personal_13" value="0.50"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="0.5" min_value="0" required="" id="id_personal_13">
+         </td>
+                </tr>
+                <tr>
+                    <td>يصون كرامة المتدربين ويعي حقوقهم</td>
+                    <td>0.5</td>
+                    <td>  <input type="number" name="personal_14" value="2.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="2" min_value="0" required="" id="id_personal_14">
+             </td>
+                </tr>
+                <tr>
+                    <td>يستثمر وقت المتدربين بكل مفيد.</td>
+                    <td>1</td>
+                    <td>     <input type="number" name="personal_15" value="2.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="2" min_value="0" required="" id="id_personal_15">
+           </td>
+                </tr>
+                <tr>
+                    <td>يتقبل ملاحظات المتدربين</td>
+                    <td>0.5</td>
+                    <td>   <input type="number" name="personal_16" value="1.50"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1.5" min_value="0" required="" id="id_personal_16">
+           </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">18</td>
+                    <td rowspan="2">الإلتزام بزي العمل</td>
+                    <td>يلتزم بزي العمل.</td>
+                    <td>2</td>
+                    <td rowspan="2">4</td>
+                    <td>   <input type="number" name="personal_17" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_17">
+                </td>
+                </tr>
+                <tr>
+                    <td>يحرص على الظهور بمظهر مرتب و نظيف</td>
+                    <td>2</td>
+                    <td>  <input type="number" name="personal_18" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_18">
+          </td>
+                </tr>
+                <tr>
+                    <td rowspan="5">19</td>
+                    <td rowspan="5">الإلتزام بمواعيد العمل</td>
+                    <td>يلتزم بمواعيد العمل الرسمي (حضورا. انصرافا)</td>
+                    <td>1.5</td>
+                    <td rowspan="5">6</td>
+                    <td>     <input type="number" name="personal_19" value="1.50"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1.5" min_value="0" required="" id="id_personal_19">
+               </td>
+                </tr>
+                <tr>
+                    <td>يتواجد في مكتبه حسب جدول الساعات المكتبية بالقسم</td>
+                    <td>1</td>
+                    <td>    <input type="number" name="personal_20" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_20">
+                </td>
+                </tr>
+                <tr>
+                    <td>يحرص على حضور اجتماعات القسم والمشاركة فيها.</td>
+                    <td>1</td>
+                    <td>     <input type="number" name="personal_21" value="1.50"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1.5" min_value="0" required="" id="id_personal_21">
+               </td>
+                </tr>
+                <tr>
+                    <td>يتقيد بالزمن المخصص للفترات التدريبية (بدءا، انتهاء).</td>
+                    <td>1.5</td>
+                    <td>   <input type="number" name="personal_22" value="1.00"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1" min_value="0" required="" id="id_personal_22">
+            </td>
+                </tr>
+                <tr>
+                    <td>يتبع الاجراءات الادارية عند الغياب او مغادرة مقر العمل قبل انتهاء الدوام.</td>
+                    <td>1</td>
+                    <td>  <input type="number" name="personal_23" value="1.50"
+                        class="border bg-white font-medium rounded-md shadow-sm text-gray-500 text-sm focus:ring focus:ring-primary-300 focus:border-primary-600 focus:outline-none group-[.errors]:border-red-600 group-[.errors]:focus:ring-red-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400 dark:focus:border-primary-600 dark:focus:ring-primary-700 dark:focus:ring-opacity-50 dark:group-[.errors]:border-red-500 dark:group-[.errors]:focus:ring-red-600/40 px-3 py-2 w-full max-w-2xl"
+                        step="0.01" max_value="1.5" min_value="0" required="" id="id_personal_23">
+             </td>
+                </tr>
+                <tr>
+                    <td rowspan="3">20</td>
+                    <td rowspan="3">إنجاز المهام في الوقت المحدد</td>
+                    <td>يحرص على انجاز الأعمال الموكلة إليه في الوقت المحدد.</td>
+                    <td>1.5</td>
+                    <td rowspan="3">4</td>
+                    <td>1.5</td>
+                </tr>
+                <tr>
+                    <td>يراعي الأنظمة واللوائح في انجاز أعماله.</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>يطور أساليب انجاز الأعمال الموكلة إليه طبقاً لمعايير الجودة.</td>
+                    <td>1.5</td>
+                    <td>1.5</td>
+                </tr>
+             
+                </table>
+              
+    </div>
+{% endblock %}

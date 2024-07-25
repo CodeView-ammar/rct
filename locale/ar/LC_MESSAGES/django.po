@@ -1,0 +1,1452 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-24 01:35+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#, fuzzy
+msgid "configration"
+msgstr "إشعار"
+
+msgid "The Number"
+msgstr "الرقم"
+
+msgid "building"
+msgstr "المبنى"
+
+#: .\configration\building\views.py:19 .\configration\cuntry\views.py:19
+#: .\configration\department\views.py:19 .\configration\section\views.py:19
+#: .\configration\subject\views.py:19 .\configration\type_file\views.py:19
+#: .\init_input\trainer\views.py:27
+msgid "Home"
+msgstr "الرئيسية"
+
+msgid "Cuntry"
+msgstr "الدولة"
+
+
+msgid "Departments"
+msgstr "الاقسام"
+
+msgid "Buildings"
+msgstr "مباني"
+
+msgid "Cuntrys"
+msgstr "الدولة"
+
+msgid "Department"
+msgstr "الإدارات"
+
+msgid "Divisions"
+msgstr "الشعب"
+
+msgid "Division"
+msgstr "شعبة"
+
+msgid "permission"
+msgstr "الصلاحية"
+
+msgid "permissions"
+msgstr "الصلاحيات"
+
+msgid "Users detiless"
+msgstr "المستخدمين"
+
+msgid "Files"
+msgstr "الملف المقرر"
+
+msgid "Head departments"
+msgstr "مدراء الاقسام"
+
+msgid "Sections"
+msgstr "الاقسام"
+
+msgid "Subjects"
+msgstr "المقرر"
+
+msgid "Type files"
+msgstr "انواع الملفات"
+
+msgid "Supervisory visitss"
+msgstr "الزيارات الإشرافية"
+
+
+msgid "Riyadh College"
+msgstr "كلية الرياض"
+
+#: .\configration\models.py:11 .\configration\models.py:26
+#: .\configration\models.py:33 .\configration\models.py:40
+#: .\configration\models.py:47 .\configration\models.py:62
+msgid "number"
+msgstr "الرقم"
+
+#: .\configration\models.py:12 .\configration\models.py:27
+#: .\configration\models.py:34 .\configration\models.py:42
+#: .\configration\models.py:48 .\configration\models.py:65
+#: .\init_input\models.py:38
+msgid "name"
+msgstr "الاسم"
+
+#: .\configration\models.py:13
+msgid "unit trining"
+msgstr "وحدة التدريب"
+
+#: .\configration\models.py:18
+msgid "head department"
+msgstr "رئيس القسم"
+
+#: .\configration\models.py:19 .\init_input\models.py:31
+msgid "phone"
+msgstr "الهاتف"
+
+#: .\configration\models.py:20
+msgid "email"
+msgstr "البريد الإلكتروني"
+
+#: .\configration\models.py:54
+msgid "First test"
+msgstr "الاختبار الأول"
+
+#: .\configration\models.py:55
+msgid "Second test"
+msgstr "الاختبار الثاني"
+
+#: .\configration\models.py:56
+msgid "final test"
+msgstr "الاختبار النهائي"
+
+#: .\configration\models.py:59
+msgid "diploma"
+msgstr "دبلوم"
+
+#: .\configration\models.py:60
+msgid "Bachelor's"
+msgstr "بكالوريوس"
+
+#: .\configration\models.py:64 .\configration\models.py:79
+msgid "code"
+msgstr "الرمز"
+
+#: .\configration\models.py:66
+msgid "testing"
+msgstr "اختبار"
+
+#: .\configration\models.py:67
+msgid "hours"
+msgstr "الساعات"
+
+#: .\configration\models.py:68
+msgid "stage"
+msgstr "المرحلة"
+
+#: .\configration\models.py:75 .\init_input\models.py:51
+msgid "morning"
+msgstr "صباحًا"
+
+#: .\configration\models.py:76 .\init_input\models.py:52
+msgid "evening"
+msgstr "مساءً"
+
+#: .\configration\models.py:80
+msgid "program"
+msgstr "البرنامج"
+
+#: .\configration\section\views.py:13 .\configration\section\views.py:14
+msgid "section"
+msgstr "القسم"
+
+#: .\configration\subject\views.py:13 .\configration\subject\views.py:14
+msgid "Subject"
+msgstr "المادة"
+
+#: .\configration\type_file\views.py:13 .\configration\type_file\views.py:14
+msgid "type file"
+msgstr "نوع الملف"
+
+
+
+#: .\init_input\models.py:10
+msgid "Note"
+msgstr "ملاحظة"
+
+#: .\init_input\models.py:11
+msgid "Approval"
+msgstr "موافقة"
+
+#: .\init_input\models.py:29
+msgid "full name"
+msgstr "الاسم الكامل"
+
+#: .\init_input\models.py:30
+msgid "birth date"
+msgstr "تاريخ الميلاد"
+
+#: .\init_input\models.py:33
+msgid "qualification"
+msgstr "المؤهل"
+
+#: .\init_input\models.py:34
+msgid "date qualification"
+msgstr "تاريخ المؤهل"
+
+#: .\init_input\models.py:35
+msgid "field study"
+msgstr "مجال الدراسة"
+
+#: .\init_input\models.py:37
+msgid "date start"
+msgstr "تاريخ البدء"
+
+#: .\init_input\models.py:39
+msgid "offes address"
+msgstr "عنوان المكتب"
+
+#: .\init_input\models.py:46 .\init_input\models.py:64
+#: .\init_input\models.py:79
+msgid "First semester"
+msgstr "الفصل الأول"
+
+#: .\init_input\models.py:47 .\init_input\models.py:65
+#: .\init_input\models.py:80
+msgid "Second semester"
+msgstr "الفصل الثاني"
+
+#: .\init_input\models.py:55 .\init_input\models.py:87
+msgid "Semester"
+msgstr "الفصل الدراسي"
+
+#: .\init_input\models.py:57
+msgid "projram"
+msgstr "البرنامج"
+
+#: .\init_input\models.py:59
+msgid "calculated"
+msgstr "محسوب"
+
+#: .\init_input\models.py:60 .\permission\models.py:14
+#: .\permission\templates\usersdetiles.html:92
+msgid "status"
+msgstr "الحالة"
+
+#: .\init_input\models.py:68
+msgid "count student"
+msgstr "عدد الطلاب"
+
+#: .\init_input\models.py:69
+msgid "max mark"
+msgstr "الدرجة العليا"
+
+#: .\init_input\models.py:70
+msgid "min mark"
+msgstr "الدرجة الدنيا"
+
+#: .\init_input\models.py:71
+msgid "absent"
+msgstr "غياب"
+
+#: .\init_input\models.py:72
+msgid "less than"
+msgstr "أقل من"
+
+#: .\init_input\models.py:73
+msgid "mark"
+msgstr "الدرجة"
+
+#: .\init_input\models.py:82
+msgid "evaluation for"
+msgstr "الزيارة"
+
+#: .\init_input\models.py:82
+msgid "practical"
+msgstr "عملي"
+
+#: .\init_input\models.py:82
+msgid "theoretical"
+msgstr "نظري"
+
+#: .\init_input\models.py:85
+msgid "watched"
+msgstr "مشاهد"
+
+#: .\init_input\models.py:86
+msgid "prepared"
+msgstr "معد"
+
+#: .\init_input\models.py:88
+msgid "date_start"
+msgstr "تاريخ البدء"
+
+#: .\init_input\templates\trainer\trainer.html:102 .\our_core\list_view.py:294
+#: .\templates_temps\admin\object_history.html:54
+#, fuzzy
+#| msgid "action"
+msgid "Action"
+msgstr "إجراء"
+
+
+#: .\init_input\trainer\views.py:65 .\our_core\views.py:307
+#, python-brace-format
+msgid "You Don't have Premission Add on {0}"
+msgstr "ليس لديك إذن للإضافة على {0}"
+
+#: .\init_input\trainer\views.py:99 .\our_core\views.py:327
+#, python-brace-format
+msgid "{0}"
+msgstr "{0}"
+
+#: .\our_core\admin.py:10
+msgid "core"
+msgstr ""
+
+#: .\our_core\admin.py:14 .\our_core\admin.py:28
+msgid "parent"
+msgstr "الأصل"
+
+#: .\our_core\admin.py:29
+msgid "children"
+msgstr "الفرع"
+
+#: .\our_core\admin.py:30
+msgid "sub parent"
+msgstr "الأصل الفرعي"
+
+#: .\our_core\helper.py:40
+msgid "Added Successfully "
+msgstr "تمت الإضافة بنجاح"
+
+#: .\our_core\helper.py:43
+msgid "Error adding process"
+msgstr "حدث خطأ أثناء الإضافة"
+
+#: .\our_core\list_view.py:200 .\our_core\list_view.py:205
+msgid "Edit"
+msgstr "تحرير"
+
+#: .\our_core\list_view.py:201 .\our_core\list_view.py:206
+#: .\templates_temps\admin\delete_confirmation.html:38
+#: .\templates_temps\admin\submit_line.html:31
+msgid "Delete"
+msgstr "حذف"
+
+#: .\our_core\list_view.py:256
+msgid "list_fields must be not None at {}"
+msgstr "يجب أن تكون list_fields غير Null في {}"
+
+#: .\our_core\list_view.py:262 .\our_core\list_view.py:286
+#, python-format
+msgid "table_type attribute for '%s' must be a int type or an instance of it."
+msgstr "سمة table_type لـ '%s' يجب أن تكون من نوع int أو مثيل له."
+
+#: .\our_core\list_view.py:267 .\our_core\list_view.py:291
+#, python-brace-format
+msgid ""
+"table_type attribute for '{0}' must be between[1 - 11] ( > 0 and <= 11)!\n"
+"provided value is '{1}'."
+msgstr ""
+"سمة table_type لـ '{0}' يجب أن تكون بين [1 - 11] (> 0 و <= 11)!\n"
+"القيمة المقدمة هي '{1}'."
+
+#: .\our_core\list_view.py:271
+msgid "Operations"
+msgstr "العمليات"
+
+#: .\our_core\list_view.py:294
+msgid "Details"
+msgstr "التفاصيل"
+
+#: .\our_core\our_exception.py:25
+msgid "value is not in range"
+msgstr "القيمة ليست في النطاق"
+
+#: .\our_core\our_exception.py:42
+msgid " Doesnot exist"
+msgstr "غير موجود"
+
+#: .\our_core\our_exception.py:57
+msgid "Account with this number Doesnot exist in this window"
+msgstr "الحساب بهذا الرقم غير موجود في هذه النافذة"
+
+#: .\our_core\our_exception.py:71
+msgid " withdraw overload try in lower amount "
+msgstr "السحب فاق المبلغ المتاح، الرجاء المحاولة بمبلغ أقل"
+
+#: .\our_core\our_exception.py:86
+msgid " The account hasnot any amount of money "
+msgstr "الحساب ليس لديه أي مبلغ من المال"
+
+#: .\our_core\our_form.py:37
+#, python-brace-format
+msgid "The {0} Must be Entered."
+msgstr "يجب إدخال {0}."
+
+#: .\our_core\our_form.py:40
+#, python-brace-format
+msgid "The {0} can't be Null ."
+msgstr "لا يمكن أن يكون {0} فارغًا."
+
+#: .\our_core\our_form.py:43
+#, python-brace-format
+msgid " The {0} can't be Blank ."
+msgstr "لا يمكن أن يكون {0} فارغًا."
+
+#: .\our_core\our_form.py:46
+#, fuzzy, python-brace-format
+#| msgid " The value for {0} is invalid ."
+msgid " The  value for {0} is invalid ."
+msgstr "القيمة المدخلة لـ {0} غير صحيحة."
+
+#: .\our_core\our_form.py:49
+#, fuzzy, python-brace-format
+#| msgid " The invalid choice for {0}."
+msgid " The invalid choice  for {0}."
+msgstr "الاختيار غير صحيح لـ {0}."
+
+#: .\our_core\our_form.py:52 .\our_core\our_form.py:55
+#, python-brace-format
+msgid "The {0} must be unique."
+msgstr "يجب أن يكون {0} فريدًا."
+
+#: .\our_core\our_form.py:58
+#, python-format
+msgid "Ensure this value has at most %(max)d characters (it has %(length)d)."
+msgstr "تأكد من أن هذه القيمة لا تزيد عن %(max)d حرفًا (وهي %(length)d حرفًا)."
+
+#: .\our_core\our_form.py:61
+#, python-format
+msgid "Ensure this value has at least %(min)d characters (it has %(length)d)."
+msgstr "تأكد من أن هذه القيمة لا تقل عن %(min)d حرفًا (وهي %(length)d حرفًا)."
+
+#: .\our_core\our_messages.py:10
+msgid "The Save Operation Completed Successfully"
+msgstr "تم حفظ العملية بنجاح"
+
+#: .\our_core\our_messages.py:19
+msgid "The Update Operation Completed Successfully"
+msgstr "تم تحديث العملية بنجاح"
+
+#: .\our_core\our_messages.py:28
+msgid "The Delete Operation Completed Successfully"
+msgstr "تم حذف العملية بنجاح"
+
+#: .\our_core\our_messages.py:37
+msgid "Password Change Completed Successfully"
+msgstr "تم تغيير كلمة المرور بنجاح"
+
+#: .\our_core\our_messages.py:45
+#, fuzzy
+#| msgid "The Backup Created Successfully"
+msgid "The Backup Created  Successfully"
+msgstr "تم إنشاء النسخة الاحتياطية بنجاح"
+
+#: .\our_core\our_messages.py:53
+msgid "A mistake in The Created Backup"
+msgstr "حدث خطأ أثناء إنشاء النسخة الاحتياطية"
+
+#: .\our_core\our_messages.py:61
+msgid "A mistake in The Input Data"
+msgstr "حدث خطأ في البيانات المدخلة"
+
+#: .\our_core\our_messages.py:68
+msgid ""
+"Error in Variables Sales Please Check Advance Option before Any Transctions"
+msgstr ""
+"هناك خطأ في متغيرات المبيعات، الرجاء التحقق من الخيارات المتقدمة قبل أي "
+"عمليات"
+
+#: .\our_core\our_messages.py:76
+msgid "A mistake in The Restore Backup"
+msgstr "حدث خطأ أثناء استعادة النسخة الاحتياطية"
+
+#: .\our_core\our_messages.py:84
+msgid "The Backup was Successfully Restored"
+msgstr "تمت استعادة النسخة الاحتياطية بنجاح"
+
+#: .\our_core\our_messages.py:92
+msgid "A mistake in The Save Process"
+msgstr "حدث خطأ أثناء عملية الحفظ"
+
+#: .\our_core\our_messages.py:100
+msgid "there are a processes on this item, you can not add"
+msgstr "هناك عمليات على هذا العنصر، لا يمكنك الإضافة"
+
+#: .\our_core\our_messages.py:112
+msgid "A mistake in The Save Process This is Store: {} have not this item: {}"
+msgstr "حدث خطأ أثناء عملية الحفظ. المخزن: {} لا يحتوي على هذا العنصر: {}"
+
+#: .\our_core\our_messages.py:115
+msgid "Quantity at Store less than Required of item: {} Qty: {}"
+msgstr "الكمية المخزونية أقل من المطلوب للعنصر: {} الكمية: {}"
+
+#: .\our_core\our_messages.py:124
+msgid "A mistake in The Update Process"
+msgstr "حدث خطأ في عملية التحديث"
+
+#: .\our_core\our_messages.py:133
+msgid "A mistake in The Delete Process"
+msgstr "حدث خطأ في عملية الحذف"
+
+#: .\our_core\our_messages.py:142
+msgid "Please Inter Your Equation"
+msgstr "الرجاء إدخال معادلتك"
+
+#: .\our_core\our_messages.py:150
+msgid "Please Make Sure From Equation Syntax ( ,+,-,x,)"
+msgstr "الرجاء التأكد من صحة بناء المعادلة ( ,+,-,x,)"
+
+#: .\our_core\our_messages.py:158
+msgid "Please From Create New Reporter Edit This And Click Save"
+msgstr "من فضلك قم بتعديل هذا التقرير الجديد وانقر حفظ"
+
+#: .\our_core\our_messages.py:165
+msgid "Sorry! There is a Function Unsupported In This Version"
+msgstr "آسف! هناك وظيفة غير مدعومة في هذا الإصدار"
+
+#: .\our_core\our_messages.py:172
+msgid "There a Function Required to Use Only Data Field"
+msgstr "هناك وظيفة مطلوبة لاستخدام حقل البيانات فقط"
+
+#: .\our_core\our_messages.py:179
+msgid "There are a Culomn not Found in Data Base (Make Sure From Your Inputs)"
+msgstr "هناك عمود غير موجود في قاعدة البيانات (تأكد من إدخالاتك)"
+
+#: .\our_core\our_messages.py:189
+msgid ""
+"May You Try to Make Operation with Number and String Make Sure that You Have "
+"Both Number Column or You Can Concatenating string By Use Concat( Function "
+"instead"
+msgstr ""
+"قد تحاول إجراء عملية مع رقم وسلسلة ، تأكد من أن لديك كل من عمود الأرقام أو "
+"يمكنك دمج السلسلة باستخدام وظيفة Concat( بدلاً من ذلك"
+
+#: .\our_core\our_messages.py:197
+msgid "The Column Type Mismatch String with Interger Operation"
+msgstr "نوع العمود لا يتطابق مع عملية السلسلة والصحيح"
+
+#: .\our_core\our_messages.py:205
+msgid "Can not Make Operation With String Column"
+msgstr "لا يمكن إجراء عملية مع عمود النص"
+
+#: .\our_core\our_messages.py:216
+msgid "Can Not Delete You Have Relation with"
+msgstr "لا يمكن حذفه لأنه مرتبط بعلاقات أخرى"
+
+#: .\our_core\our_messages.py:225
+msgid "Can Not Update You Have Relation with"
+msgstr "لا يمكن تحديثه لأنه مرتبط بعلاقات أخرى"
+
+#: .\our_core\our_messages.py:233
+msgid "You must insert addition broker accounts"
+msgstr "يجب عليك إدخال حسابات وسيط إضافية"
+
+#: .\our_core\our_messages.py:242
+msgid "Can Not Save / Update please Make Sure From Your Inputs"
+msgstr "لا يمكن حفظ / تحديث ، يرجى التأكد من إدخالاتك"
+
+#: .\our_core\our_messages.py:249
+msgid ""
+"Sorry, The Current Record Cannot be (deleted) Because it is Related to Other "
+"Processes"
+msgstr "عذرًا ، لا يمكن حذف السجل الحالي لأنه مرتبط بعمليات أخرى"
+
+#: .\our_core\our_messages.py:257
+msgid "Wrong Username or Password"
+msgstr "اسم المستخدم أو كلمة المرور خطأ"
+
+#: .\our_core\our_messages.py:264
+msgid "Request method not Accepted"
+msgstr "طريقة الطلب غير مقبولة"
+
+#: .\our_core\our_messages.py:272
+msgid "Sorry You Don't Have permission to action"
+msgstr "عذرًا ، ليس لديك إذن للقيام بهذا الإجراء"
+
+#: .\our_core\templates\core\core.html:43
+#: .\our_core\templates\core\core_fromset.html:8
+#: .\our_core\templates\core\core_fromset.html:19
+#: .\our_core\templates\core\page_model_core.html:80
+#: .\permission\templates\user.html:18
+#: .\permission\templates\usergroup.html:31
+#: .\permission\templates\usersdetiles.html:88
+msgid "#"
+msgstr "ر"
+
+#: .\our_core\templates\core\core.html:49
+#: .\our_core\templates\core\page_model_core.html:86
+#: .\permission\templates\user.html:29
+#: .\permission\templates\usergroup.html:35
+#, fuzzy
+#| msgid "action"
+msgid " Action"
+msgstr "إجراء"
+
+#: .\our_core\templates\core\core.html:96 .\permission\templates\user.html:74
+#: .\permission\templates\usergroup.html:76 .\templates\buttons.html:17
+#: .\templates\buttons_tree.html:17 .\templates_temps\admin\pagination.html:51
+#: .\templates_temps\admin\submit_line.html:10
+msgid "Save"
+msgstr "حفظ"
+
+#: .\our_core\templates\core\core.html:97 .\permission\templates\user.html:76
+#: .\permission\templates\usergroup.html:77
+#: .\templates_temps\admin\submit_line.html:26
+msgid "Close"
+msgstr "إغلاق"
+
+#: .\our_core\views.py:137
+msgid "You don't have permission to view this data."
+msgstr "ليس لديك إذن لعرض هذه البيانات."
+
+#: .\our_core\views.py:292
+#, python-brace-format
+msgid "You Don't have Premission edit on {0}"
+msgstr "ليس لديك إذن بالتحرير على {0}"
+
+#: .\our_core\widgets.py:190
+msgid "Enter a valid email"
+msgstr "أدخل بريد إلكتروني صالح"
+
+#: .\our_core\widgets.py:191
+msgid "Email is valid"
+msgstr "البريد الإلكتروني صالح"
+
+#: .\our_notifications\models.py:7
+msgid "Saturday"
+msgstr "السبت"
+
+#: .\our_notifications\models.py:8
+msgid "Sunday"
+msgstr "الأحد"
+
+#: .\our_notifications\models.py:9
+msgid "Monday"
+msgstr "الاثنين"
+
+#: .\our_notifications\models.py:10
+msgid "Tuesday"
+msgstr "الثلاثاء"
+
+#: .\our_notifications\models.py:11
+msgid "Wednesday"
+msgstr "الأربعاء"
+
+#: .\our_notifications\models.py:12
+msgid "Thursday"
+msgstr "الخميس"
+
+#: .\our_notifications\models.py:13
+msgid "Friday"
+msgstr "الجمعة"
+
+#: .\our_notifications\models.py:14
+msgid "All Days"
+msgstr "جميع الأيام"
+
+#: .\our_notifications\models.py:15
+msgid "Hours To Notify"
+msgstr "الساعات للإشعار"
+
+#: .\our_notifications\models.py:16
+msgid "System Default Notify"
+msgstr "إشعار النظام الافتراضي"
+
+#: .\our_notifications\models.py:16
+msgid "Popup Message"
+msgstr "رسالة منبثقة"
+
+#: .\our_notifications\models.py:16
+msgid "Custom Default Notify"
+msgstr "إشعار افتراضي مخصص"
+
+#: .\our_notifications\models.py:17
+msgid "Marquee"
+msgstr "لافتة متحركة"
+
+#: .\our_notifications\models.py:18
+msgid "Type of Notification"
+msgstr "نوع الإشعار"
+
+#: .\our_notifications\models.py:19
+msgid "Number of Messages to Show"
+msgstr "عدد الرسائل المطلوب عرضها"
+
+#: .\our_notifications\models.py:20
+#, fuzzy
+#| msgid "Every Seconds"
+msgid "Every  Seconds"
+msgstr "كل ثوان"
+
+#: .\our_notifications\models.py:21
+msgid "top"
+msgstr "أعلى"
+
+#: .\our_notifications\models.py:21
+msgid "bottom"
+msgstr "أسفل"
+
+#: .\our_notifications\models.py:22
+msgid "right"
+msgstr "يمين"
+
+#: .\our_notifications\models.py:22
+msgid "left"
+msgstr "يسار"
+
+#: .\our_notifications\models.py:23
+msgid "Placement From"
+msgstr "الموضع من"
+
+#: .\our_notifications\models.py:25
+msgid "Placement Align"
+msgstr "محاذاة الموضع"
+
+#: .\our_notifications\models.py:27
+msgid "fadeInRight"
+msgstr "ظهور من اليمين"
+
+#: .\our_notifications\models.py:28
+msgid "bounceInDown"
+msgstr "ظهور بارتداد من الأعلى"
+
+#: .\our_notifications\models.py:29
+msgid "bounceIn"
+msgstr "ظهور بارتداد"
+
+#: .\our_notifications\models.py:29
+msgid "flipInY"
+msgstr "انقلاب رأسي"
+
+#: .\our_notifications\models.py:30
+msgid "lightSpeedIn"
+msgstr "ظهور بسرعة البرق"
+
+#: .\our_notifications\models.py:30
+msgid "rollIn"
+msgstr "ظهور بلف"
+
+#: .\our_notifications\models.py:31 .\our_notifications\models.py:38
+msgid "zoomInDown"
+msgstr "تكبير من الأعلى"
+
+#: .\our_notifications\models.py:32
+msgid "fadeOutRight"
+msgstr "الاختفاء من اليمين"
+
+#: .\our_notifications\models.py:33
+msgid "bounceOutUp"
+msgstr "الاختفاء بارتداد للأعلى"
+
+#: .\our_notifications\models.py:34
+msgid "bounceOut"
+msgstr "الاختفاء بارتداد"
+
+#: .\our_notifications\models.py:35
+msgid "flipOutX"
+msgstr "انقلاب أفقي"
+
+#: .\our_notifications\models.py:36
+msgid "lightSpeedOut"
+msgstr "الاختفاء بسرعة البرق"
+
+#: .\our_notifications\models.py:37
+msgid "rollOut"
+msgstr "الاختفاء بلف"
+
+#: .\our_notifications\models.py:38
+msgid "zoomOutUp"
+msgstr "تصغير للأعلى"
+
+#: .\our_notifications\models.py:39
+msgid "Animate Enter"
+msgstr "تأثير الظهور"
+
+#: .\our_notifications\models.py:41
+msgid "Animate Exit"
+msgstr "تأثير الاختفاء"
+
+#: .\our_notifications\models.py:43
+msgid "Allow Dismiss"
+msgstr "السماح بالإغلاق"
+
+#: .\our_notifications\models.py:44
+msgid "Newest on Top"
+msgstr "الأحدث أعلى"
+
+#: .\our_notifications\models.py:47
+msgid "Notification"
+msgstr "إشعار"
+
+#: .\our_notifications\notification_helper.py:19
+msgid "Update Notifications Variables"
+msgstr "تحديث متغيرات الإشعارات"
+
+#: .\our_notifications\templates\notification_variables.html:31
+msgid "Submit Form"
+msgstr "إرسال النموذج"
+
+#: .\our_notifications\templates\notification_variables.html:31
+#: .\templates\buttons.html:20 .\templates\buttons_tree.html:20
+msgid "Update"
+msgstr "تحديث"
+
+#: .\our_notifications\templates\notification_variables.html:32
+msgid "Cancle Operation"
+msgstr "إلغاء العملية"
+
+#: .\our_notifications\templates\notification_variables.html:32
+msgid "CANCLE"
+msgstr "إلغاء"
+
+
+#: .\permission\forms.py:31 .\permission\forms.py:32 .\permission\forms.py:129
+#: .\permission\models.py:12 .\permission\templates\usersdetiles.html:90
+msgid "User Name"
+msgstr "اسم المستخدم"
+
+#: .\permission\forms.py:34 .\permission\forms.py:78 .\permission\forms.py:130
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: .\permission\forms.py:37 .\permission\forms.py:81
+msgid "Confirm password"
+msgstr "تأكيد كلمة المرور"
+
+#: .\permission\forms.py:61 .\permission\forms.py:105
+msgid "The two password fields didn't match."
+msgstr "كلمتا المرور غير متطابقتين."
+
+#: .\permission\forms.py:149
+#, fuzzy
+#| msgid "Sorry, User name or Password was incorrect. Please try again."
+msgid "Sorry, User name or Password  was incorrect. Please try again."
+msgstr "عذرًا، اسم المستخدم أو كلمة المرور غير صحيحة. الرجاء المحاولة مرة أخرى."
+
+#: .\permission\forms.py:154
+msgid "Sorry,This user was not active contact admin to solve this problem "
+msgstr "عذرًا، هذا المستخدم غير نشط، اتصل بالمسؤول لحل هذه المشكلة"
+
+#: .\permission\managers.py:16
+msgid "The Email must be set"
+msgstr "البريد الإلكتروني مطلوب"
+
+#: .\permission\models.py:13
+msgid "password"
+msgstr "كلمة المرور"
+
+#: .\permission\templates\user.html:9
+msgid "add new Group"
+msgstr "إضافة مجموعة جديدة"
+
+#: .\permission\templates\user.html:22
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\permission\templates\user.html:23
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#: .\permission\templates\user.html:25
+msgid "Last Name"
+msgstr "الاسم الأخير"
+
+#: .\permission\templates\user.html:26
+msgid "Is active"
+msgstr "نشط"
+
+#: .\permission\templates\user.html:27
+msgid "Is superuser"
+msgstr "مستخدم متميز"
+
+#: .\permission\templates\usergroup.html:23
+msgid "add new Outgoing Order Type"
+msgstr "إضافة نوع أمر جديد صادر"
+
+#: .\permission\templates\usergroup.html:32
+msgid "Arabic Name"
+msgstr "الاسم بالعربية"
+
+#: .\permission\templates\usergroup.html:33
+msgid "Foreign Name"
+msgstr "الاسم الأجنبي"
+
+#: .\permission\templates\usergroup.html:34
+msgid "company Name"
+msgstr "اسم الشركة"
+
+#: .\permission\templates\usersdetiles.html:4
+msgid " User List"
+msgstr "قائمة المستخدمين"
+
+#: .\permission\templates\usersdetiles.html:17
+msgid "Add user"
+msgstr "إضافة مستخدم"
+
+#: .\permission\templates\usersdetiles.html:21
+msgid "show user"
+msgstr "عرض المستخدم"
+
+#: .\permission\templates\usersdetiles.html:89
+msgid "الموظف"
+msgstr "الموظف"
+
+#: .\permission\templates\usersdetiles.html:93
+msgid "action"
+msgstr "إجراء"
+
+#: .\templates\admin\app_list.html:12
+#, python-format
+msgid "النماذج الموجودة في تطبيق %(name)s"
+msgstr ""
+
+#: .\templates\admin\app_list.html:49
+#: .\templates\unfold\helpers\app_list.html:243
+#, fuzzy
+#| msgid "You don't have permission to view or edit anything."
+msgid "You don’t have permission to view or edit anything."
+msgstr "ليس لديك إذن لعرض أو تحرير أي شيء."
+
+#: .\templates\buttons.html:14 .\templates\buttons_tree.html:14
+msgid "New"
+msgstr "جديد"
+
+#: .\templates\buttons.html:24 .\templates\buttons_tree.html:24
+msgid "delete"
+msgstr "حذف"
+
+#: .\templates\buttons.html:27 .\templates\buttons_tree.html:27
+msgid "print"
+msgstr "طباعة"
+
+#: .\templates\buttons.html:30 .\templates\buttons_tree.html:30
+msgid "طباعة كاشير"
+msgstr "طباعة كاشير"
+
+#: .\templates\errors\500.html:6
+msgid "Daily Entry Report"
+msgstr "تقرير الإدخال اليومي"
+
+#: .\templates\index.html:6
+msgid "home"
+msgstr "الصفحة الرئيسية"
+
+#: .\templates\layout\navbar.html:30
+msgid "Last login since "
+msgstr "آخر تسجيل دخول منذ "
+
+#: .\templates\layout\navbar.html:62
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\templates\layout\navbar.html:65
+msgid "Sign out"
+msgstr "تسجيل الخروج"
+
+#: .\templates\layout\navbar.html:102
+msgid "Search... "
+msgstr "البحث..."
+
+#: .\templates\login.html:42
+msgid "تذكرني"
+msgstr "تذكرني"
+
+#: .\templates\login.html:47
+msgid "login"
+msgstr "تسجيل الدخول"
+
+#: .\templates\permission_denied.html:4
+msgid " You do not have permission"
+msgstr "ليس لديك إذن"
+
+#: .\templates\unfold\helpers\app_list.html:213
+msgid "All applications"
+msgstr "جميع التطبيقات"
+
+#: .\templates_temps\admin\actions.html:18
+msgid "Run the selected action"
+msgstr "تنفيذ الإجراء المحدد"
+
+#: .\templates_temps\admin\actions.html:19
+msgid "Go"
+msgstr "انطلق"
+
+#: .\templates_temps\admin\actions.html:29
+msgid "Click here to select the objects across all pages"
+msgstr "انقر هنا لتحديد الكائنات عبر جميع الصفحات"
+
+#: .\templates_temps\admin\actions.html:29
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Select all %(total_count)s %(module_name)s"
+msgid ""
+"\n"
+"                            Select all %(total_count)s %(module_name)s"
+msgstr ""
+"\n"
+"حدد كل %(total_count)s %(module_name)s"
+
+#: .\templates_temps\admin\actions.html:32
+msgid "Clear selection"
+msgstr "مسح التحديد"
+
+#: .\templates_temps\admin\auth\user\add_form.html:10
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+"أولاً ، أدخل اسم المستخدم وكلمة المرور. بعد ذلك ، ستتمكن من تحرير المزيد من "
+"خيارات المستخدم."
+
+#: .\templates_temps\admin\auth\user\add_form.html:12
+msgid "Enter a username and password."
+msgstr "أدخل اسم المستخدم وكلمة المرور."
+
+#: .\templates_temps\admin\auth\user\change_password.html:40
+#: .\templates_temps\registration\password_change_done.html:17
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates_temps\admin\auth\user\change_password.html:54
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Enter a new password for the user\n"
+#| " <strong>%(username)s</strong>.\n"
+#| " "
+msgid ""
+"\n"
+"                            Enter a new password for the user\n"
+"                            <strong>%(username)s</strong>.\n"
+"                        "
+msgstr ""
+"\n"
+" أدخل كلمة مرور جديدة للمستخدم\n"
+" <strong>%(username)s</strong>.\n"
+" "
+
+#: .\templates_temps\admin\auth\user\change_password.html:90
+#: .\templates_temps\registration\password_change_form.html:68
+msgid "Change my password"
+msgstr "تغيير كلمة المرور الخاصة بي"
+
+#: .\templates_temps\admin\auth\user\change_password.html:105
+#: .\templates_temps\admin\login.html:90
+msgid "Please correct the error below."
+msgstr "يرجى تصحيح الخطأ أدناه."
+
+#: .\templates_temps\admin\auth\user\change_password.html:107
+#: .\templates_temps\admin\login.html:92
+#: .\templates_temps\registration\password_change_form.html:82
+msgid "Please correct the errors below."
+msgstr "يرجى تصحيح الأخطاء أدناه."
+
+#: .\templates_temps\admin\change_form.html:44
+#, python-format
+msgid ""
+"Add\n"
+"                                %(name)s"
+msgstr ""
+
+#: .\templates_temps\admin\change_form.html:62
+#: .\templates_temps\admin\change_list_object_tools.html:11
+#, python-format
+msgid "Add %(name)s"
+msgstr "إضافة %(name)s"
+
+#: .\templates_temps\admin\change_form_object_tools.html:8
+#: .\templates_temps\admin\object_history.html:36
+msgid "History"
+msgstr "السجل التاريخي"
+
+#: .\templates_temps\admin\change_form_object_tools.html:13
+#: .\templates_temps\admin\edit_inline\stacked.html:32
+#: .\templates_temps\admin\edit_inline\tabular.html:64
+msgid "View on site"
+msgstr "عرض في الموقع"
+
+#: .\templates_temps\admin\change_list.html:112
+msgid "Filter"
+msgstr "فلتر"
+
+#: .\templates_temps\admin\change_list_results.html:22
+msgid "Remove from sorting"
+msgstr "إزالة من الترتيب"
+
+#: .\templates_temps\admin\change_list_results.html:24
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr "أولوية الترتيب: %(priority_number)s"
+
+#: .\templates_temps\admin\change_list_results.html:26
+msgid "Toggle sorting"
+msgstr "تبديل الترتيب"
+
+#: .\templates_temps\admin\delete_confirmation.html:54
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Deleting the %(object_name)s '%(escaped_object)s' would result in "
+#| "deleting\n"
+#| " related objects, but your account doesn't have permission to delete the\n"
+#| " following types of objects:\n"
+#| " "
+msgid ""
+"\n"
+"                                    Deleting the %(object_name)s "
+"'%(escaped_object)s' would result in deleting\n"
+"                                    related objects, but your account "
+"doesn't have permission to delete the\n"
+"                                    following types of objects:\n"
+"                                "
+msgstr ""
+"\n"
+" حذف %(object_name)s '%(escaped_object)s' سيؤدي إلى حذف\n"
+" الكائنات ذات الصلة، ولكن حسابك ليس لديه إذن لحذف\n"
+" أنواع الكائنات التالية:\n"
+" "
+
+#: .\templates_temps\admin\delete_confirmation.html:72
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Deleting the %(object_name)s ' %(escaped_object)s' would require "
+#| "deleting\n"
+#| " the following protected related objects:\n"
+#| " "
+msgid ""
+"\n"
+"                                    Deleting the %(object_name)s ' "
+"%(escaped_object)s' would require deleting\n"
+"                                    the following protected related "
+"objects:\n"
+"                                "
+msgstr ""
+"\n"
+" حذف %(object_name)s '%(escaped_object)s' سيتطلب حذف\n"
+" الكائنات ذات الصلة المحمية التالية:\n"
+" "
+
+#: .\templates_temps\admin\delete_confirmation.html:89
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Are you sure you want to delete the %(object_name)s "
+#| "'%(escaped_object)s'?\n"
+#| " All of the following related items will be deleted:\n"
+#| " "
+msgid ""
+"\n"
+"                                    Are you sure you want to delete the "
+"%(object_name)s \"%(escaped_object)s\"?\n"
+"                                    All of the following related items will "
+"be deleted:\n"
+"                                "
+msgstr ""
+"\n"
+" هل أنت متأكد أنك تريد حذف %(object_name)s '%(escaped_object)s'؟\n"
+" سيتم حذف جميع العناصر ذات الصلة التالية:\n"
+" "
+
+#: .\templates_temps\admin\delete_confirmation.html:103
+#: .\templates_temps\admin\delete_selected_confirmation.html:103
+msgid "Objects"
+msgstr "الكائنات"
+
+#: .\templates_temps\admin\delete_confirmation.html:124
+#: .\templates_temps\admin\delete_selected_confirmation.html:122
+msgid "Yes, I'm sure"
+msgstr "نعم، أنا متأكد"
+
+#: .\templates_temps\admin\delete_confirmation.html:126
+#: .\templates_temps\admin\delete_selected_confirmation.html:124
+msgid "No, take me back"
+msgstr "لا، أرجعني"
+
+#: .\templates_temps\admin\delete_selected_confirmation.html:38
+msgid "Delete multiple objects"
+msgstr "حذف عدة كائنات"
+
+#: .\templates_temps\admin\delete_selected_confirmation.html:54
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Deleting the selected %(objects_name)s would result in deleting related\n"
+#| " objects, but your account doesn't have permission to delete the "
+#| "following\n"
+#| " types of objects:\n"
+#| " "
+msgid ""
+"\n"
+"                                        Deleting the selected "
+"%(objects_name)s would result in deleting related\n"
+"                                        objects, but your account doesn't "
+"have permission to delete the following\n"
+"                                        types of objects:\n"
+"                                    "
+msgstr ""
+"\n"
+" حذف %(objects_name)s المحددة سيؤدي إلى حذف الكائنات ذات الصلة\n"
+" ، ولكن حسابك ليس لديه إذن لحذف الأنواع التالية\n"
+" من الكائنات:\n"
+" "
+
+#: .\templates_temps\admin\delete_selected_confirmation.html:72
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Deleting the selected %(objects_name)s would require deleting the\n"
+#| " following protected related objects:\n"
+#| " "
+msgid ""
+"\n"
+"                                        Deleting the selected "
+"%(objects_name)s would require deleting the\n"
+"                                        following protected related "
+"objects:\n"
+"                                    "
+msgstr ""
+"\n"
+" حذف %(objects_name)s المحددة سيتطلب حذف\n"
+" الكائنات ذات الصلة المحمية التالية:\n"
+" "
+
+#: .\templates_temps\admin\delete_selected_confirmation.html:89
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| " Are you sure you want to delete the selected %(objects_name)s? All of "
+#| "the\n"
+#| " following objects and their related items will be deleted:\n"
+#| " "
+msgid ""
+"\n"
+"                                        Are you sure you want to delete the "
+"selected %(objects_name)s? All of the\n"
+"                                        following objects and their related "
+"items will be deleted:\n"
+"                                    "
+msgstr ""
+"\n"
+" هل أنت متأكد أنك تريد حذف %(objects_name)s المحددة؟ سيتم حذف جميع\n"
+" الكائنات التالية وعناصرها ذات الصلة:\n"
+" "
+
+#: .\templates_temps\admin\edit_inline\stacked.html:29
+#: .\templates_temps\admin\edit_inline\tabular.html:60
+msgid "Change"
+msgstr "تغيير"
+
+#: .\templates_temps\admin\edit_inline\stacked.html:29
+#: .\templates_temps\admin\edit_inline\tabular.html:60
+msgid "View"
+msgstr "عرض"
+
+#: .\templates_temps\admin\edit_inline\tabular.html:37
+msgid "Delete?"
+msgstr "هل تريد الحذف؟"
+
+#: .\templates_temps\admin\filter.html:9
+#, python-format
+msgid " By %(filter_title)s "
+msgstr " حسب %(filter_title)s "
+
+#: .\templates_temps\admin\includes\object_delete_summary.html:5
+msgid "Summary"
+msgstr "ملخص"
+
+#: .\templates_temps\admin\invalid_setup.html:35
+#: .\templates_temps\admin\invalid_setup.html:56
+msgid ""
+"Something's wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
+msgstr ""
+"هناك خطأ في تثبيت قاعدة البيانات الخاصة بك. تأكد من إنشاء الجداول المناسبة "
+"في قاعدة البيانات، وتأكد من أن قاعدة البيانات قابلة للقراءة من قبل المستخدم "
+"المناسب."
+
+#: .\templates_temps\admin\object_history.html:53
+msgid "User"
+msgstr "المستخدم"
+
+#: .\templates_temps\admin\object_history.html:55
+msgid "Date/time"
+msgstr "التاريخ/الوقت"
+
+#: .\templates_temps\admin\object_history.html:71
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
+msgstr ""
+"هذا الكائن ليس له سجل تغييرات. من المحتمل أنه لم يتم إضافته عبر موقع الإدارة "
+"هذا."
+
+#: .\templates_temps\admin\pagination.html:35
+#: .\templates_temps\admin\search_form.html:36
+msgid "Show all"
+msgstr "إظهار الكل"
+
+#: .\templates_temps\admin\search_form.html:20
+msgid "Search"
+msgstr "بحث"
+
+#: .\templates_temps\admin\search_form.html:26
+#, python-format
+msgid ""
+"\n"
+"                                    %(counter)s result\n"
+"                                "
+msgid_plural ""
+"\n"
+"                                    %(counter)s results\n"
+"                                "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
+
+#: .\templates_temps\admin\search_form.html:32
+#, python-format
+msgid ""
+"\n"
+"                                    %(full_result_count)s total\n"
+"                                "
+msgstr ""
+
+#: .\templates_temps\admin\submit_line.html:14
+msgid "Save as new"
+msgstr "حفظ كجديد"
+
+#: .\templates_temps\admin\submit_line.html:18
+msgid "Save and add another"
+msgstr "حفظ وإضافة آخر"
+
+#: .\templates_temps\admin\submit_line.html:22
+msgid "Save and continue editing"
+msgstr "حفظ والاستمرار في التحرير"
+
+#: .\templates_temps\admin\submit_line.html:22
+msgid "Save and view"
+msgstr "حفظ وعرض"
+
+#: .\templates_temps\registration\logged_out.html:11
+msgid "Log in"
+msgstr "تسجيل الدخول"
+
+#: .\templates_temps\registration\logged_out.html:12
+#: .\templates_temps\registration\logged_out.html:28
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr "شكرًا لك على قضاء بعض الوقت الجيد معنا على موقع الويب اليوم."
+
+#: .\templates_temps\registration\logged_out.html:16
+msgid "Log in again"
+msgstr "تسجيل الدخول مرة أخرى"
+
+#: .\templates_temps\registration\password_change_done.html:14
+msgid "Documentation"
+msgstr "الوثائق"
+
+#: .\templates_temps\registration\password_change_done.html:18
+msgid "Log out"
+msgstr "تسجيل الخروج"
+
+#: .\templates_temps\registration\password_change_done.html:35
+#: .\templates_temps\registration\password_change_form.html:22
+msgid "Password change"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates_temps\registration\password_change_done.html:49
+#: .\templates_temps\registration\password_change_done.html:63
+msgid "Your password was changed."
+msgstr "تم تغيير كلمة المرور الخاصة بك."
+
+#: .\templates_temps\registration\password_change_form.html:37
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+"من فضلك أدخل كلمة المرور القديمة، لأغراض الأمان، ثم أدخل كلمة المرور الجديدة "
+"مرتين حتى نتمكن من التحقق من أنك كتبتها بشكل صحيح."
+
+msgid "Todo"
+msgstr "المهام الروتينية"
+
+msgid "Configration"
+msgstr "التهئية العامة"
+
+msgid "init_input"
+msgstr "المدخلات العامة"
+
+
+msgid "Permission"
+msgstr "إدارة المستخدمين"
+
+
+msgid "Trackings"
+msgstr "متابعة إنجاز الإختبارات"
+
+
+msgid "Trainers"
+msgstr "المدربين"
+
+msgid "trainer"
+msgstr "مدرب"
+
+msgid "Tasks"
+msgstr "المهام"
+
+msgid "Weeks"
+msgstr "الأسابيع"
+
+#: .\todo\models.py:7
+msgid "week name"
+msgstr "اسم الأسبوع"
+
+#: .\todo\models.py:8
+msgid "date"
+msgstr "التاريخ"
+
+#: .\todo\models.py:13
+msgid "all department"
+msgstr "جميع الأقسام"
+
+#: .\todo\models.py:16
+msgid "task"
+msgstr "المهمة"
+
+#: .\todo\models.py:17
+msgid "note"
+msgstr "ملاحظة"
+
+#: .\todo\models.py:18
+msgid "done"
+msgstr "تم"
+
+#: .\todo\models.py:19
+msgid "See the achievement"
+msgstr "اطلع على الإنجاز"
+
+#: .\todo\models.py:20
+msgid "file"
+msgstr "ملف"
+
+#: .\todo\templates\todo\change_list.html:19
+msgid "Filters"
+msgstr "عوامل التصفية"
+

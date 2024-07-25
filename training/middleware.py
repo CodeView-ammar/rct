@@ -19,8 +19,20 @@ IGNORE_PATHS = [
 IGNORE_VIEW_NAMES = [
     name for name in getattr(settings, "LOGIN_REQUIRED_IGNORE_VIEW_NAMES", [])
 ]
+from django.shortcuts import redirect,render
+class AddAppPrefixMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
 
+    def __call__(self, request):
+        excluded_paths = ['/accounts/login/',"/media/","/html_to_excel/", '/accounts/logout/',"/my_custom_modal/"]  # قم بتحديد الروابط المستثناة هنا
 
+        if not any(request.path.startswith(path) for path in excluded_paths):
+            if not request.path.startswith('/app/'):
+                return redirect('/app' + request.path)
+        
+        response = self.get_response(request)
+        return response
 class LoginRequiredMiddleware(AuthenticationMiddleware):
     def _login_required(self, request):
         if request.user.is_authenticated:

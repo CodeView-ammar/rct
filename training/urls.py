@@ -6,18 +6,28 @@ from training import home
 from django.conf.urls.i18n import set_language
 
 from django.contrib.auth import login
+from init_input.admin import my_custom_modal
+from todo.views import task
+from init_input.views import download_excel
 
 urlpatterns =[
+        path('html_to_excel/<int:id_Supervisory>', download_excel, name='html_to_excel'),
         path('app/', admin.site.urls), 
-        path('', admin.site.urls), 
-        # path('',home.index , name='index'),  # overwriting at sidebare view
+        # path('', include("admin_volt.urls")), 
+        
+        # path('', admin.site.urls), 
+        path('',home.index , name='index'),  # overwriting at sidebare view
         path('i18n/', include('django.conf.urls.i18n')),
         
         path("app/", include("our_core.urls")), 
         path('app/', include('our_notifications.urls')),
-        path('app/', include('permission.urls')),
+        path('', include('permission.urls')),
         path('app/', include('configration.urls')),
         path('app/', include('init_input.urls')),
+        path('app/', include('todo.urls')),
+        path("todo/task/",task,name="task"),
+        
+        path('my_custom_modal/', my_custom_modal, name='my_custom_modal'),
 
         # path("app/", include("our_core.urls")), 
         # path('app/', include('our_notifications.urls')),
@@ -25,7 +35,7 @@ urlpatterns =[
         # path('app/', include('configration.urls')),
         # path('app/', include('init_input.urls')),
         path('setlang/', set_language, name='set_language'),  # overwriting at sidebare view
-
+ path('rosetta/', include('rosetta.urls')),
         # مصمم التقارير
     ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,7 +1,15 @@
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
+class SimpleAdminConfig(AppConfig):
+    """Simple AppConfig which does not do automatic discovery."""
 
-class InitInputConfig(AppConfig):
+    default_auto_field = "django.db.models.AutoField"
+    default_site = "django.contrib.admin.sites.AdminSite"
     name = 'init_input'
+    verbose_name = _("init_input")
+
+
+class InitInputConfig(SimpleAdminConfig):
     def ready(self):
         import our_core.signals

@@ -1,14 +1,17 @@
-th {
+.text-left{
+    text-align:right
+}
+:is(:where(.dark) .dark\:text-gray-200),.text-gray-700 .dark\:text-gray-200 {
     text-align: right;
-}
-.text-gray-500 {
-    color: #000000;
-}
-.text-gray-500 {
-    --tw-text-opacity: 1;
-    color: rgb(107 114 128/var(--tw-text-opacity))
-}
-.text-gray-500 {
-    color: #000000;
-    background-color: red;
-}
+    }
+:is(:where(.dark) .dark) {
+        text-align: right;
+        --tw-border-opacity: 1;
+        border-color: rgb(31 41 55 / var(--tw-border-opacity));
+    }
+    :is(:where(.dark) .dark\:border-gray-800) {
+        text-align: right;
+        --tw-border-opacity: 1;
+        border-color: rgb(31 41 55 / var(--tw-border-opacity));
+    }
+ 

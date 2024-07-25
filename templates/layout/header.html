@@ -1,57 +1,141 @@
 {% load static i18n  %}
-<!DOCTYPE html>
-{% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE|default:'en-us' }}">    
-<head>
-   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta http-equiv="Content-Language" content="en">
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-   <meta name="description" content="نظام برونكس المحاسبي المتكامل النظام الشامل لجميع معاملاتك المؤسسية والحسابية">
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   <meta name="turbolinks-cache-control" content="no-cache">
-   {% block favicon %}
-   <link href="{% static 'imgs/favicon.png' %}" rel="shortcut icon">
-   <!-- <link rel="icon" href="{%static 'logo/logo.png'%}" type="image/icon type"> -->
-   
-   {% endblock %}
-   <title>RCT system</title>
-   
-   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-   <!-- Font Awesome -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   <!-- Ionicons 2.0.0 -->
-   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-   <!-- Theme style -->
-   <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css' %}">
-   <!-- AdminLTE Skins. Choose a skin from the css/skins
-        folder instead of downloading all of them to reduce the load. -->
-   <link rel="stylesheet" href="{% static 'dist/css/skins/_all-skins.min.css' %}">
-   <!-- iCheck -->
-   <link rel="stylesheet" href="{% static 'plugins/iCheck/flat/blue.css' %}">
-   <!-- Morris chart -->
-   <link rel="stylesheet" href="{% static 'plugins/morris/morris.css' %}">
-   <!-- jvectormap -->
-   <link rel="stylesheet" href="{% static 'plugins/jvectormap/jquery-jvectormap-1.2.2.css' %}">
-   <!-- Date Picker -->
-   <link rel="stylesheet" href="{% static 'plugins/datepicker/datepicker3.css' %}">
-   <!-- Daterange picker -->
-   <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker-bs3.css' %}">
-   <!-- bootstrap wysihtml5 - text editor -->
-   <link rel="stylesheet" href="{% static 'plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' %}">
-   <link rel="stylesheet" href="{% static 'dist/fonts/fonts-fa.css' %}">
-   <link rel="stylesheet" href="{% static 'dist/css/bootstrap-rtl.min.css' %}">
-   <link rel="stylesheet" href="{% static 'dist/css/rtl.css' %}">
-   <link href="{% static 'css/messages/notify.css'%}" rel="stylesheet">    
-   <!-- <link rel="stylesheet" href="{% static 'css/responsive.dataTables.min.css' %}"> -->
-   <!-- <link rel="stylesheet" href="{% static 'plugins/datatables/dataTables.bootstrap.css' %}"> -->
-   <!-- <link rel="stylesheet" href="{% static 'plugins/datatables/jquery.dataTables_themeroller.css' %}"> -->
-   <!-- <link rel="stylesheet" href="{% static 'plugins/datatables/jquery.dataTables.min.css' %}"> -->
- 
-   {% block style %}
-   {% endblock style %}
+{% block extrastyle %}
+<style>
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+.modal-footer:after {
+  clear: both;
+}
 
-
-
-</head>
+.modal-open {
+  overflow: hidden;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+       -o-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+}
+.modal-backdrop.fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+.modal-header {
+  min-height: 16.42857143px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-header .close {
+  margin-top: -2px;
+}
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
+}
+.text-left {
+    text-align: right;
+}
+</style>
+{% endblock %}

@@ -6,6 +6,8 @@ from django.db.models import Q
 
 from datetime import date
 from guardian.models import UserObjectPermission,GroupObjectPermission
+from django.utils.translation import gettext_lazy as _
+app_name = _("core")
 class DecadeBornListFilter(admin.SimpleListFilter):
     # Human-readable title which will be displayed in the
     # right admin sidebar just above the filter options.
@@ -71,7 +73,7 @@ class SidebarItemAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-admin.site.register(SidebarItem, SidebarItemAdmin)# admin.site.register(Company)
+# admin.site.register(SidebarItem, SidebarItemAdmin)# admin.site.register(Company)
 
 
 

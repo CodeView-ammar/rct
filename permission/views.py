@@ -32,7 +32,7 @@ from our_core.our_messages import message
 # UsersDetilesTypeDevice)
 
 from django.contrib.auth.models import  User
-from permission.forms import UserPassword,LoginForm
+from permission.forms import UserPassword
 
 
 from training.save_db import SaveDB
@@ -57,7 +57,7 @@ def SigIntHand(SIG, FRM):
     print("Please Right click-copy. Ctrl-C does not work on the cmd prompt")
 
 
-    
+from admin_volt.forms import LoginForm
 def login(request):
     # form = LoginDataForm(request.POST or None)
     form2 = LoginForm(request.POST or None)
@@ -108,12 +108,11 @@ def login(request):
                         homee=request.GET.get('/')
                     return redirect(homee)
             
-    return render(request, 'login.html', { 'form2': form2,"context":context})
+    return render(request, 'accounts/sign-in.html', { 'form2': form2,"context":context})
 
-def logout(request):
-    cache.delete('branch')
-    return redirect(settings.LOGOUT_REDIRECT_URL)
-    # logout_user(request)
+def logout_view(request):
+  logout_user(request)
+  return redirect(reverse("login"))
 
 
 

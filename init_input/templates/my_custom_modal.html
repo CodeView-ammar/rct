@@ -1,3 +1,44 @@
+
+    <!-- Modal Content -->
+    <div class="row">
+        <div class="col-12 mb-4">
+          <div class="card border-0 shadow">
+            <div class="card-body">
+              <div class="row d-block mt-4">
+                <div class="col-lg-4">
+    <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="h6 modal-title">Terms of Service</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>With less than a month to go before the European Union enacts new consumer privacy laws for
+            its citizens, companies around the world are updating their terms of service agreements to
+            comply.</p>
+            <p>The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25
+            and is meant to ensure a common set of data rights in the European Union. It requires
+            organizations to notify users as
+            soon as possible of high-risk data breaches that could personally affect them.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary">Accept</button>
+            <button type="button" class="btn btn-link text-gray-600 ms-auto"
+            data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <div class="modal " id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="modalLRFormTitle"
 aria-hidden="true">
 <div class="modal-dialog modal-xl" role="document">
@@ -9,12 +50,44 @@ aria-hidden="true">
             </button>
         </div>
         <div class="modal-body">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Save</button>
-            </form>
-
+            <div id="load_div"></div>
+            
     </div>
 </div>
 </div>
+
+{% block stylejs%}
+<script>
+let csrf = '{{ csrf_token }}';
+let id_custom=0
+  $(document).on('click', '#custommo', function(e) {
+      e.preventDefault();
+   
+        id_custom=$(this).data('id')
+      
+      $('#load_div').load(`{% url "my_custom_modal" %}?id=${$(this).data('id')}`);
+
+    })
+    $(document).on('submit', '#trackingdetails', function(e) {
+        e.preventDefault();        
+        if(id_custom>0){
+        $.ajax({
+            url: "{% url 'my_custom_modal' %}?id="+id_custom,
+            method: 'POST',
+            data:$(this).serialize(),
+            beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", csrf);
+                },
+            success: function(data) {
+
+                
+                console.log(data.status)
+                if (data.status == 1) {
+                    $('#modalLRForm').modal('hide');
+                }
+            },
+        });}
+        });
+
+</script>
+{% endblock stylejs %}

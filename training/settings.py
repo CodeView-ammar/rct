@@ -52,12 +52,13 @@ INSTALLED_APPS = [
      "unfold",  # before django.contrib.admin
     "unfold.contrib.filters",  # optional, if special filters are needed
     "unfold.contrib.forms",  # optional, if special form elements are needed
-    # "unfold.contrib.inlines",  # optional, if special inlines are needed
+    "unfold.contrib.inlines",  # optional, if special inlines are needed
     "unfold.contrib.import_export",  # optional, if django-import-export package is used
     "unfold.contrib.guardian",  # optional, if django-guardian package is used
     "unfold.contrib.simple_history",  # optional, if django-simple-history package is used
+    # 'admin_volt.apps.AdminVoltConfig',
     'dal_queryset_sequence',
-    "django.contrib.sites",
+    # "django.contrib.sites",
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -69,13 +70,14 @@ INSTALLED_APPS = [
     'crispy_forms',
     "our_notifications",
     'crispy_bootstrap4',
-    # 'translations',
     'dal',
     'dal_select2',
     # view table befor print
    "compressor",
    "guardian",
    'import_export',
+    'rosetta',
+    
 
 ]
 SITE_ID = 1 
@@ -103,14 +105,16 @@ PIPELINE = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "django.middleware.locale.LocaleMiddleware",
+    # 'rosetta.middleware.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'training.middleware.UserLocaleMiddleware',
     "our_core.our_middleware.RequestMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'training.middleware.LoginRequiredMiddleware',
+    'training.middleware.AddAppPrefixMiddleware',
+    'training.middleware.UserLocaleMiddleware',
+    
     
 ]
 
@@ -220,7 +224,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'ar'  # default (fallback) language
-# LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en'
 
 LANGUAGES = (            # supported languages
     ('ar', 'Arabic'),
@@ -258,10 +262,10 @@ STATIC_ROOT =  os.path.join(BASE_DIR, 'statics/')
 AUTH_USER_MODEL = "permission.UsersDetiles"
 
 
-FILE_UPLOAD_HANDLERS = (
-    "django_excel.ExcelMemoryFileUploadHandler",
-    "django_excel.TemporaryExcelFileUploadHandler",
-)
+# FILE_UPLOAD_HANDLERS = (
+#     "django_excel.ExcelMemoryFileUploadHandler",
+#     "django_excel.TemporaryExcelFileUploadHandler",
+# )
 
 # # Application definition
 # SESSION_ENGINE = "django.contrib.sessions.backends.cache"
@@ -276,7 +280,7 @@ STATICFILES_CACHE_MAX_AGE = 60 * 60 * 24 * 7  # 1 week
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
-LOGIN_REDIRECT_URL = "index"
+LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "login/?next=/"
 APPEND_SLASH = False
 
@@ -393,148 +397,172 @@ from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-UNFOLD = {
-    "SITE_TITLE": None,
-    "SITE_HEADER": None,
-    "SITE_URL": "/",
-    "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
-    "SITE_ICON": {
-        "light": lambda request: static("icon-light.svg"),  # light mode
-        "dark": lambda request: static("icon-dark.svg"),  # dark mode
-    },
-    # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
-    "SITE_LOGO": {
-        "light": lambda request: static("logo-light.svg"),  # light mode
-        "dark": lambda request: static("logo-dark.svg"),  # dark mode
-    },
-    "SITE_SYMBOL": "speed",  # symbol from icon set
-    "SHOW_HISTORY": True, # show/hide "History" button, default: True
-    "SHOW_VIEW_ON_SITE": True, # show/hide "View on site" button, default: True
-    "ENVIRONMENT": "init_input.environment_callback",
-    "DASHBOARD_CALLBACK": "training.home.dashboard_callback",
-    "THEME": "dark", # Force theme: "dark" or "light". Will disable theme switcher
-    "LOGIN": {
-        "image": lambda request: static("sample/login-bg.jpg"),
-        "redirect_after": lambda request: reverse_lazy("admin:index"),
-    },
-    "STYLES": [
-        lambda request: static("css/style.css"),
-    ],
-    "SCRIPTS": [
-        lambda request: static("js/script.js"),
-    ],
-    "COLORS": {
-        "primary": {
-            "50": "250 245 255",
-            "100": "243 232 255",
-            "200": "233 213 255",
-            "300": "216 180 254",
-            "400": "192 132 252",
-            "500": "168 85 247",
-            "600": "147 51 234",
-            "700": "126 34 206",
-            "800": "107 33 168",
-            "900": "88 28 135",
-            "950": "59 7 100",
-        },
-    },
-    "EXTENSIONS": {
-        "modeltranslation": {
-            "flags": {
-                "en": "🇬🇧",
-                "ar": "ar",
-            },
-        },
-    },
-    "SIDEBAR": {
-        "show_search": True,  # Search in applications and models names
-        "show_all_applications": False,  # Dropdown with all applications and models
-        "navigation": [
-            {
-                "title": _("الرئيسي"),
-                "separator": True,  # Top border
-                "items": [
-                    {
-                        "title": _("Dashboard"),
-                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("admin:index"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                ]
-            },
-            {
-                "title": _("التهيئة العامة"),
-                "separator": True,  # Top border
-                "items": [
-                    {
-                        "title": _("Building"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("BuildingView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                     {
-                        "title": _("Department"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("DepartmentView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                     {
-                        "title": _("TypeFile"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("TypeFileView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                     {
-                        "title": _("Section"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("SectionView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                     {
-                        "title": _("Cuntry"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("CuntryView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                     {
-                        "title": _("Subject"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("SubjectView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                    {
-                        "title": _("Division"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("DivisionView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                ],
-            },
-             {
-                "title": _("المدخلات الأساسية"),
-                "separator": True,  # Top border
-                "items": [
-                    {
-                        "title": _("Trainer"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("TrainerView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                     {
-                        "title": _("Tracking"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("TrackingView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },
-                    {
-                        "title": _("Details Tracking"),
-                        "icon": "home",  # Supported icon set: https://fonts.google.com/icons
-                        "link": reverse_lazy("DetailsTrackingView"),
-                        "permission": lambda request: request.user.is_superuser,
-                    },  
-                ],
-            },
-        ],
-    },
+# UNFOLD = {
+#     "SITE_TITLE": None,
+#     "SITE_HEADER": None,
+#     "SITE_URL": "/",
+#     "SITE_ICON": lambda request: static("icon.svg"),  # both modes, optimise for 32px height
+#     "SITE_ICON": {
+#         "light": lambda request: static("icon-light.svg"),  # light mode
+#         "dark": lambda request: static("icon-dark.svg"),  # dark mode
+#     },
+#     # "SITE_LOGO": lambda request: static("logo.svg"),  # both modes, optimise for 32px height
+#     "SITE_LOGO": {
+#         "light": lambda request: static("logo-light.svg"),  # light mode
+#         "dark": lambda request: static("logo-dark.svg"),  # dark mode
+#     },
+#     "SITE_SYMBOL": "speed",  # symbol from icon set
+#     "SHOW_HISTORY": True, # show/hide "History" button, default: True
+#     "SHOW_VIEW_ON_SITE": True, # show/hide "View on site" button, default: True
+#     "ENVIRONMENT": "init_input.environment_callback",
+#     "DASHBOARD_CALLBACK": "training.home.dashboard_callback",
+#     "THEME": "dark", # Force theme: "dark" or "light". Will disable theme switcher
+#     "LOGIN": {
+#         "image": lambda request: static("sample/login-bg.jpg"),
+#         "redirect_after": lambda request: reverse_lazy("admin:index"),
+#     },
+#     "STYLES": [
+#         lambda request: static("css/style.css"),
+#     ],
+#     "SCRIPTS": [
+#         lambda request: static("js/script.js"),
+#     ],
+#     "COLORS": {
+#         "primary": {
+#             "50": "250 245 255",
+#             "100": "243 232 255",
+#             "200": "233 213 255",
+#             "300": "216 180 254",
+#             "400": "192 132 252",
+#             "500": "168 85 247",
+#             "600": "147 51 234",
+#             "700": "126 34 206",
+#             "800": "107 33 168",
+#             "900": "88 28 135",
+#             "950": "59 7 100",
+#         },
+#     },
+#     "EXTENSIONS": {
+#         "modeltranslation": {
+#             "flags": {
+#                 "en": "🇬🇧",
+#                 "ar": "ar",
+#             },
+#         },
+#     },
+#     "SIDEBAR": {
+#         "show_search": True,  # Search in applications and models names
+#         "show_all_applications": False,  # Dropdown with all applications and models
+#         "navigation": [
+#             {
+#                 "title": _("الرئيسي"),
+#                 "separator": True,  # Top border
+#                 "items": [
+#                     {
+#                         "title": _("Dashboard"),
+#                         "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("admin:index"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                 ]
+#             },
+#             {
+#                 "title": _("التهيئة العامة"),
+#                 "separator": True,  # Top border
+#                 "items": [
+#                     {
+#                         "title": _("Building"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("BuildingView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                      {
+#                         "title": _("head department"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("HeadDepartmentView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                      {
+#                         "title": _("Department"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("DepartmentView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                      {
+#                         "title": _("TypeFile"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("TypeFileView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                      {
+#                         "title": _("Section"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("SectionView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                      {
+#                         "title": _("Cuntry"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("CuntryView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                      {
+#                         "title": _("Subject"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("SubjectView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                     {
+#                         "title": _("Division"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("DivisionView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                 ],
+#             },
+#              {
+#                 "title": _("المدخلات الأساسية"),
+#                 "separator": True,  # Top border
+#                 "items": [
+#                     {
+#                         "title": _("Trainer"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("TrainerView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                      {
+#                         "title": _("Tracking"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("TrackingView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                     {
+#                         "title": _("Details Tracking"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("DetailsTrackingView"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },  
+#                 ],
+#             },
+#               {
+#                 "title": _("todo"),
+#                 "separator": True,  # Top border
+#                 "items": [
+#                      {
+#                         "title": _("Week"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("week"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                     {
+#                         "title": _("Task"),
+#                         "icon": "home",  # Supported icon set: https://fonts.google.com/icons
+#                         "link": reverse_lazy("task"),
+#                         "permission": lambda request: request.user.is_superuser,
+#                     },
+#                 ],
+#             },
+#         ],
+#     },
    
-}
+# }

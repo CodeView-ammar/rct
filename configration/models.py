@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Building(CustomModel):
     Unit={
-        ("unit",_("كلية الرياض"))
+        ("unit",_("Riyadh College"))
     }
     
     number = models.IntegerField(verbose_name=_("number"))
@@ -13,8 +13,16 @@ class Building(CustomModel):
     unit_name = models.CharField(_("unit trining"),choices=Unit,default="unit",max_length=10)
     def __str__(self):
         return self.name_building
+
+class HeadDepartment(CustomModel):
+    name = models.CharField(_("head department"),max_length=100)
+    phone = models.CharField(_("phone"),max_length=100,null=True,blank=True)
+    email = models.EmailField(_("email"),null=True,blank=True)
+    def __str__(self):
+        return self.name
 class Department(CustomModel):
     building = models.ForeignKey(Building,on_delete=models.CASCADE)
+    head_department= models.ForeignKey(HeadDepartment,on_delete=models.CASCADE,null=True,blank=True)
     number = models.IntegerField(verbose_name=_("number"))
     name_department = models.CharField(verbose_name=_("name"),max_length=100, unique=True)
     def __str__(self):

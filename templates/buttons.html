@@ -11,13 +11,13 @@
     <div class="col-sm-6 col-xs-8">
           <div class="top-actions">
     {% if btn_new == 'true'  and add  %}
-        <button id="btn_new"  type="reset"  form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans 'New' %}</button >
+        <button id="btn_new"  type="reset"  form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans "New" %}</button>
       {% endif %}
-      {% if btn_save == 'true' and add %}
+    {% if btn_save == 'true' and add %}
         <button id="btn_save"   type="submit" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;">{% trans "Save" %}</button>
-        {% endif %}
-        {% if btn_update == 'true' and edit %}
-          <button id="btn_update" type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans 'Update' %}</button >
+    {% endif %}
+    {% if btn_update == 'true' and edit %}
+          <button id="btn_update" type="button" form="{{ form_id }}"  class="btn btn-secondary" style="cursor:default;margin: 2px;" >{% trans "Update" %}</button >
         {% endif %}
         
       {% if btn_delete == 'true' and delete %}
@@ -42,7 +42,7 @@
     class="add-new-btn  btn btn-success btn-addon width-auto btn-lg  button right"  data-toggle="modal" data-target="{{data_target}}"> 
     <span>
       <i class="fa fa-list"></i>
-      {% trans name_text %}
+      name_text
       
     </span>
   </a>

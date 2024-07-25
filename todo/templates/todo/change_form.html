@@ -1,0 +1,22 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const allDepartmentField = document.getElementById("id_all_department");
+      const departmentField = document.getElementById("id_department");
+
+      function toggleDepartmentField() {
+        if (allDepartmentField.checked) {
+          departmentField.closest(".form-row").style.display = "none";
+        } else {
+          departmentField.closest(".form-row").style.display = "block";
+        }
+      }
+
+      allDepartmentField.addEventListener("change", toggleDepartmentField);
+      toggleDepartmentField();
+    });
+  </script>
+{% endblock %}

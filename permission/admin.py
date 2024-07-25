@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import UsersDetiles
 from django.utils.timezone import now
-
+from django.utils.translation import gettext_lazy as _
+app_name = _("permission")
 class CustomUserAdmin(UserAdmin):
     list_display = ['username', 'is_staff', 'active']
     list_filter = ['is_staff', 'is_superuser', 'active', 'groups']
